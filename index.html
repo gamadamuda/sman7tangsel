@@ -53,9 +53,15 @@
 
         .hero-bg {
             background-color: #1A2C43;
-            background-image: radial-gradient(#2a405e 1px, transparent 1px);
-            background-size: 20px 20px;
+            position: relative;
         }
+        
+        /* Motif Batik Kawung Sederhana via CSS SVG */
+        .batik-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-16.57 13.43-30 30-30v60c-16.57 0-30-13.43-30-30zM0 30C0 13.43 13.43 0 30 0v60C13.43 60 0 46.57 0 30z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
         .bayan-gradient {
             background: linear-gradient(135deg, #1A2C43 0%, #2a4b7c 100%);
         }
@@ -120,8 +126,19 @@
 
     <!-- Hero Section -->
     <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-ugm-blue/90 pointer-events-none z-0"></div>
+        
+        <!-- 1. Background Image Layer (Balairung UGM) -->
+        <!-- Perubahan: Opacity dinaikkan jadi 50% dan hapus mix-blend agar warna asli sedikit terlihat -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg" alt="Balairung UGM" class="w-full h-full object-cover opacity-50">
+        </div>
+
+        <!-- 2. Batik Pattern Layer (Jogja Motif) -->
+        <div class="absolute inset-0 z-0 batik-pattern opacity-20 pointer-events-none"></div>
+
+        <!-- 3. Gradient Overlay (Agar teks tetap terbaca jelas di atas foto) -->
+        <!-- Perubahan: Gradient dibuat lebih halus di tengah (via-ugm-blue/50) agar foto terlihat -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-ugm-blue/50 to-ugm-blue/95 pointer-events-none z-0"></div>
         
         <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-ugm-yellow/10 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-6 shadow-lg tracking-wide">
@@ -132,7 +149,7 @@
                 Wujudkan Mimpimu di <br> <span class="text-ugm-yellow">Universitas Gadjah Mada</span>
             </h1>
             
-            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">
                 Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan trik untuk kalian.
             </p>
             
