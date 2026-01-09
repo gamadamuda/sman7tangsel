@@ -84,7 +84,8 @@
         
         /* Welcome Overlay Background */
         #welcome-overlay {
-            background-image: linear-gradient(rgba(26, 44, 67, 0.85), rgba(26, 44, 67, 0.85)), url('https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg');
+            /* Menggunakan gradien yang lebih transparan di tengah agar foto GSP terlihat */
+            background-image: linear-gradient(rgba(26, 44, 67, 0.7), rgba(26, 44, 67, 0.7)), url('https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -93,20 +94,21 @@
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
 
     <!-- WELCOME OVERLAY (To force interaction for Audio) -->
-    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
-        <div class="text-center p-6 animate-fade-in-up">
-            <i class="fas fa-university text-ugm-yellow text-6xl mb-6 drop-shadow-lg"></i>
-            <h1 class="text-4xl md:text-6xl font-heading font-extrabold mb-2 tracking-tight">UGM MENYAPA</h1>
-            <h2 class="text-2xl md:text-4xl font-heading font-bold mb-4 text-ugm-yellow">2026</h2>
-            <p class="text-gray-200 mb-10 text-lg md:text-xl font-light">Dari Alumni SMAN 7 Tangsel</p>
+    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-end pb-20 md:justify-center md:pb-0 text-white transition-opacity duration-700 ease-out">
+        <!-- Perubahan: Ukuran font diperkecil dan margin dikurangi agar tidak menutupi foto -->
+        <div class="text-center p-4 animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-xl md:bg-transparent md:backdrop-blur-none mx-4">
+            <i class="fas fa-university text-ugm-yellow text-3xl md:text-5xl mb-3 drop-shadow-lg"></i>
+            <h1 class="text-2xl md:text-4xl font-heading font-extrabold mb-1 tracking-tight">UGM MENYAPA</h1>
+            <h2 class="text-lg md:text-2xl font-heading font-bold mb-3 text-ugm-yellow">2026</h2>
+            <p class="text-gray-100 mb-6 text-sm md:text-base font-light">Dari Alumni SMAN 7 Tangsel</p>
             
-            <button onclick="enterSite()" class="group relative px-8 py-4 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105">
-                <span class="flex items-center gap-3 text-lg">
-                    <i class="fas fa-star"></i>
+            <button onclick="enterSite()" class="group relative px-6 py-2.5 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base">
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-star text-xs"></i>
                     Sudah siap memulai mimpi?
                 </span>
                 <!-- Ripple Effect Ring -->
-                <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-4 ring-offset-ugm-blue animate-pulse"></span>
+                <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-2 ring-offset-ugm-blue animate-pulse"></span>
             </button>
         </div>
     </div>
