@@ -81,6 +81,13 @@
             color: #d97706; /* Amber-600 */
             text-decoration: underline;
         }
+        
+        /* Welcome Overlay Background */
+        #welcome-overlay {
+            background-image: linear-gradient(rgba(26, 44, 67, 0.85), rgba(26, 44, 67, 0.85)), url('https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
@@ -89,21 +96,18 @@
     <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
         <div class="text-center p-6 animate-fade-in-up">
             <i class="fas fa-university text-ugm-yellow text-6xl mb-6 drop-shadow-lg"></i>
-            <h1 class="text-3xl md:text-5xl font-heading font-bold mb-2">UGM MENYAPA 2026</h1>
-            <p class="text-gray-300 mb-10 text-sm md:text-lg">Alumni SMAN 7 Tangsel</p>
+            <h1 class="text-4xl md:text-6xl font-heading font-extrabold mb-2 tracking-tight">UGM MENYAPA</h1>
+            <h2 class="text-2xl md:text-4xl font-heading font-bold mb-4 text-ugm-yellow">2026</h2>
+            <p class="text-gray-200 mb-10 text-lg md:text-xl font-light">Dari Alumni SMAN 7 Tangsel</p>
             
             <button onclick="enterSite()" class="group relative px-8 py-4 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105">
-                <span class="flex items-center gap-3">
-                    <i class="fas fa-door-open"></i>
-                    Buka Website
-                    <span class="text-xs font-normal opacity-70 ml-1">(Music On 🎵)</span>
+                <span class="flex items-center gap-3 text-lg">
+                    <i class="fas fa-star"></i>
+                    Sudah siap memulai mimpi?
                 </span>
                 <!-- Ripple Effect Ring -->
                 <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-4 ring-offset-ugm-blue animate-pulse"></span>
             </button>
-        </div>
-        <div class="absolute bottom-10 text-xs text-gray-500">
-            Klik tombol untuk pengalaman terbaik
         </div>
     </div>
 
@@ -149,20 +153,20 @@
     <!-- Hero Section -->
     <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
         
-        <!-- 1. Background Image Layer (Balairung UGM) -->
+        <!-- 1. Background Image Layer (Updated Image) -->
         <div class="absolute inset-0 z-0">
-            <img src="https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg" alt="Balairung UGM" class="w-full h-full object-cover opacity-50">
+            <img src="https://neutral-emerald-o8pzk00rmk.edgeone.app/WhatsApp%20Image%202026-01-10%20at%2000.36.17.jpeg" alt="Gedung Pusat UGM" class="w-full h-full object-cover opacity-60">
         </div>
 
         <!-- 2. Batik Pattern Layer (Jogja Motif) -->
         <div class="absolute inset-0 z-0 batik-pattern opacity-20 pointer-events-none"></div>
 
         <!-- 3. Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-ugm-blue/50 to-ugm-blue/95 pointer-events-none z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-ugm-blue/40 to-ugm-blue/95 pointer-events-none z-0"></div>
         
         <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-ugm-yellow/10 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-6 shadow-lg tracking-wide">
-                <i class="fas fa-map-marker-alt"></i> FROM TANGSEL TO BULAKSUMUR
+                <i class="fas fa-map-marker-alt"></i> FROM TANGSEL TO YOGYAKARTA
             </div>
             
             <h1 class="text-3xl md:text-5xl font-heading font-extrabold mb-6 leading-tight drop-shadow-lg tracking-tight">
@@ -567,9 +571,9 @@
                         <li><strong>PBM:</strong> Pemahaman Bacaan & Menulis</li>
                         <li><strong>PPU:</strong> Pengetahuan & Pemahaman Umum</li>
                         <li><strong>PK:</strong> Pengetahuan Kuantitatif</li>
-                        <li><strong>Literasi Bahasa Indonesia</strong></li>
-                        <li><strong>Literasi Bahasa Inggris</strong></li>
-                        <li><strong>Penalaran Matematika</strong></li>
+                        <li><strong>LBI:</strong> Literasi Bahasa Indonesia</li>
+                        <li><strong>LBE:</strong> Literasi Bahasa Inggris</li>
+                        <li><strong>PM:</strong> Penalaran Matematika</li>
                     </ul>
                 </div>
 
