@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGM Menyapa 2026 - SMAN 7 Tangsel</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ugm: {
+                            blue: '#1A2C43', // Biru gelap UGM
+                            yellow: '#F2C94C', // Kuning/Emas
+                            gold: '#C5A365',
+                            cream: '#FFF9E5',
+                        },
+                        sman7: {
+                            green: '#2E7D32' 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hero-bg {
+            background-color: #1A2C43;
+            background-image: radial-gradient(#2a405e 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .bayan-gradient {
+            background: linear-gradient(135deg, #1A2C43 0%, #2a4b7c 100%);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A2C43; 
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-ugm-blue/95 backdrop-blur-md text-white shadow-lg h-16 flex items-center" id="navbar">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-university text-ugm-yellow text-xl"></i>
+                <div class="leading-tight">
+                    <h1 class="font-heading font-bold text-base">UGM MENYAPA 2026</h1>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-6 text-sm font-semibold">
+                <a href="#team" class="hover:text-ugm-yellow transition">Tim Kami</a>
+                <a href="#profil" class="hover:text-ugm-yellow transition">Profil</a>
+                <a href="#akademik" class="hover:text-ugm-yellow transition">Akademik</a>
+                <a href="#jalur" class="hover:text-ugm-yellow transition">Jalur Masuk</a>
+                <a href="#biaya" class="hover:text-ugm-yellow transition">Biaya</a>
+                <a href="#beasiswa" class="hover:text-ugm-yellow transition">Beasiswa</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-lg" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-ugm-blue border-t border-gray-700 shadow-xl">
+            <div class="flex flex-col p-4 gap-3 text-center text-sm">
+                <a href="#team" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Tim Kami</a>
+                <a href="#profil" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Profil</a>
+                <a href="#akademik" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Akademik</a>
+                <a href="#jalur" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Jalur Masuk</a>
+                <a href="#biaya" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Biaya</a>
+                <a href="#beasiswa" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Beasiswa</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- PERBAIKAN: pb-48 (padding bottom besar) agar konten tidak menabrak wave -->
+    <!-- PERBAIKAN: min-h diganti agar fleksibel -->
+    <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 overflow-hidden min-h-screen">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-ugm-blue/90 pointer-events-none z-0"></div>
+        
+        <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-ugm-yellow/10 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-6 shadow-lg tracking-wide">
+                <i class="fas fa-map-marker-alt"></i> FROM TANGSEL TO BULAKSUMUR
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl font-heading font-extrabold mb-6 leading-tight drop-shadow-lg tracking-tight">
+                Wujudkan Mimpimu di <br> <span class="text-ugm-yellow">Universitas Gadjah Mada</span>
+            </h1>
+            
+            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan trik untuk kalian.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
+                <a href="#jalur" class="w-full sm:w-auto px-8 py-3 bg-ugm-yellow text-ugm-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm">
+                    <i class="fas fa-graduation-cap"></i> Cara Masuk UGM
+                </a>
+                <a href="#team" class="w-full sm:w-auto px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/40 text-white font-bold rounded-full hover:bg-white hover:text-ugm-blue transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fas fa-users"></i> Kenalan Dulu
+                </a>
+            </div>
+        </div>
+
+        <!-- Decorative Wave: FIXED -->
+        <!-- Menggunakan SVG 'Curve' sederhana yang mengisi bagian bawah kanan dan kiri, menciptakan efek cembung ke bawah untuk biru -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <!-- Path ini membuat background biru terlihat melengkung ke bawah (cembung) -->
+                <!-- Fill warna gray-50 (sama dengan section bawahnya) -->
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#1A2C43" opacity="0"></path> <!-- Invisible spacer logic replaced below -->
+                
+                <!-- This path draws the WHITE area. To make blue convex DOWN, White needs to be Concave UP. -->
+                <!-- Simple Curve: -->
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Team Section -->
+    <section id="team" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue mb-4">Kakak Alumni SMAN 7</h2>
+                <div class="w-20 h-1 bg-ugm-yellow mx-auto rounded"></div>
+                <p class="mt-4 text-gray-600">Siap membimbing kalian menuju Kampus Kerakyatan</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Team Member Loop -->
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🐯</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Revan</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Teknik Elektro</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🐰</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Lila</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">PWK</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🐨</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Billy</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Sosiologi</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🐱</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Ara</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Sastra Korea</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🦊</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Karin</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Psikologi</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-red-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
+                        <span class="text-4xl">🐼</span>
+                    </div>
+                    <h3 class="font-bold text-ugm-blue text-base">Firyal</h3>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Arsitektur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil UGM & Stats -->
+    <section id="profil" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue mb-6">Tentang Kampus Biru</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base">
+                        <p>
+                            <span class="font-bold text-ugm-blue">Sejarah:</span> Universitas Gadjah Mada lahir dari kancah perjuangan revolusi kemerdekaan bangsa Indonesia. Didirikan pada 19 Desember 1949, UGM merupakan universitas negeri tertua di Indonesia.
+                        </p>
+                        <p>
+                            <span class="font-bold text-ugm-blue">Warna Almamater:</span> Warna jas almamater UGM adalah <span class="bg-[#8b7d6b] text-white px-1 rounded text-sm">Karung Goni</span>. Maknanya sangat dalam, yaitu melambangkan semangat kerakyatan dan perjuangan rakyat Indonesia yang dulu menggunakan karung goni sebagai pakaian saat berjuang.
+                        </p>
+                        <p>
+                            <span class="font-bold text-ugm-blue">PIONIR (PPSMB):</span> Momen paling seru! Pionir Gadjah Mada adalah masa orientasi mahasiswa baru. Di sini kita bikin formasi raksasa di Lapangan GSP, belajar nilai ke-UGM-an, dan dapet temen dari seluruh Indonesia!
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <div class="bg-ugm-blue p-6 rounded-xl text-white text-center">
+                        <h3 class="text-3xl font-bold text-ugm-yellow mb-2">18</h3>
+                        <p class="text-sm">Fakultas</p>
+                    </div>
+                    <div class="bg-ugm-blue p-6 rounded-xl text-white text-center">
+                        <h3 class="text-3xl font-bold text-ugm-yellow mb-2">1</h3>
+                        <p class="text-sm">Sekolah Vokasi</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-xl text-ugm-blue text-center col-span-2">
+                        <h3 class="text-3xl font-bold mb-2">293.000+</h3>
+                        <p class="text-sm">Pendaftar Tahun 2024</p>
+                        <div class="mt-2 text-xs text-red-500 font-semibold">*Hanya ~10.000+ yang diterima. Persaingan ketat!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fakultas Accordion -->
+    <section id="akademik" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Fakultas & Prodi</h2>
+                <p class="text-gray-500 mt-2 text-sm md:text-base">Pilihan Program Studi S1 dan Sarjana Terapan (D4) di UGM sangat beragam.</p>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                
+                <!-- Sekolah Vokasi (Updated) -->
+                <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-blue-50 hover:bg-blue-100 transition focus:outline-none" onclick="toggleAccordion('vokasi')">
+                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-tools text-sm"></i> Sekolah Vokasi (D4 / Sarjana Terapan)</span>
+                        <i id="icon-vokasi" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
+                    </button>
+                    <div id="content-vokasi" class="hidden px-6 py-5 bg-white text-sm text-gray-700">
+                        <p class="mb-4 font-semibold text-ugm-blue">Memiliki 8 Departemen: 6 Saintek, 2 Soshum.</p>
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Bahasa Jepang untuk Komunikasi Bisnis dan Profesional</li>
+                                <li>Sistem Informasi Geografis</li>
+                                <li>Akuntansi Sektor Publik</li>
+                                <li>Bahasa Inggris</li>
+                                <li>Bisnis Perjalanan Wisata</li>
+                                <li>Manajemen dan Penilaian Properti</li>
+                                <li>Manajemen Informasi Kesehatan</li>
+                                <li>Pembangunan Ekonomi Kewilayahan</li>
+                                <li>Pengelolaan Arsip dan Rekaman Informasi</li>
+                                <li>Pengelolaan Hutan</li>
+                                <li>Pengembangan Produk Agroindustri</li>
+                            </ul>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                <li>Perbankan</li>
+                                <li>Teknologi Veteriner</li>
+                                <li>Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil</li>
+                                <li>Teknik Pengelolaan dan Perawatan Alat Berat</li>
+                                <li>Teknik Rekayasa Pelaksanaan Bangunan Sipil</li>
+                                <li>Teknologi Rekayasa Elektro</li>
+                                <li>Teknologi Rekayasa Instrumentasi dan Kontrol</li>
+                                <li>Teknologi Rekayasa Internet</li>
+                                <li>Teknologi Rekayasa Mesin</li>
+                                <li>Teknologi Rekayasa Perangkat Lunak</li>
+                                <li>Teknologi Survei dan Pemetaan Dasar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saintek -->
+                <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('saintek')">
+                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-microscope text-sm"></i> Klaster Saintek & Kesehatan</span>
+                        <i id="icon-saintek" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
+                    </button>
+                    <div id="content-saintek" class="hidden px-6 py-5 bg-gray-50 text-sm text-gray-700">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">Fakultas Teknik (8 Jur
