@@ -83,7 +83,29 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full" oncontextmenu="return false">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
+
+    <!-- WELCOME OVERLAY (To force interaction for Audio) -->
+    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
+        <div class="text-center p-6 animate-fade-in-up">
+            <i class="fas fa-university text-ugm-yellow text-6xl mb-6 drop-shadow-lg"></i>
+            <h1 class="text-3xl md:text-5xl font-heading font-bold mb-2">UGM MENYAPA 2026</h1>
+            <p class="text-gray-300 mb-10 text-sm md:text-lg">Alumni SMAN 7 Tangsel</p>
+            
+            <button onclick="enterSite()" class="group relative px-8 py-4 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-door-open"></i>
+                    Buka Website
+                    <span class="text-xs font-normal opacity-70 ml-1">(Music On 🎵)</span>
+                </span>
+                <!-- Ripple Effect Ring -->
+                <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-4 ring-offset-ugm-blue animate-pulse"></span>
+            </button>
+        </div>
+        <div class="absolute bottom-10 text-xs text-gray-500">
+            Klik tombol untuk pengalaman terbaik
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-ugm-blue/95 backdrop-blur-md text-white shadow-lg h-16 flex items-center" id="navbar">
@@ -128,7 +150,6 @@
     <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
         
         <!-- 1. Background Image Layer (Balairung UGM) -->
-        <!-- Perubahan: Opacity dinaikkan jadi 50% dan hapus mix-blend agar warna asli sedikit terlihat -->
         <div class="absolute inset-0 z-0">
             <img src="https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg" alt="Balairung UGM" class="w-full h-full object-cover opacity-50">
         </div>
@@ -136,8 +157,7 @@
         <!-- 2. Batik Pattern Layer (Jogja Motif) -->
         <div class="absolute inset-0 z-0 batik-pattern opacity-20 pointer-events-none"></div>
 
-        <!-- 3. Gradient Overlay (Agar teks tetap terbaca jelas di atas foto) -->
-        <!-- Perubahan: Gradient dibuat lebih halus di tengah (via-ugm-blue/50) agar foto terlihat -->
+        <!-- 3. Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-ugm-blue/50 to-ugm-blue/95 pointer-events-none z-0"></div>
         
         <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
@@ -167,7 +187,6 @@
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
              <svg class="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#1A2C43" opacity="0"></path>
-                <!-- White Curve (Concave Up creates Convex Down effect for the blue header above) -->
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
             </svg>
         </div>
@@ -832,6 +851,14 @@
         <i class="fas fa-arrow-up font-bold"></i>
     </button>
 
+    <!-- Music Player Container (Hidden) -->
+    <div id="music-player" class="absolute top-0 left-0 w-1 h-1 opacity-0 pointer-events-none"></div>
+
+    <!-- Music Toggle Button -->
+    <button onclick="toggleMusic()" id="musicToggle" class="fixed bottom-6 left-6 bg-ugm-yellow text-ugm-blue p-3 rounded-full shadow-lg hover:bg-yellow-400 transition z-50 flex items-center justify-center w-12 h-12 hidden">
+        <i id="musicToggleIcon" class="fas fa-volume-up"></i>
+    </button>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -879,6 +906,86 @@
         
         // Prevent right click
         document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // --- YOUTUBE API LOGIC ---
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('music-player', {
+                height: '1',
+                width: '1',
+                videoId: 'qXT0B8ZN3Ls',
+                playerVars: {
+                    'autoplay': 0, // We handle playback manually via button
+                    'controls': 0,
+                    'start': 20, // Start at 0:20
+                    'loop': 1,
+                    'playlist': 'qXT0B8ZN3Ls',
+                    'origin': window.location.origin
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setVolume(50);
+            // Player is ready, but we wait for user interaction (click button)
+        }
+
+        // --- WELCOME OVERLAY LOGIC ---
+        function enterSite() {
+            const overlay = document.getElementById('welcome-overlay');
+            const bodyContainer = document.getElementById('body-container');
+            const musicBtn = document.getElementById('musicToggle');
+
+            // 1. Fade out overlay
+            overlay.style.opacity = '0';
+            
+            // 2. Play Audio (Now allowed by browser because of click)
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+                player.seekTo(20); // Ensure starts at 20s
+            }
+
+            // 3. Remove overlay from DOM after transition
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                // Unlock body scroll if locked (it was overflow-hidden)
+                bodyContainer.classList.remove('h-screen', 'overflow-hidden');
+                // Show floating music toggle
+                musicBtn.classList.remove('hidden');
+            }, 700);
+        }
+
+        // --- MUSIC TOGGLE LOGIC ---
+        function toggleMusic() {
+            if (!player) return;
+            
+            if (player.getPlayerState() === 1) { // Playing
+                player.pauseVideo();
+                updateMusicButton(false);
+            } else {
+                player.playVideo();
+                updateMusicButton(true);
+            }
+        }
+
+        function updateMusicButton(isPlaying) {
+            const icon = document.getElementById('musicToggleIcon');
+            if (isPlaying) {
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+            } else {
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+            }
+        }
     </script>
 </body>
 </html>
