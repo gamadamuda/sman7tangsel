@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +44,13 @@
     </script>
     
     <style>
+        /* Anti Copy Protection */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
         .hero-bg {
             background-color: #1A2C43;
             background-image: radial-gradient(#2a405e 1px, transparent 1px);
@@ -63,9 +70,14 @@
             background: #1A2C43; 
             border-radius: 5px;
         }
+        /* Link Hover Effect in Accordion */
+        .prodi-link:hover {
+            color: #d97706; /* Amber-600 */
+            text-decoration: underline;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full" oncontextmenu="return false">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-ugm-blue/95 backdrop-blur-md text-white shadow-lg h-16 flex items-center" id="navbar">
@@ -107,7 +119,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen">
+    <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-ugm-blue/90 pointer-events-none z-0"></div>
         
@@ -153,10 +165,10 @@
                 <p class="mt-4 text-gray-600">Siap membimbing kalian menuju Kampus Kerakyatan</p>
             </div>
 
-            <!-- Changed grid to 5 cols since Firyal removed, centered -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-center">
+            <!-- Changed Grid to Flex to Center Karin nicely -->
+            <div class="flex flex-wrap justify-center gap-6">
                 <!-- Team Member Loop -->
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
                         <span class="text-4xl">🐯</span>
                     </div>
@@ -164,36 +176,36 @@
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Teknologi Rekayasa Elektro (Vokasi)</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
                     <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
                         <span class="text-4xl">🐰</span>
                     </div>
                     <h3 class="font-bold text-ugm-blue text-base">Lila</h3>
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">PWK</p>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Perencanaan Wilayah dan Kota)</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
+                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
                     <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
                         <span class="text-4xl">🐨</span>
                     </div>
                     <h3 class="font-bold text-ugm-blue text-base">Billy</h3>
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Sosiologi</p>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Sosiologi)</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
+                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
                     <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
                         <span class="text-4xl">🐱</span>
                     </div>
                     <h3 class="font-bold text-ugm-blue text-base">Ara</h3>
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Sastra Korea</p>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Bahasa dan Kebudayaan Korea)</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="500">
+                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="500">
                     <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
                         <span class="text-4xl">🦊</span>
                     </div>
                     <h3 class="font-bold text-ugm-blue text-base">Karin</h3>
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Psikologi</p>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Psikologi)</p>
                 </div>
             </div>
         </div>
@@ -250,12 +262,12 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-10" data-aos="fade-up">
                 <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Fakultas & Prodi</h2>
-                <p class="text-gray-500 mt-2 text-sm md:text-base">Pilihan Program Studi S1 dan Sarjana Terapan (D4) di UGM sangat beragam.</p>
+                <p class="text-gray-500 mt-2 text-sm md:text-base">Pilihan Program Studi S1 dan Sarjana Terapan (D4) di UGM sangat beragam. Klik nama prodi untuk info lebih lanjut.</p>
             </div>
 
             <div class="space-y-4" data-aos="fade-up">
                 
-                <!-- Sekolah Vokasi (Updated Detailed) -->
+                <!-- Sekolah Vokasi -->
                 <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
                     <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-blue-50 hover:bg-blue-100 transition focus:outline-none" onclick="toggleAccordion('vokasi')">
                         <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-tools text-sm"></i> Sekolah Vokasi (Sarjana Terapan / D4)</span>
@@ -266,58 +278,58 @@
                             <div>
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Layanan & Informasi Kesehatan</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Manajemen Informasi Kesehatan</li>
+                                    <li><a href="https://sv.ugm.ac.id/manajemen-informasi-kesehatan-mik/" target="_blank" class="prodi-link">Manajemen Informasi Kesehatan</a></li>
                                 </ul>
                                 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknologi Kebumian</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Teknologi Survei dan Pemetaan Dasar</li>
-                                    <li>Sistem Informasi Geografis</li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-survei-dan-pemetaan-dasar-tspd/" target="_blank" class="prodi-link">Teknologi Survei dan Pemetaan Dasar</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/sistem-informasi-geografis-sig/" target="_blank" class="prodi-link">Sistem Informasi Geografis</a></li>
                                 </ul>
 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Tek. Hayati & Veteriner</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Pengelolaan Hutan</li>
-                                    <li>Teknologi Veteriner</li>
-                                    <li>Pengembangan Produk Agroindustri</li>
+                                    <li><a href="https://sv.ugm.ac.id/pengelolaan-hutan-ph/" target="_blank" class="prodi-link">Pengelolaan Hutan</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-veteriner-tv/" target="_blank" class="prodi-link">Teknologi Veteriner</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/pengembangan-produk-agroindustri-ppa/" target="_blank" class="prodi-link">Pengembangan Produk Agroindustri</a></li>
                                 </ul>
 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknik Mesin</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2">
-                                    <li>Teknologi Rekayasa Mesin</li>
-                                    <li>Teknik Pengelolaan dan Perawatan Alat Berat</li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-mesin-trm/" target="_blank" class="prodi-link">Teknologi Rekayasa Mesin</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknik-pengelolaan-dan-perawatan-alat-berat-tppab/" target="_blank" class="prodi-link">Teknik Pengelolaan dan Perawatan Alat Berat</a></li>
                                 </ul>
                             </div>
                             
                             <div>
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknik Sipil</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil</li>
-                                    <li>Teknologi Rekayasa Pelaksanaan Bangunan Sipil</li>
+                                    <li><a href="https://sv.ugm.ac.id/teknik-pengelolaan-dan-pemeliharaan-infrastruktur-sipil-tppis/" target="_blank" class="prodi-link">Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-pelaksanaan-bangunan-sipil-trpbs/" target="_blank" class="prodi-link">Teknologi Rekayasa Pelaksanaan Bangunan Sipil</a></li>
                                 </ul>
 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Tek. Elektro & Informatika</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Teknologi Rekayasa Perangkat Lunak</li>
-                                    <li>Teknologi Rekayasa Elektro</li>
-                                    <li>Teknologi Rekayasa Instrumentasi dan Kontrol</li>
-                                    <li>Teknologi Rekayasa Internet</li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-perangkat-lunak-trpl/" target="_blank" class="prodi-link">Teknologi Rekayasa Perangkat Lunak</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-elektro-tre/" target="_blank" class="prodi-link">Teknologi Rekayasa Elektro</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-instrumentasi-dan-kontrol-trik/" target="_blank" class="prodi-link">Teknologi Rekayasa Instrumentasi dan Kontrol</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-internet-tri/" target="_blank" class="prodi-link">Teknologi Rekayasa Internet</a></li>
                                 </ul>
 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Ekonomika & Bisnis</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li>Manajemen dan Penilaian Properti</li>
-                                    <li>Perbankan</li>
-                                    <li>Akuntansi Sektor Publik</li>
-                                    <li>Pembangunan Ekonomi Kewilayahan</li>
+                                    <li><a href="https://sv.ugm.ac.id/manajemen-dan-penilaian-properti-mpp/" target="_blank" class="prodi-link">Manajemen dan Penilaian Properti</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/perbankan-p/" target="_blank" class="prodi-link">Perbankan</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/akuntansi-sektor-publik-asp/" target="_blank" class="prodi-link">Akuntansi Sektor Publik</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/pembangunan-ekonomi-kewilayahan-pek/" target="_blank" class="prodi-link">Pembangunan Ekonomi Kewilayahan</a></li>
                                 </ul>
 
                                 <h5 class="font-bold text-ugm-blue mb-1">Dep. Bahasa, Seni & Man. Budaya</h5>
                                 <ul class="list-disc list-inside text-gray-600 text-xs ml-2">
-                                    <li>Pengelolaan Arsip dan Rekaman Informasi</li>
-                                    <li>Bahasa Inggris</li>
-                                    <li>Bisnis Perjalanan Wisata</li>
-                                    <li>Bahasa Jepang untuk Komunikasi Bisnis dan Profesional</li>
+                                    <li><a href="https://sv.ugm.ac.id/pengelolaan-arsip-dan-rekaman-informasi-pari/" target="_blank" class="prodi-link">Pengelolaan Arsip dan Rekaman Informasi</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/bahasa-inggris-bing/" target="_blank" class="prodi-link">Bahasa Inggris</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/bisnis-perjalanan-wisata-bpw/" target="_blank" class="prodi-link">Bisnis Perjalanan Wisata</a></li>
+                                    <li><a href="https://sv.ugm.ac.id/bahasa-jepang-untuk-komunikasi-bisnis-dan-profesional-kombispro/" target="_blank" class="prodi-link">Bahasa Jepang untuk Komunikasi Bisnis dan Profesional</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -336,37 +348,37 @@
                                 <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">Fakultas Teknik</h4>
                                 <div class="grid md:grid-cols-2 gap-2">
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Arsitektur dan Perencanaan</li>
-                                        <li>Teknik Elektro</li>
-                                        <li>Teknik Fisika</li>
-                                        <li>Teknik Geodesi</li>
+                                        <li><a href="https://archiplan.ugm.ac.id" target="_blank" class="prodi-link">Arsitektur dan Perencanaan</a></li>
+                                        <li><a href="https://jteti.ugm.ac.id" target="_blank" class="prodi-link">Teknik Elektro</a></li>
+                                        <li><a href="https://tf.ugm.ac.id" target="_blank" class="prodi-link">Teknik Fisika</a></li>
+                                        <li><a href="https://geodesi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Geodesi</a></li>
                                     </ul>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Teknik Geologi</li>
-                                        <li>Teknik Kimia</li>
-                                        <li>Teknik Mesin dan Industri</li>
-                                        <li>Teknik Sipil dan Lingkungan</li>
+                                        <li><a href="https://geologi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Geologi</a></li>
+                                        <li><a href="https://chemeng.ugm.ac.id" target="_blank" class="prodi-link">Teknik Kimia</a></li>
+                                        <li><a href="https://tmi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Mesin dan Industri</a></li>
+                                        <li><a href="https://tsipil.ugm.ac.id" target="_blank" class="prodi-link">Teknik Sipil dan Lingkungan</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div>
                                 <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">FMIPA</h4>
                                 <ul class="list-disc list-inside ml-2 grid md:grid-cols-2 gap-1 text-xs">
-                                    <li>Elektronika dan Instrumentasi (Elins)</li>
-                                    <li>Fisika</li>
-                                    <li>Geofisika</li>
-                                    <li>Kimia</li>
-                                    <li>Ilmu Komputer</li>
-                                    <li>Matematika</li>
-                                    <li>Statistika</li>
+                                    <li><a href="https://dcse.ugm.ac.id" target="_blank" class="prodi-link">Elektronika dan Instrumentasi (Elins)</a></li>
+                                    <li><a href="https://fi.ugm.ac.id" target="_blank" class="prodi-link">Fisika</a></li>
+                                    <li><a href="https://fi.ugm.ac.id" target="_blank" class="prodi-link">Geofisika</a></li>
+                                    <li><a href="https://chem.ugm.ac.id" target="_blank" class="prodi-link">Kimia</a></li>
+                                    <li><a href="https://dcse.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Komputer</a></li>
+                                    <li><a href="https://math.ugm.ac.id" target="_blank" class="prodi-link">Matematika</a></li>
+                                    <li><a href="https://math.ugm.ac.id" target="_blank" class="prodi-link">Statistika</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">FKKMK (Kedokteran)</h4>
                                 <ul class="list-disc list-inside ml-2 text-xs">
-                                    <li>Kedokteran (Sangat Populer!)</li>
-                                    <li>Ilmu Keperawatan</li>
-                                    <li>Gizi Kesehatan</li>
+                                    <li><a href="https://kedokteran.fk.ugm.ac.id" target="_blank" class="prodi-link">Kedokteran (Sangat Populer!)</a></li>
+                                    <li><a href="https://keperawatan.fkkmk.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Keperawatan</a></li>
+                                    <li><a href="https://gizikesehatan.fkkmk.ugm.ac.id" target="_blank" class="prodi-link">Gizi Kesehatan</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -384,49 +396,49 @@
                              <div>
                                 <h4 class="font-bold text-ugm-blue mb-2 text-base">FIB (Ilmu Budaya)</h4>
                                 <ul class="list-disc list-inside ml-2 space-y-1 text-xs">
-                                    <li>Sastra Arab</li>
-                                    <li>Pariwisata</li>
-                                    <li>Bahasa dan Sastra Indonesia</li>
-                                    <li>Bahasa dan Kebudayaan Korea</li>
-                                    <li>Arkeologi</li>
-                                    <li>Antropologi Budaya</li>
-                                    <li>Sejarah</li>
-                                    <li>Sastra Perancis</li>
-                                    <li>Sastra Jepang</li>
-                                    <li>Sastra Jawa</li>
-                                    <li>Sastra Inggris</li>
+                                    <li><a href="https://arab.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Arab</a></li>
+                                    <li><a href="https://pariwisata.fib.ugm.ac.id" target="_blank" class="prodi-link">Pariwisata</a></li>
+                                    <li><a href="https://indonesia.fib.ugm.ac.id" target="_blank" class="prodi-link">Bahasa dan Sastra Indonesia</a></li>
+                                    <li><a href="https://korea.fib.ugm.ac.id" target="_blank" class="prodi-link">Bahasa dan Kebudayaan Korea</a></li>
+                                    <li><a href="https://arkeologi.fib.ugm.ac.id" target="_blank" class="prodi-link">Arkeologi</a></li>
+                                    <li><a href="https://antropologi.fib.ugm.ac.id" target="_blank" class="prodi-link">Antropologi Budaya</a></li>
+                                    <li><a href="https://sejarah.fib.ugm.ac.id" target="_blank" class="prodi-link">Sejarah</a></li>
+                                    <li><a href="https://perancis.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Perancis</a></li>
+                                    <li><a href="https://jepang.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Jepang</a></li>
+                                    <li><a href="https://jawa.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Jawa</a></li>
+                                    <li><a href="https://inggris.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Inggris</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <div class="mb-4">
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">FISIPOL</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Ilmu Komunikasi</li>
-                                        <li>Hubungan Internasional</li>
-                                        <li>Sosiologi</li>
-                                        <li>Manajemen & Kebijakan Publik</li>
-                                        <li>Ilmu Politik dan Pemerintahan</li>
-                                        <li>Pembangunan Sosial dan Kesejahteraan</li>
+                                        <li><a href="https://dikom.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Komunikasi</a></li>
+                                        <li><a href="https://hi.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Hubungan Internasional</a></li>
+                                        <li><a href="https://sosiologi.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Sosiologi</a></li>
+                                        <li><a href="https://mkp.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Manajemen & Kebijakan Publik</a></li>
+                                        <li><a href="https://hpp.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Politik dan Pemerintahan</a></li>
+                                        <li><a href="https://psd.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Pembangunan Sosial dan Kesejahteraan</a></li>
                                     </ul>
                                 </div>
                                 <div class="mb-4">
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">Psikologi</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Psikologi</li>
+                                        <li><a href="https://psikologi.ugm.ac.id" target="_blank" class="prodi-link">Psikologi</a></li>
                                     </ul>
                                 </div>
                                 <div class="mb-4">
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">Hukum</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Ilmu Hukum</li>
+                                        <li><a href="https://law.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Hukum</a></li>
                                     </ul>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">FEB (Ekonomi)</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Manajemen</li>
-                                        <li>Akuntansi</li>
-                                        <li>Ilmu Ekonomi</li>
+                                        <li><a href="https://manajemen.feb.ugm.ac.id" target="_blank" class="prodi-link">Manajemen</a></li>
+                                        <li><a href="https://akuntansi.feb.ugm.ac.id" target="_blank" class="prodi-link">Akuntansi</a></li>
+                                        <li><a href="https://economics.feb.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Ekonomi</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -445,37 +457,37 @@
                             <div>
                                 <h4 class="font-bold text-ugm-blue mb-2 text-base">Fakultas Pertanian</h4>
                                 <ul class="list-disc list-inside ml-2 space-y-1 text-xs">
-                                    <li>Agronomi</li>
-                                    <li>Teknologi Hasil Perikanan</li>
-                                    <li>Proteksi Tanaman</li>
-                                    <li>Penyuluhan dan Komunikasi Pertanian</li>
-                                    <li>Mikrobiologi Pertanian</li>
-                                    <li>Manajemen Sumberdaya Akuatik</li>
-                                    <li>Ilmu Tanah</li>
-                                    <li>Ekonomi Pertanian dan Agribisnis</li>
-                                    <li>Akuakultur</li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Agronomi</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Hasil Perikanan</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Proteksi Tanaman</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Penyuluhan dan Komunikasi Pertanian</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Mikrobiologi Pertanian</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Manajemen Sumberdaya Akuatik</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Tanah</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Ekonomi Pertanian dan Agribisnis</a></li>
+                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Akuakultur</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <div class="mb-4">
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">Teknologi Pertanian (FTP)</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Teknologi Pangan dan Hasil Pertanian</li>
-                                        <li>Teknologi Industri Pertanian</li>
-                                        <li>Teknik Pertanian</li>
+                                        <li><a href="https://s1tphp.tp.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Pangan dan Hasil Pertanian</a></li>
+                                        <li><a href="https://tp.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Industri Pertanian</a></li>
+                                        <li><a href="https://tp.ugm.ac.id" target="_blank" class="prodi-link">Teknik Pertanian</a></li>
                                     </ul>
                                 </div>
                                 <div class="mb-4">
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">Fakultas Peternakan</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Ilmu dan Industri Peternakan</li>
+                                        <li><a href="https://fapet.ugm.ac.id" target="_blank" class="prodi-link">Ilmu dan Industri Peternakan</a></li>
                                     </ul>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-ugm-blue mb-2 text-base">Kehutanan & Kedokteran Hewan</h4>
                                     <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li>Kehutanan</li>
-                                        <li>Kedokteran Hewan</li>
+                                        <li><a href="https://fkt.ugm.ac.id" target="_blank" class="prodi-link">Kehutanan</a></li>
+                                        <li><a href="https://fkh.ugm.ac.id" target="_blank" class="prodi-link">Kedokteran Hewan</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -513,14 +525,16 @@
                         <h3 class="text-xl font-bold text-gray-800">SNBT</h3>
                     </div>
                     <p class="text-sm text-gray-600 mb-2 leading-relaxed">Menggunakan tes UTBK.</p>
-                    <h4 class="font-bold text-sm mb-2 text-ugm-blue">Materi Tes Potensi Skolastik (TPS):</h4>
+                    <h4 class="font-bold text-sm mb-2 text-ugm-blue">Materi Tes:</h4>
                     <ul class="text-xs text-gray-600 list-disc list-inside space-y-1 mb-4">
                         <li><strong>PU:</strong> Penalaran Umum</li>
                         <li><strong>PBM:</strong> Pemahaman Bacaan & Menulis</li>
                         <li><strong>PPU:</strong> Pengetahuan & Pemahaman Umum</li>
                         <li><strong>PK:</strong> Pengetahuan Kuantitatif</li>
+                        <li><strong>Literasi Bahasa Indonesia</strong></li>
+                        <li><strong>Literasi Bahasa Inggris</strong></li>
+                        <li><strong>Penalaran Matematika</strong></li>
                     </ul>
-                    <p class="text-xs text-gray-600">+ Literasi (Indo & Inggris) & Penalaran Mat.</p>
                 </div>
 
                 <!-- Mandiri -->
@@ -530,7 +544,7 @@
                         <i class="fas fa-university text-3xl text-ugm-blue"></i>
                         <h3 class="text-xl font-bold text-gray-800">Mandiri (UM UGM)</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">Terdiri dari <strong>UM-CBT</strong> (Tes Tulis) dan <strong>PBU</strong> (Tanpa Tes Tulis).</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">Terdiri dari <strong>UM-CBT</strong> (Tes Tulis) dan <strong>PBU</strong> (Tanpa Tes Tulis). <span class="text-red-600 font-bold">Wajib memiliki skor UTBK</span>.</p>
                     
                     <button onclick="document.getElementById('um-modal').classList.remove('hidden')" class="w-full py-3 bg-ugm-blue text-white text-sm rounded hover:bg-blue-900 transition font-semibold">
                         Info Lengkap UM UGM
@@ -557,6 +571,11 @@
                         <i class="fas fa-laptop-code text-ugm-yellow"></i> 1. UM-CBT (Ujian Tulis)
                     </h4>
                     
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                         <p class="text-sm text-red-700 font-bold">Syarat Wajib:</p>
+                         <p class="text-sm text-red-600">Peserta WAJIB mengikuti UTBK-SNBT 2025 karena skor UTBK menjadi salah satu syarat komponen penilaian.</p>
+                    </div>
+
                     <div class="grid md:grid-cols-2 gap-6 bg-gray-50 p-5 rounded-lg mb-4">
                         <div>
                             <h5 class="font-bold text-sm text-ugm-blue mb-2">📍 Lokasi Ujian 2025</h5>
@@ -623,18 +642,28 @@
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-ugm-blue" data-aos="fade-right">
                     <h3 class="text-xl font-bold mb-3">1. UKT Pendidikan Unggul</h3>
-                    <p class="text-sm text-gray-600">Ditetapkan bagi mahasiswa yang memiliki kemampuan ekonomi baik. Nominal ini adalah biaya penuh tanpa subsidi.</p>
+                    <p class="text-sm text-gray-600 mb-3">Ditetapkan bagi mahasiswa yang memiliki kemampuan ekonomi baik. Nominal ini adalah biaya penuh tanpa subsidi.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500" data-aos="fade-left">
                     <h3 class="text-xl font-bold mb-3">2. UKT Pendidikan Unggul Bersubsidi</h3>
                     <p class="text-sm text-gray-600 mb-2">Subsidi diberikan berdasarkan kemampuan ekonomi orang tua. Terbagi menjadi:</p>
-                    <div class="grid grid-cols-2 gap-2 text-xs font-bold text-center text-white">
+                    <div class="grid grid-cols-2 gap-2 text-xs font-bold text-center text-white mb-3">
                         <div class="bg-green-400 p-2 rounded">Subsidi 25%</div>
                         <div class="bg-green-500 p-2 rounded">Subsidi 50%</div>
                         <div class="bg-green-600 p-2 rounded">Subsidi 75%</div>
                         <div class="bg-green-700 p-2 rounded">Subsidi 100% (Gratis)</div>
                     </div>
                 </div>
+            </div>
+
+            <!-- UKT Links -->
+             <div class="flex flex-col md:flex-row justify-center gap-4 mb-12" data-aos="fade-up">
+                <a href="https://um.ugm.ac.id/uang-kuliah-tunggal-ukt-snbp-dan-snbt-ta-2025-2026/" target="_blank" class="px-6 py-3 bg-ugm-blue text-white rounded-full font-bold hover:bg-blue-900 transition text-center shadow-lg">
+                    <i class="fas fa-search-dollar mr-2"></i> Cek Nominal UKT SNBP & SNBT
+                </a>
+                <a href="https://um.ugm.ac.id/ukt-dan-ipi-jalur-um-ugm-pbu-dan-cbt-ta-2025-2026/" target="_blank" class="px-6 py-3 bg-yellow-500 text-white rounded-full font-bold hover:bg-yellow-600 transition text-center shadow-lg">
+                    <i class="fas fa-hand-holding-usd mr-2"></i> Cek Nominal UKT Jalur UM UGM
+                </a>
             </div>
 
             <!-- Flow Process -->
@@ -699,13 +728,12 @@
                                 <div class="bg-black/20 p-5 rounded-lg">
                                     <h4 class="font-bold text-ugm-yellow mb-3 text-sm md:text-base"><i class="fas fa-gift mr-2"></i>Benefit</h4>
                                     <ul class="text-sm space-y-2">
-                                        <li>• Biaya UKT Penuh (s.d Semester 8)</li>
-                                        <li>• Biaya Hidup Bulanan</li>
-                                        <li>• Biaya Penulisan Skripsi</li>
-                                        <li>• Biaya Wisuda</li>
+                                        <li>• UKT Maksimal: <span class="font-bold text-yellow-300">Rp3.075.000</span>/sms</li>
+                                        <li>• Biaya Hidup: <span class="font-bold text-yellow-300">Rp2.500.000</span>/bln (di atas UMR)</li>
+                                        <li>• Biaya Kos: <span class="font-bold text-yellow-300">Rp1.000.000</span>/bln</li>
+                                        <li>• Uang Buku: <span class="font-bold text-yellow-300">Rp900.000</span>/sms</li>
+                                        <li>• Biaya Wisuda: <span class="font-bold text-yellow-300">Rp500.000</span> (1x)</li>
                                         <li>• Fasilitas Laptop</li>
-                                        <li>• Uang Buku</li>
-                                        <li>• Program Pengembangan Diri</li>
                                     </ul>
                                 </div>
                                 <div class="bg-black/20 p-5 rounded-lg">
@@ -831,6 +859,9 @@
                 backToTop.classList.add('hidden');
             }
         });
+        
+        // Prevent right click
+        document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
