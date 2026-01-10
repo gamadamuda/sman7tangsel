@@ -101,9 +101,8 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
 
-    <!-- WELCOME OVERLAY (To force interaction for Audio) -->
+    <!-- WELCOME OVERLAY -->
     <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-end pb-20 md:justify-center md:pb-0 text-white transition-opacity duration-700 ease-out">
-        <!-- Perubahan: Ukuran font diperkecil dan margin dikurangi agar tidak menutupi foto -->
         <div class="text-center p-4 animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-xl md:bg-transparent md:backdrop-blur-none mx-4">
             <i class="fas fa-university text-ugm-yellow text-3xl md:text-5xl mb-3 drop-shadow-lg"></i>
             <h1 class="text-2xl md:text-4xl font-heading font-extrabold mb-1 tracking-tight">UGM MENYAPA</h1>
@@ -115,7 +114,6 @@
                     <i class="fas fa-star text-xs"></i>
                     Sudah siap memulai mimpi?
                 </span>
-                <!-- Ripple Effect Ring -->
                 <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-2 ring-offset-ugm-blue animate-pulse"></span>
             </button>
         </div>
@@ -130,8 +128,6 @@
                     <h1 class="font-heading font-bold text-base">UGM MENYAPA 2026</h1>
                 </div>
             </div>
-            
-            <!-- Desktop Menu -->
             <div class="hidden md:flex gap-6 text-sm font-semibold">
                 <a href="#team" class="hover:text-ugm-yellow transition">Tim Kami</a>
                 <a href="#profil" class="hover:text-ugm-yellow transition">Profil</a>
@@ -140,14 +136,8 @@
                 <a href="#biaya" class="hover:text-ugm-yellow transition">Biaya</a>
                 <a href="#beasiswa" class="hover:text-ugm-yellow transition">Beasiswa</a>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-lg" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="md:hidden text-lg" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
         </div>
-        
-        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-ugm-blue border-t border-gray-700 shadow-xl z-50">
             <div class="flex flex-col p-4 gap-3 text-center text-sm">
                 <a href="#team" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Tim Kami</a>
@@ -162,42 +152,22 @@
 
     <!-- Hero Section -->
     <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
-        
-        <!-- 1. Background Image Layer (Updated Image for Hero) -->
         <div class="absolute inset-0 z-0">
             <img src="https://image2url.com/r2/bucket3/images/1767990186918-49c0cdae-76e2-4ff7-bf87-0cb92a0ed9f9.jpeg" alt="Gedung Pusat UGM" class="w-full h-full object-cover opacity-60">
         </div>
-
-        <!-- 2. Batik Pattern Layer (Jogja Motif) -->
         <div class="absolute inset-0 z-0 batik-pattern opacity-20 pointer-events-none"></div>
-
-        <!-- 3. Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-ugm-blue/40 to-ugm-blue/95 pointer-events-none z-0"></div>
-        
         <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-ugm-yellow/10 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-6 shadow-lg tracking-wide">
                 <i class="fas fa-map-marker-alt"></i> FROM TANGSEL TO YOGYAKARTA
             </div>
-            
-            <h1 class="text-3xl md:text-5xl font-heading font-extrabold mb-6 leading-tight drop-shadow-lg tracking-tight">
-                Wujudkan Mimpimu di <br> <span class="text-ugm-yellow">Universitas Gadjah Mada</span>
-            </h1>
-            
-            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">
-                Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan trik untuk kalian.
-            </p>
-            
+            <h1 class="text-3xl md:text-5xl font-heading font-extrabold mb-6 leading-tight drop-shadow-lg tracking-tight">Wujudkan Mimpimu di <br> <span class="text-ugm-yellow">Universitas Gadjah Mada</span></h1>
+            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan trik untuk kalian.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
-                <a href="#jalur" class="w-full sm:w-auto px-8 py-3 bg-ugm-yellow text-ugm-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm">
-                    <i class="fas fa-graduation-cap"></i> Cara Masuk UGM
-                </a>
-                <a href="#team" class="w-full sm:w-auto px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/40 text-white font-bold rounded-full hover:bg-white hover:text-ugm-blue transition flex items-center justify-center gap-2 text-sm">
-                    <i class="fas fa-users"></i> Kenalan Dulu
-                </a>
+                <a href="#jalur" class="w-full sm:w-auto px-8 py-3 bg-ugm-yellow text-ugm-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm"><i class="fas fa-graduation-cap"></i> Cara Masuk UGM</a>
+                <a href="#team" class="w-full sm:w-auto px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/40 text-white font-bold rounded-full hover:bg-white hover:text-ugm-blue transition flex items-center justify-center gap-2 text-sm"><i class="fas fa-users"></i> Kenalan Dulu</a>
             </div>
         </div>
-
-        <!-- Decorative Wave: Convex Down -->
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
              <svg class="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#1A2C43" opacity="0"></path>
@@ -214,46 +184,29 @@
                 <div class="w-20 h-1 bg-ugm-yellow mx-auto rounded"></div>
                 <p class="mt-4 text-gray-600">Siap membimbing kalian menuju Kampus Kerakyatan</p>
             </div>
-
-            <!-- Changed Grid to Flex to Center Karin nicely -->
             <div class="flex flex-wrap justify-center gap-6">
-                <!-- Team Member Loop -->
                 <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
-                        <span class="text-4xl">🐯</span>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐯</span></div>
                     <h3 class="font-bold text-ugm-blue text-base">Revan</h3>
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Teknologi Rekayasa Elektro (Vokasi)</p>
                 </div>
-
                 <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
-                        <span class="text-4xl">🐰</span>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐰</span></div>
                     <h3 class="font-bold text-ugm-blue text-base">Lila</h3>
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Perencanaan Wilayah dan Kota)</p>
                 </div>
-
                 <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
-                        <span class="text-4xl">🐨</span>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐨</span></div>
                     <h3 class="font-bold text-ugm-blue text-base">Billy</h3>
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Sosiologi)</p>
                 </div>
-
                 <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
-                        <span class="text-4xl">🐱</span>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐱</span></div>
                     <h3 class="font-bold text-ugm-blue text-base">Ara</h3>
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Bahasa dan Kebudayaan Korea)</p>
                 </div>
-
                 <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center">
-                        <span class="text-4xl">🦊</span>
-                    </div>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🦊</span></div>
                     <h3 class="font-bold text-ugm-blue text-base">Karin</h3>
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Psikologi)</p>
                 </div>
@@ -261,10 +214,9 @@
         </div>
     </section>
 
-    <!-- Profil UGM: Sejarah & Almamater (REVISED) -->
+    <!-- Profil UGM -->
     <section id="profil" class="py-16 bg-white overflow-hidden">
         <div class="container mx-auto px-4 space-y-20">
-            
             <!-- SECTION 1: Sejarah -->
             <div class="flex flex-col md:flex-row items-center gap-12" data-aos="fade-right">
                 <div class="w-full md:w-1/2">
@@ -278,36 +230,10 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <!-- Updated Title with Highlight instead of underline -->
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">
-                        Sejarah <span class="text-ugm-yellow">Kampus Biru</span>
-                    </h2>
+                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">Sejarah <span class="text-ugm-yellow">Kampus Biru</span></h2>
                     <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
-                        <p>
-                            Universitas Gadjah Mada (UGM) memiliki akar sejarah yang kuat sebagai <strong>universitas nasional pertama</strong> di Indonesia. Didirikan secara resmi pada tanggal <span class="font-bold text-ugm-blue">19 Desember 1949</span>, kelahiran UGM tidak dapat dipisahkan dari semangat perjuangan mempertahankan kemerdekaan.
-                        </p>
-                        <p>
-                            Pada masa-masa awal, kegiatan perkuliahan bahkan meminjam ruangan di Keraton Yogyakarta, berkat kemurahan hati Sri Sultan Hamengkubuwono IX. Hal ini menjadikan UGM bukan sekadar institusi pendidikan, melainkan simbol sinergi antara keraton, rakyat, dan kaum intelektual dalam membangun bangsa.
-                        </p>
-                        <p>
-                            Kini, UGM terus berkembang menjadi universitas kelas dunia namun tetap memegang teguh jati dirinya sebagai <strong>Universitas Kerakyatan</strong>, Universitas Perjuangan, dan Universitas Pancasila.
-                        </p>
-                    </div>
-                    
-                    <!-- Stats Bar -->
-                    <div class="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-200">
-                        <div class="text-center">
-                            <span class="block text-3xl font-bold text-ugm-blue">18</span>
-                            <span class="text-xs text-gray-500 uppercase font-semibold">Fakultas</span>
-                        </div>
-                        <div class="text-center border-l border-r border-gray-200">
-                            <span class="block text-3xl font-bold text-ugm-blue">1</span>
-                            <span class="text-xs text-gray-500 uppercase font-semibold">Sekolah Vokasi</span>
-                        </div>
-                        <div class="text-center">
-                            <span class="block text-3xl font-bold text-ugm-blue">260+</span>
-                            <span class="text-xs text-gray-500 uppercase font-semibold">Prodi</span>
-                        </div>
+                        <p>Universitas Gadjah Mada (UGM) memiliki akar sejarah yang kuat sebagai <strong>universitas nasional pertama</strong> di Indonesia. Didirikan secara resmi pada tanggal <span class="font-bold text-ugm-blue">19 Desember 1949</span>, kelahiran UGM tidak dapat dipisahkan dari semangat perjuangan mempertahankan kemerdekaan.</p>
+                        <p>Kini, UGM terus berkembang menjadi universitas kelas dunia namun tetap memegang teguh jati dirinya sebagai <strong>Universitas Kerakyatan</strong>, Universitas Perjuangan, dan Universitas Pancasila.</p>
                     </div>
                 </div>
             </div>
@@ -325,22 +251,13 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <!-- Updated Title with Highlight instead of underline -->
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">
-                        Filosofi <span class="text-ugm-gold">"Karung Goni"</span>
-                    </h2>
+                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">Filosofi <span class="text-ugm-gold">"Karung Goni"</span></h2>
                     <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
-                        <p>
-                            Pernah bertanya-tanya mengapa warna jas almamater UGM terlihat seperti cokelat muda kehijauan? Warna ini secara resmi disebut sebagai warna <strong>"Karung Goni"</strong>.
-                        </p>
+                        <p>Pernah bertanya-tanya mengapa warna jas almamater UGM terlihat seperti cokelat muda kehijauan? Warna ini secara resmi disebut sebagai warna <strong>"Karung Goni"</strong>.</p>
                         <div class="bg-ugm-cream border-l-4 border-ugm-gold p-4 my-4 rounded-r-lg">
-                            <p class="text-sm italic text-gray-600">
-                                "Warna ini diambil untuk mengenang masa perjuangan fisik rakyat Indonesia, di mana saat itu rakyat saking miskinnya hingga terpaksa menggunakan karung goni sebagai pakaian."
-                            </p>
+                            <p class="text-sm italic text-gray-600">"Warna ini diambil untuk mengenang masa perjuangan fisik rakyat Indonesia, di mana saat itu rakyat saking miskinnya hingga terpaksa menggunakan karung goni sebagai pakaian."</p>
                         </div>
-                        <p>
-                            Filosofi ini sangat mendalam. Mengenakan jas almamater UGM berarti mengenakan pengingat abadi bahwa mahasiswa UGM tidak boleh lupa pada penderitaan rakyat. Jas ini adalah simbol mandat untuk selalu mengabdi kepada kepentingan rakyat, bangsa, dan negara, bukan untuk gagah-gagahan semata.
-                        </p>
+                        <p>Filosofi ini sangat mendalam. Mengenakan jas almamater UGM berarti mengenakan pengingat abadi bahwa mahasiswa UGM tidak boleh lupa pada penderitaan rakyat. Jas ini adalah simbol mandat untuk selalu mengabdi kepada kepentingan rakyat, bangsa, dan negara, bukan untuk gagah-gagahan semata.</p>
                     </div>
                 </div>
             </div>
@@ -348,7 +265,6 @@
             <!-- PIONIR Special Feature -->
             <div class="bg-ugm-blue text-white rounded-3xl shadow-2xl overflow-hidden border border-gray-700 mt-20" data-aos="fade-up">
                 <div class="grid md:grid-cols-2">
-                    <!-- Image Column -->
                     <div class="relative h-64 md:h-auto">
                         <img src="https://image2url.com/r2/bucket3/images/1767990268136-6b836cec-56fe-4859-8124-650ec2f9ed58.jpeg" alt="Pionir Gadjah Mada" class="w-full h-full object-cover opacity-90">
                         <div class="absolute inset-0 bg-gradient-to-r from-ugm-blue via-transparent to-transparent"></div>
@@ -357,30 +273,14 @@
                             <p class="text-ugm-yellow font-semibold">Inisiatif & Kolaboratif</p>
                         </div>
                     </div>
-                    
-                    <!-- Content Column -->
                     <div class="p-8 md:p-12 flex flex-col justify-center">
                         <h3 class="text-2xl font-bold text-ugm-yellow mb-4">Transformasi Gamada</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
-                            PIONIR (Pelatihan Pembelajar Sukses bagi Mahasiswa Baru) adalah gerbang awal menjadi Gadjah Mada Muda. Bukan sekadar orientasi, ini adalah perayaan ide, kreativitas, dan kontribusi nyata melalui Selebrasi Formasi (Puspakara) dan Aksi Nyata.
-                        </p>
-                        
-                        <!-- Video Container Fixed with Responsive Padding Hack -->
+                        <p class="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">PIONIR (Pelatihan Pembelajar Sukses bagi Mahasiswa Baru) adalah gerbang awal menjadi Gadjah Mada Muda. Bukan sekadar orientasi, ini adalah perayaan ide, kreativitas, dan kontribusi nyata melalui Selebrasi Formasi (Puspakara) dan Aksi Nyata.</p>
                         <div class="relative w-full pb-[56.25%] h-0 rounded-xl overflow-hidden shadow-lg border border-white/20 mb-6 bg-black">
-                            <iframe 
-                                src="https://www.youtube.com/embed/AsA4a7jhogA" 
-                                title="YouTube video player" 
-                                class="absolute top-0 left-0 w-full h-full" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
+                            <iframe src="https://www.youtube.com/embed/AsA4a7jhogA" title="YouTube video player" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://www.instagram.com/pionirgadjahmada/" target="_blank" class="w-full px-6 py-3 bg-ugm-yellow text-ugm-blue rounded-full font-bold text-sm hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
-                                <i class="fab fa-instagram text-lg"></i> Follow @pionirgadjahmada
-                            </a>
+                            <a href="https://www.instagram.com/pionirgadjahmada/" target="_blank" class="w-full px-6 py-3 bg-ugm-yellow text-ugm-blue rounded-full font-bold text-sm hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1"><i class="fab fa-instagram text-lg"></i> Follow @pionirgadjahmada</a>
                         </div>
                     </div>
                 </div>
@@ -627,7 +527,6 @@
                 </div>
             </div>
 
-            <!-- Virtual Tour Button (Moved Here) -->
             <div class="flex justify-center" data-aos="fade-up">
                 <a href="https://pionir.ugm.ac.id/kembaraloka/" target="_blank" class="px-8 py-4 bg-white border-2 border-ugm-blue text-ugm-blue rounded-full font-bold text-base hover:bg-ugm-blue hover:text-white transition flex items-center gap-3 shadow-lg group">
                     <i class="fas fa-vr-cardboard text-2xl group-hover:text-yellow-400 transition"></i> 
@@ -637,7 +536,7 @@
         </div>
     </section>
 
-    <!-- Jalur Masuk (Updated with Banner Image) -->
+    <!-- Jalur Masuk (Updated Grid for 4 Items) -->
     <section id="jalur" class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
@@ -645,60 +544,184 @@
                 <div class="w-20 h-1 bg-ugm-yellow mx-auto mt-4"></div>
             </div>
 
-            <!-- New Image Banner for Jalur Masuk -->
             <div class="w-full max-w-5xl mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up">
                  <img src="https://image2url.com/r2/bucket1/images/1767990323692-2ffe94ce-0303-4450-89dc-ecc04ccdb8b8.jpeg" alt="Suasana Ujian" class="w-full h-56 md:h-80 object-cover">
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <!-- Changed Grid to 4 Columns -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- SNBP -->
-                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Prestasi</div>
                     <div class="flex items-center gap-3 mb-4">
                         <i class="fas fa-medal text-3xl text-blue-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBP</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor semester 1-5 dan prestasi akademik/non-akademik.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor.</p>
+                    <button onclick="openGenericModal('snbp-modal')" class="w-full py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition font-semibold text-sm">
+                        Info Lengkap SNBP
+                    </button>
                 </div>
 
                 <!-- SNBT -->
-                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
                     <div class="absolute top-0 right-0 bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Tes Tulis</div>
                     <div class="flex items-center gap-3 mb-4">
                         <i class="fas fa-pencil-alt text-3xl text-yellow-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBT</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-2 leading-relaxed">Menggunakan tes UTBK.</p>
-                    <h4 class="font-bold text-sm mb-2 text-ugm-blue">Materi Tes:</h4>
-                    <ul class="text-xs text-gray-600 list-disc list-inside space-y-1 mb-4">
-                        <li><strong>PU:</strong> Penalaran Umum</li>
-                        <li><strong>PBM:</strong> Pemahaman Bacaan & Menulis</li>
-                        <li><strong>PPU:</strong> Pengetahuan & Pemahaman Umum</li>
-                        <li><strong>PK:</strong> Pengetahuan Kuantitatif</li>
-                        <li><strong>LBI:</strong> Literasi Bahasa Indonesia</li>
-                        <li><strong>LBE:</strong> Literasi Bahasa Inggris</li>
-                        <li><strong>PM:</strong> Penalaran Matematika</li>
-                    </ul>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">Menggunakan tes UTBK SNPMB.</p>
+                    <button onclick="openGenericModal('snbt-modal')" class="w-full py-2 border border-yellow-600 text-yellow-600 rounded hover:bg-yellow-600 hover:text-white transition font-semibold text-sm">
+                        Info Lengkap SNBT
+                    </button>
                 </div>
 
                 <!-- Mandiri -->
-                <div class="border border-ugm-blue/30 bg-ugm-blue/5 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                <div class="border border-ugm-blue/30 bg-ugm-blue/5 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
                     <div class="absolute top-0 right-0 bg-ugm-blue text-white text-xs px-3 py-1 rounded-bl-lg font-bold">Khas UGM</div>
                     <div class="flex items-center gap-3 mb-4">
                         <i class="fas fa-university text-3xl text-ugm-blue"></i>
-                        <h3 class="text-xl font-bold text-gray-800">Mandiri (UM UGM)</h3>
+                        <h3 class="text-xl font-bold text-gray-800">Mandiri</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">Terdiri dari <strong>UM-CBT</strong> (Tes Tulis) dan <strong>PBU</strong> (Tanpa Tes Tulis). <span class="text-red-600 font-bold">Wajib memiliki skor UTBK</span>.</p>
-                    
-                    <button onclick="document.getElementById('um-modal').classList.remove('hidden')" class="w-full py-3 bg-ugm-blue text-white text-sm rounded hover:bg-blue-900 transition font-semibold">
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">UM-CBT (Tes) & Jalur PBU (Prestasi/Afirmasi).</p>
+                    <button onclick="document.getElementById('um-modal').classList.remove('hidden')" class="w-full py-2 bg-ugm-blue text-white rounded hover:bg-blue-900 transition font-semibold text-sm">
                         Info Lengkap UM UGM
+                    </button>
+                </div>
+
+                <!-- IUP (New Card) -->
+                <div class="border border-purple-200 bg-purple-50 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">International</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-globe text-3xl text-purple-600"></i>
+                        <h3 class="text-xl font-bold text-gray-800">IUP UGM</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">International Undergraduate Program. Kelas Bahasa Inggris & Exposure Global.</p>
+                    <button onclick="openGenericModal('iup-modal')" class="w-full py-2 border border-purple-600 text-purple-600 rounded hover:bg-purple-600 hover:text-white transition font-semibold text-sm">
+                        Info Lengkap IUP
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- UM UGM Detail Modal -->
+    <!-- Generic Modal Wrapper -->
+    <div id="generic-modal" class="hidden fixed inset-0 z-[75] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto relative">
+            <button onclick="document.getElementById('generic-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div id="generic-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Hidden Content for SNBP/SNBT/IUP -->
+    <div class="hidden">
+        <!-- SNBP Content -->
+        <div id="snbp-modal-content">
+            <div class="text-center mb-6">
+                <i class="fas fa-medal text-5xl text-blue-600 mb-3"></i>
+                <h3 class="text-2xl font-bold text-ugm-blue">SNBP 2025</h3>
+                <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Prestasi</p>
+            </div>
+            <div class="space-y-4 text-sm text-gray-700">
+                <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-600">
+                    <h4 class="font-bold text-blue-800">📌 Prinsip Seleksi</h4>
+                    <p>Berdasarkan nilai akademik saja atau nilai akademik + prestasi lainnya. Biaya seleksi <strong>GRATIS</strong> (ditanggung pemerintah).</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Syarat Siswa (Eligible)</h4>
+                    <ul class="list-disc list-inside ml-2">
+                        <li>Siswa SMA/SMK/MA kelas 12 pada tahun 2025.</li>
+                        <li>Memiliki prestasi akademik unggul dan terdaftar di PDSS.</li>
+                        <li>Memiliki NISN dan terdaftar di SNPMB.</li>
+                        <li>Wajib unggah <strong>Portofolio</strong> bagi pemilih prodi Seni & Olahraga.</li>
+                    </ul>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SNBT Content -->
+        <div id="snbt-modal-content">
+            <div class="text-center mb-6">
+                <i class="fas fa-pencil-alt text-5xl text-yellow-600 mb-3"></i>
+                <h3 class="text-2xl font-bold text-ugm-blue">SNBT 2025</h3>
+                <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Tes (UTBK)</p>
+            </div>
+            <div class="space-y-4 text-sm text-gray-700">
+                <div class="bg-yellow-50 p-4 rounded border-l-4 border-yellow-600">
+                    <h4 class="font-bold text-yellow-800">📌 Materi UTBK</h4>
+                    <ul class="list-disc list-inside ml-1 mt-1">
+                        <li><strong>Tes Potensi Skolastik (TPS):</strong> Kemampuan Kognitif, Logika, Bacaan.</li>
+                        <li><strong>Literasi:</strong> Bahasa Indonesia & Bahasa Inggris.</li>
+                        <li><strong>Penalaran Matematika.</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Ketentuan Umum</h4>
+                    <ul class="list-disc list-inside ml-2">
+                        <li>Peserta: Siswa lulusan 2025, 2024, dan 2023.</li>
+                        <li>Biaya UTBK: <strong>Rp200.000,-</strong> (kecuali peserta KIP Kuliah).</li>
+                        <li>Kesempatan tes hanya <strong>1 kali</strong>.</li>
+                    </ul>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- IUP Content -->
+        <div id="iup-modal-content">
+            <div class="text-center mb-6">
+                <i class="fas fa-globe text-5xl text-purple-600 mb-3"></i>
+                <h3 class="text-2xl font-bold text-ugm-blue">International Undergraduate Program (IUP)</h3>
+                <p class="text-gray-500 text-sm">Global Experience & World Class Education</p>
+            </div>
+            <div class="space-y-5 text-sm text-gray-700 h-96 overflow-y-auto pr-2">
+                <div class="bg-purple-50 p-4 rounded border-l-4 border-purple-600">
+                    <h4 class="font-bold text-purple-800 mb-2">🌟 Keunggulan Utama</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Eksposur Internasional:</strong> Wajib/opsional exchange ke mitra (Eropa, Australia, Asia).</li>
+                        <li><strong>Double Degree:</strong> Peluang dapat 2 gelar (UGM + Univ Mitra).</li>
+                        <li><strong>Bahasa Inggris 100%:</strong> Perkuliahan full English.</li>
+                        <li><strong>Dosen Tamu Asing:</strong> Pengajar dari luar negeri setiap semester.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Fakultas Penyelenggara</h4>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <ul class="list-disc list-inside">
+                            <li><strong>FEB:</strong> Manajemen, Akuntansi, Ilmu Ekonomi.</li>
+                            <li><strong>Hukum:</strong> Law (Double Degree Maastricht, Groningen).</li>
+                            <li><strong>Psikologi:</strong> Double Degree Leeds, Exchange Groningen.</li>
+                        </ul>
+                        <ul class="list-disc list-inside">
+                            <li><strong>Teknik:</strong> Sipil, Mesin, Kimia, Elektro, dll.</li>
+                            <li><strong>FKKMK:</strong> Kedokteran (Visiting Professor).</li>
+                            <li><strong>MIPA:</strong> Ilmu Komputer, Kimia, Elektronika.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">💰 Struktur Biaya</h4>
+                    <p class="mb-2">Berbeda dengan Reguler, biaya IUP terdiri dari:</p>
+                    <ul class="list-disc list-inside ml-2">
+                        <li><strong>UKT (Tuition Fee):</strong> Dibayar per semester (Flat/Tetap).</li>
+                        <li><strong>IPI (Institutional Development Fee):</strong> Dibayar 1x di awal masuk.</li>
+                    </ul>
+                    <p class="text-xs italic mt-1 text-gray-500">*Nominal bervariasi tergantung fakultas & kewarganegaraan (WNI/WNA).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UM UGM Detail Modal (Updated PBU Content) -->
     <div id="um-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
         <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
@@ -714,28 +737,18 @@
                     <h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2">
                         <i class="fas fa-laptop-code text-ugm-yellow"></i> 1. UM-CBT (Ujian Tulis)
                     </h4>
-                    
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
                          <p class="text-sm text-red-700 font-bold">Syarat Wajib:</p>
-                         <p class="text-sm text-red-600">Peserta WAJIB mengikuti UTBK-SNBT 2025 karena skor UTBK menjadi salah satu syarat komponen penilaian.</p>
+                         <p class="text-sm text-red-600">Peserta WAJIB mengikuti UTBK-SNBT 2025 karena skor UTBK menjadi syarat.</p>
                     </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 bg-gray-50 p-5 rounded-lg mb-4">
-                        <div>
-                            <h5 class="font-bold text-sm text-ugm-blue mb-2">📍 Lokasi Ujian 2025</h5>
-                            <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
-                                <li><strong>Yogyakarta</strong> (Pusat)</li>
-                                <li><strong>Jakarta</strong></li>
-                                <li class="text-xs text-red-500 italic mt-1">*Kelompok Ujian Campuran (IPC) HANYA tersedia di Yogyakarta.</li>
-                            </ul>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700 mb-4">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <strong>Lokasi:</strong> Yogyakarta, Jakarta, Medan, Pekanbaru, Balikpapan, dll.
                         </div>
-                        <div>
-                            <h5 class="font-bold text-sm text-ugm-blue mb-2">💰 Biaya Pendaftaran</h5>
-                            <p class="text-sm text-gray-700 mb-1">Biaya pendaftaran lokasi <strong>Jakarta</strong> berbeda (+ Rp200.000) dibandingkan Yogyakarta.</p>
-                            <a href="https://um.ugm.ac.id/um-ugm-computer-based-test-um-ugm-cbt-2025/" target="_blank" class="text-blue-600 hover:underline text-xs">Cek Detail Biaya & Ketentuan &rarr;</a>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <strong>Materi:</strong> TKA (Saintek/Soshum) sesuai prodi pilihan.
                         </div>
                     </div>
-
                     <div class="border border-yellow-200 bg-yellow-50 p-4 rounded-lg">
                         <h5 class="font-bold text-sm text-yellow-800 mb-2">📚 Materi Uji TKA 2025 (Baru!)</h5>
                         <p class="text-sm text-gray-700 mb-3">
@@ -747,27 +760,48 @@
                     </div>
                 </div>
 
-                <!-- PBU Section -->
+                <!-- PBU Section (HEAVILY UPDATED CONTENT) -->
                 <div>
                     <h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2">
                         <i class="fas fa-award text-ugm-yellow"></i> 2. Jalur PBU (Tanpa Tes Tulis)
                     </h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <span class="font-bold text-ugm-blue block text-sm">PBUB (Berprestasi)</span>
-                            <span class="text-xs text-gray-600">Juara Lomba Olahraga, Seni, IPTEK (Provinsi/Nasional).</span>
+                    <div class="space-y-4">
+                        <!-- PBUB -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🏆 PBU Berprestasi (PBUB)</h5>
+                            <p class="text-sm text-gray-600 mb-2">Untuk siswa dengan prestasi di bidang IPTEK, Olahraga, atau Seni.</p>
+                            <ul class="text-xs text-gray-500 list-disc list-inside">
+                                <li>Juara Lomba Tingkat Provinsi (Juara 1), Nasional/Internasional (Juara 1-3).</li>
+                                <li>Termasuk Hafiz Al-Qur'an (minimal hafalan tertentu).</li>
+                                <li>Ketua OSIS (kadang masuk kategori khusus/kemitraan sekolah).</li>
+                            </ul>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <span class="font-bold text-ugm-blue block text-sm">PBUTM (Tidak Mampu)</span>
-                            <span class="text-xs text-gray-600">Siswa berprestasi akademis & punya KIP/Bansos.</span>
+
+                        <!-- PBUTM -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🤝 PBU Tidak Mampu (PBUTM)</h5>
+                            <p class="text-sm text-gray-600 mb-2">Jalur afirmasi bagi siswa berprestasi akademik tinggi namun terkendala ekonomi.</p>
+                            <ul class="text-xs text-gray-500 list-disc list-inside">
+                                <li>Pemegang KIP-K atau masuk DTKS Kemensos.</li>
+                                <li>Direkomendasikan sekolah (masuk 25% terbaik di kelas).</li>
+                                <li>UKT akan disesuaikan dengan kemampuan ekonomi (bisa UKT 0).</li>
+                            </ul>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <span class="font-bold text-ugm-blue block text-sm">PBUK (Kemitraan)</span>
-                            <span class="text-xs text-gray-600">Kerjasama Pemda/Institusi dengan UGM (Daerah 3T).</span>
+
+                        <!-- PBUK -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🏢 PBU Kemitraan (PBUK)</h5>
+                            <p class="text-sm text-gray-600 mb-2">Kerjasama antara UGM dengan Pemda/Instansi/Perusahaan untuk pembangunan daerah.</p>
+                            <ul class="text-xs text-gray-500 list-disc list-inside">
+                                <li>Diusulkan oleh mitra yang memiliki MoU dengan UGM.</li>
+                                <li>Adanya komitmen pendanaan (biaya kuliah ditanggung mitra).</li>
+                            </ul>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <span class="font-bold text-ugm-blue block text-sm">PBU 3T</span>
-                            <span class="text-xs text-gray-600">Afirmasi khusus daerah Tertinggal, Terdepan, Terluar.</span>
+
+                        <!-- PBU 3T -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🇮🇩 PBU Afirmasi & 3T</h5>
+                            <p class="text-sm text-gray-600">Khusus bagi putra-putri daerah Tertinggal, Terdepan, dan Terluar (3T) atau wilayah afirmasi khusus untuk pemerataan pendidikan.</p>
                         </div>
                     </div>
                 </div>
@@ -775,7 +809,7 @@
         </div>
     </div>
 
-    <!-- Scholarship Detail Modal (Generic) -->
+    <!-- Scholarship Detail Modal -->
     <div id="scholarship-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
         <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8 max-h-[90vh] overflow-y-auto relative">
             <button onclick="document.getElementById('scholarship-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition">
@@ -787,14 +821,49 @@
         </div>
     </div>
 
+    <!-- UKT Reassurance Modal -->
+    <div id="ukt-reassurance-modal" class="hidden fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center relative animate-fade-in-up">
+            <button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-heart text-4xl text-blue-500 animate-pulse"></i>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-ugm-blue mb-4">Tenang, Jangan Panik Dulu! 💙</h3>
+            
+            <div class="text-gray-600 space-y-4 text-sm leading-relaxed mb-8">
+                <p>
+                    Jangan khawatir masalah biaya. UGM berkomitmen tidak ada mahasiswa yang putus kuliah (DO) karena kendala biaya.
+                </p>
+                <p>
+                    Jangan takut mendapat UKT "rata kanan" jika kondisi ekonomi memang tidak mencukupi. Sistem UGM adil, kamu bisa mengajukan <strong>Banding UKT</strong> di awal dan <strong>Penundaan/Keringanan</strong> setiap semester.
+                </p>
+                <p class="font-semibold text-ugm-blue">
+                    Sekarang tugasmu hanya satu: Fokus Belajar & Masuk Kampus Dulu!
+                </p>
+                <p>
+                    Urusan daftar ulang, UKT, kos, dan biaya hidup kita pikirkan bersama setelah kamu dinyatakan lolos seleksi. Semangat! ✊
+                </p>
+            </div>
+            
+            <button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="px-8 py-3 bg-ugm-blue text-white rounded-full font-bold hover:bg-blue-900 transition shadow-lg w-full">
+                Siap, Saya Mengerti!
+            </button>
+        </div>
+    </div>
+
     <!-- Hidden Scholarship Content Sources -->
     <div class="hidden">
         <!-- KIP K Content -->
         <div id="content-kip">
             <div class="text-center mb-6">
                 <img src="https://image2url.com/r2/bucket1/images/1767994442917-b7b41c85-7e3e-4249-8048-75389b945153.png" alt="Logo KIP-K" class="h-20 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">KIP Kuliah Merdeka</h3>
-                <p class="text-sm text-gray-500 mt-2">Bantuan Pemerintah untuk Mahasiswa Berprestasi dengan Keterbatasan Ekonomi</p>
+                <h3 class="text-2xl font-heading font-bold text-ugm-blue">KIP Kuliah</h3>
+                <p class="text-sm text-gray-500 mt-2 font-semibold">Pemerintah Indonesia</p>
+                <p class="text-xs text-gray-400 mt-1">Bantuan Pemerintah untuk Mahasiswa Berprestasi dengan Keterbatasan Ekonomi</p>
             </div>
             
             <div class="space-y-6 text-sm text-gray-700">
@@ -832,9 +901,10 @@
         <!-- Tanoto Content -->
         <div id="content-tanoto">
             <div class="text-center mb-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Tanoto_Foundation_Logo.png" alt="Logo Tanoto" class="h-16 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Tanoto Foundation (TELADAN)</h3>
-                <p class="text-sm text-gray-500 mt-2">Program Kepemimpinan & Beasiswa untuk Mahasiswa S1</p>
+                <img src="https://image2url.com/r2/bucket2/images/1768031870024-793d87c5-4cee-4c09-a18c-1c84b275e9a1.png" alt="Logo Tanoto" class="h-16 mx-auto mb-4 object-contain">
+                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Beasiswa Teladan</h3>
+                <p class="text-sm text-gray-500 mt-2 font-semibold">Tanoto Foundation</p>
+                <p class="text-xs text-gray-400 mt-1">Program Kepemimpinan & Beasiswa untuk Mahasiswa S1</p>
             </div>
             
             <div class="space-y-6 text-sm text-gray-700">
@@ -863,8 +933,9 @@
         <div id="content-jardine">
             <div class="text-center mb-6">
                 <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Logo Jardine" class="h-20 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Jardine UGM Scholarship</h3>
-                <p class="text-sm text-gray-500 mt-2">Beasiswa Prestisius Penuh dari Jardine Foundation</p>
+                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Jardine Scholarship</h3>
+                <p class="text-sm text-gray-500 mt-2 font-semibold">Jardine Foundation</p>
+                <p class="text-xs text-gray-400 mt-1">Beasiswa Prestisius Penuh dari Jardine Foundation</p>
             </div>
             
             <div class="space-y-6 text-sm text-gray-700">
@@ -872,7 +943,7 @@
                     <h4 class="font-bold text-green-800 mb-2"><i class="fas fa-gift mr-2"></i>Rincian Benefit Eksklusif</h4>
                     <ul class="list-disc list-inside space-y-2 ml-1">
                         <li><strong>Full Coverage UKT:</strong> Biaya pendidikan ditanggung 100% tanpa potongan hingga lulus (maksimal 8 semester).</li>
-                        <li><strong>Biaya Hidup (Living Allowance):</strong> Tunjangan biaya hidup bulanan yang sangat kompetitif (Estimasi <strong>Rp3.000.000+ per bulan</strong>, menyesuaikan standar biaya hidup layak mahasiswa internasional/standar tinggi).</li>
+                        <li><strong>Biaya Hidup (Living Allowance):</strong> Tunjangan biaya hidup bulanan yang sangat kompetitif.</li>
                         <li><strong>Akomodasi:</strong> Bantuan biaya tempat tinggal/kos.</li>
                         <li>Akses jejaring alumni Jardine Foundation internasional.</li>
                     </ul>
@@ -892,76 +963,6 @@
         </div>
     </div>
 
-    <!-- Biaya & UKT -->
-    <section id="biaya" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Biaya Kuliah (UKT)</h2>
-                <p class="text-gray-600 mt-2 text-sm md:text-base">Jangan takut biaya! UGM menerapkan sistem UKT (Uang Kuliah Tunggal) yang adil.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-ugm-blue" data-aos="fade-right">
-                    <h3 class="text-xl font-bold mb-3">1. UKT Pendidikan Unggul</h3>
-                    <p class="text-sm text-gray-600 mb-3">Ditetapkan bagi mahasiswa yang memiliki kemampuan ekonomi baik. Nominal ini adalah biaya penuh tanpa subsidi.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500" data-aos="fade-left">
-                    <h3 class="text-xl font-bold mb-3">2. UKT Pendidikan Unggul Bersubsidi</h3>
-                    <p class="text-sm text-gray-600 mb-2">Subsidi diberikan berdasarkan kemampuan ekonomi orang tua. Terbagi menjadi:</p>
-                    <div class="grid grid-cols-2 gap-2 text-xs font-bold text-center text-white mb-3">
-                        <div class="bg-green-400 p-2 rounded">Subsidi 25%</div>
-                        <div class="bg-green-500 p-2 rounded">Subsidi 50%</div>
-                        <div class="bg-green-600 p-2 rounded">Subsidi 75%</div>
-                        <div class="bg-green-700 p-2 rounded">Subsidi 100% (Gratis)</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- UKT Links -->
-             <div class="flex flex-col md:flex-row justify-center gap-4 mb-12" data-aos="fade-up">
-                <a href="https://um.ugm.ac.id/uang-kuliah-tunggal-ukt-snbp-dan-snbt-ta-2025-2026/" target="_blank" class="px-6 py-3 bg-ugm-blue text-white rounded-full font-bold hover:bg-blue-900 transition text-center shadow-lg">
-                    <i class="fas fa-search-dollar mr-2"></i> Cek Nominal UKT SNBP & SNBT
-                </a>
-                <a href="https://um.ugm.ac.id/ukt-dan-ipi-jalur-um-ugm-pbu-dan-cbt-ta-2025-2026/" target="_blank" class="px-6 py-3 bg-yellow-500 text-white rounded-full font-bold hover:bg-yellow-600 transition text-center shadow-lg">
-                    <i class="fas fa-hand-holding-usd mr-2"></i> Cek Nominal UKT Jalur UM UGM
-                </a>
-            </div>
-
-            <!-- Flow Process -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up">
-                <h3 class="text-center font-bold text-lg mb-8 text-ugm-blue">Alur Penentuan UKT & Bantuan</h3>
-                <div class="flex flex-col md:flex-row justify-between items-start relative gap-8 md:gap-0">
-                    <!-- Line connector for desktop -->
-                    <div class="hidden md:block absolute top-6 left-0 w-full h-1 bg-gray-100 -z-10"></div>
-                    
-                    <div class="flex flex-col items-center text-center w-full md:w-1/4 px-2">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4 text-lg border-4 border-white">1</div>
-                        <span class="text-sm font-bold mb-1">Diterima & Upload Dokumen</span>
-                        <span class="text-xs text-gray-500">Upload slip gaji ortu, tagihan listrik, foto rumah.</span>
-                    </div>
-
-                    <div class="flex flex-col items-center text-center w-full md:w-1/4 px-2">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mb-4 text-lg border-4 border-white">2</div>
-                        <span class="text-sm font-bold mb-1">Pengumuman Nominal</span>
-                        <span class="text-xs text-gray-500">Sistem menentukan besaran UKT kamu.</span>
-                    </div>
-
-                    <div class="flex flex-col items-center text-center w-full md:w-1/4 px-2">
-                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold mb-4 text-lg border-4 border-white">3</div>
-                        <span class="text-sm font-bold mb-1">Aju Banding</span>
-                        <span class="text-xs text-gray-500">Merasa keberatan? Kamu bisa mengajukan banding di awal sebelum bayar.</span>
-                    </div>
-
-                    <div class="flex flex-col items-center text-center w-full md:w-1/4 px-2">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold mb-4 text-lg border-4 border-white">4</div>
-                        <span class="text-sm font-bold mb-1">Keringanan Semester</span>
-                        <span class="text-xs text-gray-500">Jika ada kendala di tengah kuliah, bisa ajukan penundaan/keringanan per semester.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Beasiswa Section -->
     <section id="beasiswa" class="py-12 bg-white">
         <div class="container mx-auto px-4">
@@ -970,7 +971,49 @@
                 <p class="text-gray-600 text-sm md:text-base">Banyak beasiswa terafiliasi Ditmawa UGM yang bisa didaftar sejak Maba (Mahasiswa Baru).</p>
             </div>
 
-            <!-- Bayan Peduli Spotlight (Redesigned with Logo & Colors) -->
+            <!-- Other Scholarships Cards (Now on Top) -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- KIP-K -->
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket1/images/1767994442917-b7b41c85-7e3e-4249-8048-75389b945153.png" alt="KIP Kuliah" class="h-full object-contain group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="font-bold text-lg text-ugm-blue">KIP Kuliah</h4>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Pemerintah Indonesia</p>
+                    <p class="text-sm text-gray-600 flex-grow mb-4">Program pemerintah. Gratis UKT + Biaya Hidup. Harus mendaftar di web Kemendikbud.</p>
+                    <button onclick="openScholarshipModal('kip')" class="w-full py-2 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition text-sm font-bold">
+                        Lihat Detail Lengkap
+                    </button>
+                </div>
+
+                <!-- Tanoto -->
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket2/images/1768031870024-793d87c5-4cee-4c09-a18c-1c84b275e9a1.png" alt="Tanoto Foundation" class="h-full object-contain group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="font-bold text-lg text-ugm-blue">Beasiswa Teladan</h4>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Tanoto Foundation</p>
+                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa kepemimpinan (TELADAN). Benefit UKT + Uang Saku & Pelatihan.</p>
+                    <button onclick="openScholarshipModal('tanoto')" class="w-full py-2 border-2 border-yellow-500 text-yellow-600 rounded-full hover:bg-yellow-500 hover:text-white transition text-sm font-bold">
+                        Lihat Detail Lengkap
+                    </button>
+                </div>
+
+                <!-- Jardine -->
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Jardine Scholarship" class="h-full object-contain group-hover:scale-110 transition duration-300">
+                    </div>
+                    <h4 class="font-bold text-lg text-ugm-blue">Jardine Scholarship</h4>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Jardine Foundation</p>
+                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa swasta prestisius. Full UKT + Biaya Hidup Tinggi.</p>
+                    <button onclick="openScholarshipModal('jardine')" class="w-full py-2 border-2 border-green-600 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition text-sm font-bold">
+                        Lihat Detail Lengkap
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bayan Peduli Spotlight (Moved Bottom) -->
             <div class="bayan-gradient rounded-3xl p-8 md:p-12 text-white shadow-2xl mb-12 relative overflow-hidden border border-yellow-400" data-aos="zoom-in">
                 <div class="absolute top-0 right-0 p-32 bg-white opacity-5 rounded-full transform translate-x-10 -translate-y-10"></div>
                 <div class="relative z-10">
@@ -991,7 +1034,10 @@
                                         <li>• UKT Maksimal: <span class="font-bold text-yellow-200">Rp3.075.000</span>/sms</li>
                                         <li>• Biaya Hidup: <span class="font-bold text-yellow-200">Rp2.500.000</span>/bln</li>
                                         <li>• Biaya Kos: <span class="font-bold text-yellow-200">Rp1.000.000</span>/bln</li>
-                                        <li>• Fasilitas Laptop & Biaya Buku</li>
+                                        <li>• Uang Buku: <span class="font-bold text-yellow-200">Rp900.000</span>/sms</li>
+                                        <li>• Biaya Skripsi/Penelitian: <span class="font-bold text-yellow-200">Rp5.000.000</span></li>
+                                        <li>• Biaya Wisuda: <span class="font-bold text-yellow-200">Rp500.000</span></li>
+                                        <li>• Fasilitas Laptop</li>
                                     </ul>
                                 </div>
                                 <div class="bg-black/30 p-5 rounded-lg border border-white/10">
@@ -1010,45 +1056,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Other Scholarships Cards (Updated with Logos) -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- KIP-K -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
-                    <div class="h-16 mb-4 flex items-center justify-center">
-                        <img src="https://image2url.com/r2/bucket1/images/1767994442917-b7b41c85-7e3e-4249-8048-75389b945153.png" alt="KIP Kuliah" class="h-full object-contain group-hover:scale-110 transition duration-300">
-                    </div>
-                    <h4 class="font-bold text-lg mb-2 text-ugm-blue">KIP Kuliah</h4>
-                    <p class="text-sm text-gray-600 flex-grow mb-4">Program pemerintah. Gratis UKT + Biaya Hidup. Harus mendaftar di web Kemendikbud.</p>
-                    <button onclick="openScholarshipModal('kip')" class="w-full py-2 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition text-sm font-bold">
-                        Lihat Detail Lengkap
-                    </button>
-                </div>
-
-                <!-- Tanoto -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
-                    <div class="h-16 mb-4 flex items-center justify-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Tanoto_Foundation_Logo.png" alt="Tanoto Foundation" class="h-full object-contain group-hover:scale-110 transition duration-300">
-                    </div>
-                    <h4 class="font-bold text-lg mb-2 text-ugm-blue">Tanoto Foundation</h4>
-                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa kepemimpinan (TELADAN). Benefit UKT + Uang Saku & Pelatihan.</p>
-                    <button onclick="openScholarshipModal('tanoto')" class="w-full py-2 border-2 border-yellow-500 text-yellow-600 rounded-full hover:bg-yellow-500 hover:text-white transition text-sm font-bold">
-                        Lihat Detail Lengkap
-                    </button>
-                </div>
-
-                <!-- Jardine -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
-                    <div class="h-16 mb-4 flex items-center justify-center">
-                        <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Jardine Scholarship" class="h-full object-contain group-hover:scale-110 transition duration-300">
-                    </div>
-                    <h4 class="font-bold text-lg mb-2 text-ugm-blue">Jardine Scholarship</h4>
-                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa swasta prestisius. Full UKT + Biaya Hidup Tinggi.</p>
-                    <button onclick="openScholarshipModal('jardine')" class="w-full py-2 border-2 border-green-600 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition text-sm font-bold">
-                        Lihat Detail Lengkap
-                    </button>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1058,15 +1065,19 @@
             <h2 class="text-2xl font-bold mb-6 font-heading">Siap Menjadi Gadjah Mada Muda?</h2>
             <p class="mb-8 text-gray-300 text-sm md:text-base">Sampai jumpa di Yogyakarta, adik-adik SMAN 7 Tangsel!</p>
             
-            <div class="flex justify-center gap-6 mb-8">
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-university text-3xl mb-2 text-ugm-yellow"></i>
-                    <span class="text-xs">Universitas Gadjah Mada</span>
+            <div class="flex justify-center items-center gap-8 mb-8">
+                <div class="flex flex-col items-center group">
+                    <a href="https://ugm.ac.id" target="_blank" class="hover:scale-110 transition duration-300">
+                        <img src="https://image2url.com/r2/bucket2/images/1768032221747-914cfddf-b279-400d-a521-cad0c1d44cad.png" alt="Logo UGM" class="h-16 mb-2 object-contain filter drop-shadow-lg">
+                    </a>
+                    <span class="text-xs font-bold text-ugm-yellow">Universitas Gadjah Mada</span>
                 </div>
-                <div class="w-px bg-gray-600 h-10 self-center"></div>
-                <div class="flex flex-col items-center">
-                    <i class="fas fa-school text-3xl mb-2 text-green-500"></i>
-                    <span class="text-xs">SMAN 7 Tangsel</span>
+                <div class="w-px bg-gray-600 h-16 self-center"></div>
+                <div class="flex flex-col items-center group">
+                    <a href="https://sman7tangsel.sch.id" target="_blank" class="hover:scale-110 transition duration-300">
+                        <img src="https://image2url.com/r2/bucket3/images/1768032280049-2f12cb79-618c-4fa6-bca4-9c8a12b54fff.png" alt="Logo SMAN 7 Tangsel" class="h-16 mb-2 object-contain filter drop-shadow-lg">
+                    </a>
+                    <span class="text-xs font-bold text-white">SMAN 7 Tangsel</span>
                 </div>
             </div>
 
@@ -1121,6 +1132,19 @@
             }
         }
 
+        // Generic Modal Logic for SNBP, SNBT, IUP
+        function openGenericModal(contentId) {
+            const modal = document.getElementById('generic-modal');
+            const container = document.getElementById('generic-modal-content');
+            const content = document.getElementById(`${contentId}-content`); 
+            
+            if (content) {
+                container.innerHTML = content.innerHTML;
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
         // Scholarship Modal Logic
         function openScholarshipModal(id) {
             const modal = document.getElementById('scholarship-modal');
@@ -1134,13 +1158,28 @@
             }
         }
 
-        // Close modal logic (attached to the generic modal background click)
+        // Close logic for generic modal
+        document.getElementById('generic-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Close logic for scholarship modal
         document.getElementById('scholarship-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 this.classList.add('hidden');
                 document.body.classList.remove('overflow-hidden');
             }
         });
+
+        // UKT Reassurance Modal Logic
+        function showUKTReassurance() {
+            const modal = document.getElementById('ukt-reassurance-modal');
+            modal.classList.remove('hidden');
+            // We don't prevent background scrolling here to keep UX smooth as user might just quickly glance
+        }
 
         // Navbar Scroll Effect & Back to Top visibility
         window.addEventListener('scroll', function() {
