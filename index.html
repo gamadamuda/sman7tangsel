@@ -102,7 +102,8 @@
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
 
     <!-- WELCOME OVERLAY -->
-    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-end pb-20 md:justify-center md:pb-0 text-white transition-opacity duration-700 ease-out">
+    <!-- Updated: justify-center to center vertically on mobile and desktop -->
+    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
         <div class="text-center p-4 animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-xl md:bg-transparent md:backdrop-blur-none mx-4">
             <i class="fas fa-university text-ugm-yellow text-3xl md:text-5xl mb-3 drop-shadow-lg"></i>
             <h1 class="text-2xl md:text-4xl font-heading font-extrabold mb-1 tracking-tight">UGM MENYAPA</h1>
@@ -933,7 +934,7 @@
         <div id="content-jardine">
             <div class="text-center mb-6">
                 <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Logo Jardine" class="h-20 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Jardine Scholarship</h3>
+                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Jardine UGM Scholarship</h3>
                 <p class="text-sm text-gray-500 mt-2 font-semibold">Jardine Foundation</p>
                 <p class="text-xs text-gray-400 mt-1">Beasiswa Prestisius Penuh dari Jardine Foundation</p>
             </div>
@@ -1014,44 +1015,49 @@
             </div>
 
             <!-- Bayan Peduli Spotlight (Moved Bottom) -->
-            <div class="bayan-gradient rounded-3xl p-8 md:p-12 text-white shadow-2xl mb-12 relative overflow-hidden border border-yellow-400" data-aos="zoom-in">
-                <div class="absolute top-0 right-0 p-32 bg-white opacity-5 rounded-full transform translate-x-10 -translate-y-10"></div>
-                <div class="relative z-10">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <div class="md:w-1/3 text-center">
-                            <div class="bg-white p-6 rounded-2xl border-4 border-yellow-400 inline-block shadow-lg">
-                                <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan Peduli" class="w-32 md:w-40 mx-auto object-contain">
+            <div class="bg-bayan-green text-white rounded-3xl shadow-2xl overflow-hidden border border-yellow-400 mb-12" data-aos="zoom-in">
+                <div class="grid md:grid-cols-2">
+                    <!-- Image Side -->
+                    <div class="relative h-64 md:h-auto bg-white">
+                        <img src="https://image2url.com/r2/bucket2/images/1768033598626-444ed095-5cc1-49b9-a77c-555b479751df.png" alt="Suasana Bayan" class="w-full h-full object-cover">
+                        <!-- Gradient Overlay (Green to Transparent) -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-bayan-green via-transparent to-transparent"></div>
+                        
+                        <!-- Logo Top Right -->
+                        <div class="absolute top-4 right-4 w-24 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+                            <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan" class="w-full object-contain">
+                        </div>
+
+                        <!-- Spotlight Tag (Overlaid bottom left like PIONIR title) -->
+                         <div class="absolute bottom-6 left-6">
+                            <div class="inline-flex items-center gap-2 bg-yellow-400 text-bayan-green px-4 py-1.5 rounded-full text-xs font-extrabold shadow-lg uppercase tracking-wider">
+                                <i class="fas fa-star animate-pulse"></i> Spotlight
                             </div>
                         </div>
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-2">Beasiswa Bayan Peduli</h3>
-                            <p class="mb-6 text-gray-100 text-sm md:text-base font-semibold">✨ Spotlight: Full Scholarship + High Living Cost</p>
-                            
-                            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                                <div class="bg-black/30 p-5 rounded-lg border border-white/10">
-                                    <h4 class="font-bold text-yellow-400 mb-3 text-sm md:text-base"><i class="fas fa-gift mr-2"></i>Benefit</h4>
-                                    <ul class="text-sm space-y-2">
-                                        <li>• UKT Maksimal: <span class="font-bold text-yellow-200">Rp3.075.000</span>/sms</li>
-                                        <li>• Biaya Hidup: <span class="font-bold text-yellow-200">Rp2.500.000</span>/bln</li>
-                                        <li>• Biaya Kos: <span class="font-bold text-yellow-200">Rp1.000.000</span>/bln</li>
-                                        <li>• Uang Buku: <span class="font-bold text-yellow-200">Rp900.000</span>/sms</li>
-                                        <li>• Biaya Skripsi/Penelitian: <span class="font-bold text-yellow-200">Rp5.000.000</span></li>
-                                        <li>• Biaya Wisuda: <span class="font-bold text-yellow-200">Rp500.000</span></li>
-                                        <li>• Fasilitas Laptop</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-black/30 p-5 rounded-lg border border-white/10">
-                                    <h4 class="font-bold text-yellow-400 mb-3 text-sm md:text-base"><i class="fas fa-tasks mr-2"></i>Seleksi</h4>
-                                    <ul class="text-sm space-y-2">
-                                        <li>1. Seleksi Berkas Administrasi</li>
-                                        <li>2. Wawancara (Interview)</li>
-                                        <li class="text-xs italic text-gray-300 mt-2">*Prioritas bagi mahasiswa kurang mampu secara ekonomi.</li>
-                                    </ul>
-                                </div>
+                    </div>
+
+                    <!-- Content Side -->
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">Beasiswa Bayan Peduli</h3>
+                        <p class="mb-6 text-yellow-100 text-sm font-medium">Full Scholarship + High Living Cost</p>
+                        
+                        <div class="grid gap-4">
+                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                                <h4 class="font-bold text-yellow-400 mb-2 text-sm border-b border-white/10 pb-2"><i class="fas fa-gift mr-2"></i>Benefit Lengkap</h4>
+                                <ul class="text-xs md:text-sm space-y-1.5">
+                                    <li class="flex justify-between"><span>UKT Maks:</span> <span class="font-bold text-yellow-200">Rp3.075.000/sms</span></li>
+                                    <li class="flex justify-between"><span>Biaya Hidup:</span> <span class="font-bold text-yellow-200">Rp2.500.000/bln</span></li>
+                                    <li class="flex justify-between"><span>Biaya Kos:</span> <span class="font-bold text-yellow-200">Rp1.000.000/bln</span></li>
+                                    <li class="flex justify-between"><span>Uang Buku:</span> <span class="font-bold text-yellow-200">Rp900.000/sms</span></li>
+                                    <li class="flex justify-between"><span>Skripsi:</span> <span class="font-bold text-yellow-200">Rp5.000.000</span></li>
+                                    <li class="flex justify-between"><span>Wisuda:</span> <span class="font-bold text-yellow-200">Rp500.000</span></li>
+                                    <li class="mt-1 pt-1 border-t border-white/10 text-center text-yellow-100">+ Fasilitas Laptop</li>
+                                </ul>
                             </div>
-                            <div class="text-xs text-yellow-200 italic font-medium">
-                                *Biasanya dibuka di awal semester 1 (Agustus-September).
-                            </div>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center gap-2 text-xs text-yellow-200 italic opacity-80">
+                            <i class="fas fa-clock"></i> Biasanya dibuka awal semester 1 (Agustus-September).
                         </div>
                     </div>
                 </div>
