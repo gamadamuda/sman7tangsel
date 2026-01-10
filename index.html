@@ -68,7 +68,6 @@
         }
 
         .bayan-gradient {
-            /* Gradient khusus Bayan Peduli (Hijau Tua ke Hijau Muda/Emas) */
             background: linear-gradient(135deg, #004d26 0%, #006837 50%, #004d26 100%);
             border: 1px solid #FDB913;
         }
@@ -92,7 +91,6 @@
         
         /* Welcome Overlay Background */
         #welcome-overlay {
-            /* Menggunakan gradien yang lebih transparan di tengah agar foto GSP terlihat */
             background-image: linear-gradient(rgba(26, 44, 67, 0.7), rgba(26, 44, 67, 0.7)), url('https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg');
             background-size: cover;
             background-position: center;
@@ -102,7 +100,6 @@
 <body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
 
     <!-- WELCOME OVERLAY -->
-    <!-- Updated: justify-center to center vertically on mobile and desktop -->
     <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
         <div class="text-center p-4 animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-xl md:bg-transparent md:backdrop-blur-none mx-4">
             <i class="fas fa-university text-ugm-yellow text-3xl md:text-5xl mb-3 drop-shadow-lg"></i>
@@ -554,11 +551,14 @@
                 <!-- SNBP -->
                 <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Prestasi</div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fas fa-medal text-3xl text-blue-600"></i>
+                    <div class="h-16 mb-2 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket1/images/1768046897829-7c19519f-d1d8-4138-a66e-c91d4e751a04.png" class="h-full object-contain">
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 justify-center">
+                        <i class="fas fa-medal text-xl text-blue-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBP</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor.</p>
                     <button onclick="openGenericModal('snbp-modal')" class="w-full py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap SNBP
                     </button>
@@ -567,11 +567,14 @@
                 <!-- SNBT -->
                 <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
                     <div class="absolute top-0 right-0 bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Tes Tulis</div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fas fa-pencil-alt text-3xl text-yellow-600"></i>
+                    <div class="h-16 mb-2 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket3/images/1768046827027-a25bd4ad-413f-466c-a4f3-9f10a50d6b21.png" class="h-full object-contain">
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 justify-center">
+                        <i class="fas fa-pencil-alt text-xl text-yellow-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBT</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">Menggunakan tes UTBK SNPMB.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Menggunakan tes UTBK SNPMB.</p>
                     <button onclick="openGenericModal('snbt-modal')" class="w-full py-2 border border-yellow-600 text-yellow-600 rounded hover:bg-yellow-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap SNBT
                     </button>
@@ -580,11 +583,14 @@
                 <!-- Mandiri -->
                 <div class="border border-ugm-blue/30 bg-ugm-blue/5 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
                     <div class="absolute top-0 right-0 bg-ugm-blue text-white text-xs px-3 py-1 rounded-bl-lg font-bold">Khas UGM</div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fas fa-university text-3xl text-ugm-blue"></i>
+                    <div class="h-16 mb-2 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-full object-contain">
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 justify-center">
+                        <i class="fas fa-university text-xl text-ugm-blue"></i>
                         <h3 class="text-xl font-bold text-gray-800">Mandiri</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">UM-CBT (Tes) & Jalur PBU (Prestasi/Afirmasi).</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">UM-CBT (Tes) & Jalur PBU (Prestasi/Afirmasi).</p>
                     <button onclick="document.getElementById('um-modal').classList.remove('hidden')" class="w-full py-2 bg-ugm-blue text-white rounded hover:bg-blue-900 transition font-semibold text-sm">
                         Info Lengkap UM UGM
                     </button>
@@ -593,11 +599,14 @@
                 <!-- IUP (New Card) -->
                 <div class="border border-purple-200 bg-purple-50 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="400">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">International</div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fas fa-globe text-3xl text-purple-600"></i>
+                    <div class="h-16 mb-2 flex items-center justify-center">
+                        <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-full object-contain">
+                    </div>
+                    <div class="flex items-center gap-2 mb-4 justify-center">
+                        <i class="fas fa-globe text-xl text-purple-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">IUP UGM</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow">International Undergraduate Program. Kelas Bahasa Inggris & Exposure Global.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">International Undergraduate Program. Kelas Bahasa Inggris & Exposure Global.</p>
                     <button onclick="openGenericModal('iup-modal')" class="w-full py-2 border border-purple-600 text-purple-600 rounded hover:bg-purple-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap IUP
                     </button>
@@ -621,7 +630,7 @@
         <!-- SNBP Content -->
         <div id="snbp-modal-content">
             <div class="text-center mb-6">
-                <i class="fas fa-medal text-5xl text-blue-600 mb-3"></i>
+                <img src="https://image2url.com/r2/bucket1/images/1768046897829-7c19519f-d1d8-4138-a66e-c91d4e751a04.png" class="h-20 mx-auto mb-2 object-contain">
                 <h3 class="text-2xl font-bold text-ugm-blue">SNBP 2025</h3>
                 <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Prestasi</p>
             </div>
@@ -648,7 +657,7 @@
         <!-- SNBT Content -->
         <div id="snbt-modal-content">
             <div class="text-center mb-6">
-                <i class="fas fa-pencil-alt text-5xl text-yellow-600 mb-3"></i>
+                <img src="https://image2url.com/r2/bucket3/images/1768046827027-a25bd4ad-413f-466c-a4f3-9f10a50d6b21.png" class="h-20 mx-auto mb-2 object-contain">
                 <h3 class="text-2xl font-bold text-ugm-blue">SNBT 2025</h3>
                 <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Tes (UTBK)</p>
             </div>
@@ -662,11 +671,12 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Ketentuan Umum</h4>
+                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Ketentuan Umum & Kesempatan Tes</h4>
                     <ul class="list-disc list-inside ml-2">
                         <li>Peserta: Siswa lulusan 2025, 2024, dan 2023.</li>
                         <li>Biaya UTBK: <strong>Rp200.000,-</strong> (kecuali peserta KIP Kuliah).</li>
-                        <li>Kesempatan tes hanya <strong>1 kali</strong>.</li>
+                        <li><strong>Frekuensi Tes:</strong> Kesempatan tes <strong>1x per tahun</strong>.</li>
+                        <li><strong>Batas Maksimal:</strong> Maksimal mengikuti 3x pasca lulus SMA (jika lebih harus mengulang Paket C).</li>
                     </ul>
                 </div>
                 <div class="mt-4 text-center">
@@ -678,7 +688,7 @@
         <!-- IUP Content -->
         <div id="iup-modal-content">
             <div class="text-center mb-6">
-                <i class="fas fa-globe text-5xl text-purple-600 mb-3"></i>
+                <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-20 mx-auto mb-2 object-contain">
                 <h3 class="text-2xl font-bold text-ugm-blue">International Undergraduate Program (IUP)</h3>
                 <p class="text-gray-500 text-sm">Global Experience & World Class Education</p>
             </div>
@@ -1014,33 +1024,35 @@
                 </div>
             </div>
 
-            <!-- Bayan Peduli Spotlight (Moved Bottom) -->
+            <!-- Bayan Peduli Spotlight (Updated Design) -->
             <div class="bg-bayan-green text-white rounded-3xl shadow-2xl overflow-hidden border border-yellow-400 mb-12" data-aos="zoom-in">
                 <div class="grid md:grid-cols-2">
                     <!-- Image Side -->
-                    <div class="relative h-64 md:h-auto bg-white">
+                    <div class="relative h-64 md:h-auto bg-white mt-6 md:mt-0">
                         <img src="https://image2url.com/r2/bucket2/images/1768033598626-444ed095-5cc1-49b9-a77c-555b479751df.png" alt="Suasana Bayan" class="w-full h-full object-cover">
-                        <!-- Gradient Overlay (Green to Transparent) -->
+                        <!-- Gradient Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-r from-bayan-green via-transparent to-transparent"></div>
                         
-                        <!-- Logo Top Right -->
-                        <div class="absolute top-4 right-4 w-24 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
-                            <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan" class="w-full object-contain">
-                        </div>
-
-                        <!-- Spotlight Tag (Overlaid bottom left like PIONIR title) -->
-                         <div class="absolute bottom-6 left-6">
-                            <div class="inline-flex items-center gap-2 bg-yellow-400 text-bayan-green px-4 py-1.5 rounded-full text-xs font-extrabold shadow-lg uppercase tracking-wider">
-                                <i class="fas fa-star animate-pulse"></i> Spotlight
-                            </div>
+                        <!-- Logo (Adjusted Position for Mobile/Desktop) -->
+                        <div class="absolute top-4 right-4 md:bottom-6 md:right-6 md:top-auto w-24 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+                            <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan" class="w-full object-contain opacity-90">
                         </div>
                     </div>
 
                     <!-- Content Side -->
                     <div class="p-8 md:p-10 flex flex-col justify-center">
-                        <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">Beasiswa Bayan Peduli</h3>
+                        <div class="mb-4">
+                             <div class="inline-flex items-center gap-2 bg-yellow-400 text-bayan-green px-3 py-1 rounded-full text-xs font-bold shadow-md uppercase tracking-wide">
+                                <i class="fas fa-star"></i> Spotlight
+                            </div>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-2">Beasiswa Bayan Peduli</h3>
                         <p class="mb-6 text-yellow-100 text-sm font-medium">Full Scholarship + High Living Cost</p>
                         
+                        <p class="text-sm text-gray-200 mb-6 leading-relaxed border-l-2 border-yellow-400 pl-4">
+                            Beasiswa ini merupakan inisiatif filantropi dari <strong>Dato' Dr. Low Tuck Kwong</strong>, pendiri PT Bayan Resources Tbk. Beliau memiliki komitmen kuat untuk memajukan pendidikan di Indonesia melalui program Bayan Peduli, dengan fokus memberikan akses pendidikan berkualitas bagi mahasiswa berprestasi yang memiliki keterbatasan finansial.
+                        </p>
+
                         <div class="grid gap-4">
                             <div class="bg-black/20 p-4 rounded-xl border border-white/10">
                                 <h4 class="font-bold text-yellow-400 mb-2 text-sm border-b border-white/10 pb-2"><i class="fas fa-gift mr-2"></i>Benefit Lengkap</h4>
