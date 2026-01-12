@@ -8,7 +8,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,29 +19,33 @@
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- TikTok Embed Script -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         ugm: {
-                            blue: '#1A2C43', // Biru gelap UGM
-                            yellow: '#F2C94C', // Kuning/Emas
+                            blue: '#1A2C43', 
+                            yellow: '#F2C94C', 
                             gold: '#C5A365',
                             cream: '#FFF9E5',
                         },
                         bayan: {
-                            green: '#006837', // Hijau Bayan
-                            light: '#8BC53F', // Hijau Muda
-                            yellow: '#FDB913', // Kuning/Emas Bayan
+                            green: '#006837', 
+                            light: '#8BC53F',
+                            yellow: '#FDB913',
                         },
-                        sman7: {
-                            green: '#2E7D32' 
-                        }
                     },
                     fontFamily: {
                         sans: ['Open Sans', 'sans-serif'],
                         heading: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(242, 201, 76, 0.6)',
+                        'glow-white': '0 0 15px rgba(255, 255, 255, 0.4)',
                     }
                 }
             }
@@ -49,70 +53,67 @@
     </script>
     
     <style>
-        /* Anti Copy Protection */
-        body {
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10 and IE 11 */
-            user-select: none; /* Standard syntax */
-        }
+        body { -webkit-user-select: none; user-select: none; }
+        .hero-bg { background-color: #1A2C43; }
+        
+        /* Custom Scrollbar for TikTok Modal */
+        .tiktok-scrollbar::-webkit-scrollbar { height: 10px; }
+        .tiktok-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .tiktok-scrollbar::-webkit-scrollbar-thumb { background: #F2C94C; border-radius: 10px; }
 
-        .hero-bg {
-            background-color: #1A2C43;
-            position: relative;
-        }
-        
-        /* Motif Batik Kawung Sederhana via CSS SVG */
-        .batik-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-16.57 13.43-30 30-30v60c-16.57 0-30-13.43-30-30zM0 30C0 13.43 13.43 0 30 0v60C13.43 60 0 46.57 0 30z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 60px 60px;
-        }
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
 
-        .bayan-gradient {
-            background: linear-gradient(135deg, #004d26 0%, #006837 50%, #004d26 100%);
-            border: 1px solid #FDB913;
+        /* Glowing Text Animation */
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #F2C94C, 0 0 20px #F2C94C; }
+            50% { text-shadow: 0 0 20px #FDB913, 0 0 40px #FDB913; }
+        }
+        .text-glow { animation: glow 2s infinite alternate; }
+
+        /* Masonry-like Grid for Faculties */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .faculty-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .faculty-grid { grid-template-columns: repeat(4, 1fr); }
         }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1A2C43; 
-            border-radius: 5px;
-        }
-        /* Link Hover Effect in Accordion */
-        .prodi-link:hover {
-            color: #d97706; /* Amber-600 */
-            text-decoration: underline;
+        .faculty-item { position: relative; overflow: hidden; border-radius: 1rem; height: 200px; cursor: pointer; }
+        .faculty-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .faculty-item:hover img { transform: scale(1.1); }
+        .faculty-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            display: flex; align-items: flex-end; padding: 1.5rem;
+            transition: opacity 0.3s;
         }
         
-        /* Welcome Overlay Background */
-        #welcome-overlay {
-            background-image: linear-gradient(rgba(26, 44, 67, 0.7), rgba(26, 44, 67, 0.7)), url('https://image2url.com/r2/bucket1/images/1767980936017-a2462ca9-34a5-41a9-8048-7085bb876e03.jpeg');
-            background-size: cover;
-            background-position: center;
-        }
+        /* Modal Backdrop Blur */
+        .modal-backdrop { background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" oncontextmenu="return false" id="body-container">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden w-full h-screen overflow-hidden" id="body-container">
 
     <!-- WELCOME OVERLAY -->
-    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out">
-        <div class="text-center p-4 animate-fade-in-up bg-black/20 backdrop-blur-sm rounded-xl md:bg-transparent md:backdrop-blur-none mx-4">
-            <i class="fas fa-university text-ugm-yellow text-3xl md:text-5xl mb-3 drop-shadow-lg"></i>
-            <h1 class="text-2xl md:text-4xl font-heading font-extrabold mb-1 tracking-tight">UGM MENYAPA</h1>
-            <h2 class="text-lg md:text-2xl font-heading font-bold mb-3 text-ugm-yellow">2026</h2>
-            <p class="text-gray-100 mb-6 text-sm md:text-base font-light">Dari Alumni SMAN 7 Tangsel</p>
+    <div id="welcome-overlay" class="fixed inset-0 z-[100] bg-ugm-blue flex flex-col items-center justify-center text-white transition-opacity duration-700 ease-out p-4">
+        <div class="text-center p-8 animate-fade-in-up bg-black/30 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl max-w-md w-full">
+            <i class="fas fa-university text-ugm-yellow text-5xl mb-6 drop-shadow-lg"></i>
+            <h1 class="text-3xl md:text-4xl font-heading font-extrabold mb-2 tracking-tight">UGM MENYAPA</h1>
+            <h2 class="text-xl md:text-2xl font-heading font-bold mb-6 text-ugm-yellow">2026</h2>
+            <p class="text-gray-200 mb-8 text-sm md:text-base font-medium">Dari Alumni SMAN 7 Tangsel</p>
             
-            <button onclick="enterSite()" class="group relative px-6 py-2.5 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105 text-sm md:text-base">
-                <span class="flex items-center gap-2">
-                    <i class="fas fa-star text-xs"></i>
-                    Sudah siap memulai mimpi?
+            <button onclick="enterSite()" class="group relative w-full py-4 bg-ugm-yellow text-ugm-blue font-bold rounded-full shadow-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 hover:scale-105 text-base overflow-hidden">
+                <span class="relative z-10 flex items-center justify-center gap-3">
+                    <i class="fas fa-star text-sm"></i> 
+                    <span class="tracking-wide">Sudah siap memulai mimpi?</span>
                 </span>
-                <span class="absolute inset-0 rounded-full ring-2 ring-ugm-yellow ring-offset-2 ring-offset-ugm-blue animate-pulse"></span>
+                <span class="absolute inset-0 rounded-full ring-4 ring-ugm-yellow/50 animate-pulse"></span>
             </button>
         </div>
     </div>
@@ -120,30 +121,32 @@
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-ugm-blue/95 backdrop-blur-md text-white shadow-lg h-16 flex items-center" id="navbar">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-university text-ugm-yellow text-xl"></i>
-                <div class="leading-tight">
-                    <h1 class="font-heading font-bold text-base">UGM MENYAPA 2026</h1>
-                </div>
+            <div class="flex items-center gap-3">
+                <img src="https://image2url.com/r2/bucket2/images/1768032221747-914cfddf-b279-400d-a521-cad0c1d44cad.png" class="h-10 w-auto" alt="Logo UGM">
+                <h1 class="font-heading font-bold text-lg tracking-wide hidden sm:block">UGM MENYAPA 2026</h1>
             </div>
-            <div class="hidden md:flex gap-6 text-sm font-semibold">
-                <a href="#team" class="hover:text-ugm-yellow transition">Tim Kami</a>
-                <a href="#profil" class="hover:text-ugm-yellow transition">Profil</a>
-                <a href="#akademik" class="hover:text-ugm-yellow transition">Akademik</a>
-                <a href="#jalur" class="hover:text-ugm-yellow transition">Jalur Masuk</a>
-                <a href="#biaya" class="hover:text-ugm-yellow transition">Biaya</a>
-                <a href="#beasiswa" class="hover:text-ugm-yellow transition">Beasiswa</a>
+            
+            <div class="hidden lg:flex gap-6 text-sm font-bold">
+                <a href="#team" class="hover:text-ugm-yellow transition py-2">TIM KAMI</a>
+                <a href="#profil" class="hover:text-ugm-yellow transition py-2">PROFIL</a>
+                <a href="#akademik" class="hover:text-ugm-yellow transition py-2">AKADEMIK</a>
+                <a href="#fasilitas" class="hover:text-ugm-yellow transition py-2">FASILITAS</a>
+                <a href="#jalur" class="hover:text-ugm-yellow transition py-2">JALUR MASUK</a>
+                <a href="#beasiswa" class="hover:text-ugm-yellow transition py-2">BEASISWA</a>
             </div>
-            <button class="md:hidden text-lg" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+
+            <button class="lg:hidden text-xl" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
         </div>
+        
         <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-ugm-blue border-t border-gray-700 shadow-xl z-50">
-            <div class="flex flex-col p-4 gap-3 text-center text-sm">
-                <a href="#team" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Tim Kami</a>
-                <a href="#profil" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Profil</a>
-                <a href="#akademik" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Akademik</a>
-                <a href="#jalur" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Jalur Masuk</a>
-                <a href="#biaya" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Biaya</a>
-                <a href="#beasiswa" onclick="toggleMenu()" class="block py-2 hover:bg-white/10 rounded">Beasiswa</a>
+            <div class="flex flex-col p-4 gap-3 text-center text-sm font-bold">
+                <a href="#team" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">TIM KAMI</a>
+                <a href="#profil" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">PROFIL</a>
+                <a href="#akademik" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">AKADEMIK</a>
+                <a href="#fasilitas" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">FASILITAS</a>
+                <a href="#jalur" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">JALUR MASUK</a>
+                <a href="#biaya" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">Biaya</a>
+                <a href="#beasiswa" onclick="toggleMenu()" class="block py-3 hover:bg-white/10 rounded">BEASISWA</a>
             </div>
         </div>
     </nav>
@@ -151,23 +154,37 @@
     <!-- Hero Section -->
     <header class="hero-bg text-white relative flex flex-col justify-center items-center pt-32 pb-48 w-full min-h-screen overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://image2url.com/r2/bucket3/images/1767990186918-49c0cdae-76e2-4ff7-bf87-0cb92a0ed9f9.jpeg" alt="Gedung Pusat UGM" class="w-full h-full object-cover opacity-60">
+            <!-- Restored original background image -->
+            <img src="https://image2url.com/r2/bucket3/images/1767990186918-49c0cdae-76e2-4ff7-bf87-0cb92a0ed9f9.jpeg" alt="Gedung Pusat UGM" class="w-full h-full object-cover opacity-70">
         </div>
         <div class="absolute inset-0 z-0 batik-pattern opacity-20 pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-ugm-blue/40 to-ugm-blue/95 pointer-events-none z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-ugm-blue/60 to-ugm-blue/95 pointer-events-none z-0"></div>
+        
         <div class="container mx-auto px-6 text-center z-20 relative" data-aos="fade-up">
-            <div class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-ugm-yellow/10 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-6 shadow-lg tracking-wide">
-                <i class="fas fa-map-marker-alt"></i> FROM TANGSEL TO YOGYAKARTA
+            <div class="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-ugm-yellow/20 backdrop-blur-md border border-ugm-yellow/50 text-ugm-yellow text-xs font-bold mb-8 shadow-lg tracking-widest uppercase">
+                <i class="fas fa-map-marker-alt"></i> From Tangsel to Yogyakarta
             </div>
-            <h1 class="text-3xl md:text-5xl font-heading font-extrabold mb-6 leading-tight drop-shadow-lg tracking-tight">Wujudkan Mimpimu di <br> <span class="text-ugm-yellow">Universitas Gadjah Mada</span></h1>
-            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan trik untuk kalian.</p>
+            
+            <h1 class="text-4xl md:text-6xl font-heading font-extrabold mb-6 leading-tight drop-shadow-2xl tracking-tight">
+                Wujudkan Mimpimu di <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-ugm-yellow to-yellow-200">Universitas Gadjah Mada</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">
+                Halo SMAN 7 Tangsel! Kami alumni yang kini menjadi bagian dari Keluarga Gadjah Mada siap berbagi cerita, tips, dan pengalaman berharga untuk kalian.
+            </p>
+            
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
-                <a href="#jalur" class="w-full sm:w-auto px-8 py-3 bg-ugm-yellow text-ugm-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm"><i class="fas fa-graduation-cap"></i> Cara Masuk UGM</a>
-                <a href="#team" class="w-full sm:w-auto px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/40 text-white font-bold rounded-full hover:bg-white hover:text-ugm-blue transition flex items-center justify-center gap-2 text-sm"><i class="fas fa-users"></i> Kenalan Dulu</a>
+                <a href="#jalur" class="w-full sm:w-auto px-8 py-4 bg-ugm-yellow text-ugm-blue font-bold rounded-full hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1 flex items-center justify-center gap-2 text-sm">
+                    <i class="fas fa-graduation-cap"></i> Cara Masuk UGM
+                </a>
+                <a href="#team" class="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md border border-white/40 text-white font-bold rounded-full hover:bg-white hover:text-ugm-blue transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fas fa-users"></i> Kenalan Dulu
+                </a>
             </div>
         </div>
+
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-             <svg class="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+             <svg class="relative block w-full h-[60px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#1A2C43" opacity="0"></path>
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
             </svg>
@@ -175,87 +192,100 @@
     </header>
 
     <!-- Team Section -->
-    <section id="team" class="py-12 bg-gray-50">
+    <section id="team" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-10" data-aos="fade-up">
-                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Kakak Alumni SMAN 7</h2>
-                <div class="w-20 h-1 bg-ugm-yellow mx-auto rounded"></div>
-                <p class="mt-4 text-gray-600">Siap membimbing kalian menuju Kampus Kerakyatan</p>
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-ugm-blue">Kakak Alumni SMAN 7</h2>
+                <div class="w-24 h-1.5 bg-ugm-yellow mx-auto rounded-full mt-3"></div>
+                <p class="mt-4 text-gray-600 font-medium text-lg">Siap membimbing kalian menuju Kampus Kerakyatan</p>
             </div>
-            <div class="flex flex-wrap justify-center gap-6">
-                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐯</span></div>
-                    <h3 class="font-bold text-ugm-blue text-base">Revan</h3>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Teknologi Rekayasa Elektro (Vokasi)</p>
+
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- All team members appear together (same AOS delay) -->
+                <div class="w-40 md:w-48 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center hover-lift border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-blue-50 mb-4 flex items-center justify-center text-4xl shadow-inner">🐯</div>
+                    <h3 class="font-bold text-ugm-blue text-lg">Revan</h3>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Teknologi Rekayasa Elektro (Vokasi)</p>
                 </div>
-                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐰</span></div>
-                    <h3 class="font-bold text-ugm-blue text-base">Lila</h3>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Perencanaan Wilayah dan Kota)</p>
+                <div class="w-40 md:w-48 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center hover-lift border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-pink-50 mb-4 flex items-center justify-center text-4xl shadow-inner">🐰</div>
+                    <h3 class="font-bold text-ugm-blue text-lg">Lila</h3>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Perencanaan Wilayah dan Kota</p>
                 </div>
-                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐨</span></div>
-                    <h3 class="font-bold text-ugm-blue text-base">Billy</h3>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Sosiologi)</p>
+                <div class="w-40 md:w-48 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center hover-lift border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-green-50 mb-4 flex items-center justify-center text-4xl shadow-inner">🐨</div>
+                    <h3 class="font-bold text-ugm-blue text-lg">Billy</h3>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Sosiologi</p>
                 </div>
-                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🐱</span></div>
-                    <h3 class="font-bold text-ugm-blue text-base">Ara</h3>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Bahasa dan Kebudayaan Korea)</p>
+                <div class="w-40 md:w-48 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center hover-lift border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 mb-4 flex items-center justify-center text-4xl shadow-inner">🐱</div>
+                    <h3 class="font-bold text-ugm-blue text-lg">Ara</h3>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Bahasa dan Kebudayaan Korea</p>
                 </div>
-                <div class="w-[45%] md:w-[30%] lg:w-[15%] bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center group border border-gray-100" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-3 overflow-hidden border-4 border-white shadow-sm group-hover:border-ugm-yellow transition flex items-center justify-center"><span class="text-4xl">🦊</span></div>
-                    <h3 class="font-bold text-ugm-blue text-base">Karin</h3>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wide">(Psikologi)</p>
+                <div class="w-40 md:w-48 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center hover-lift border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-yellow-50 mb-4 flex items-center justify-center text-4xl shadow-inner">🦊</div>
+                    <h3 class="font-bold text-ugm-blue text-lg">Karin</h3>
+                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-1">Psikologi</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Profil UGM -->
-    <section id="profil" class="py-16 bg-white overflow-hidden">
-        <div class="container mx-auto px-4 space-y-20">
-            <!-- SECTION 1: Sejarah -->
+    <section id="profil" class="py-20 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 space-y-24">
+            
+            <!-- Sejarah -->
             <div class="flex flex-col md:flex-row items-center gap-12" data-aos="fade-right">
                 <div class="w-full md:w-1/2">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
-                        <img src="https://image2url.com/r2/bucket1/images/1767992929954-e0bd9f54-0f9b-4719-bb00-3cd302540e96.jpeg" alt="Sejarah UGM" class="w-full h-[400px] object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group rotate-1 hover:rotate-0 transition duration-500">
+                        <img src="https://image2url.com/r2/bucket1/images/1767992929954-e0bd9f54-0f9b-4719-bb00-3cd302540e96.jpeg" alt="Sejarah UGM" class="w-full h-[400px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <div class="absolute bottom-6 left-6 text-white">
-                            <p class="text-sm font-light uppercase tracking-widest mb-1 text-ugm-yellow">Established 1949</p>
-                            <h3 class="text-2xl font-heading font-bold">Universitas Negeri Tertua</h3>
+                            <p class="text-sm font-bold uppercase tracking-widest mb-1 text-ugm-yellow">Didirikan sejak 1949</p>
+                            <h3 class="text-2xl font-heading font-bold">Universitas Nasional Pertama</h3>
                         </div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">Sejarah <span class="text-ugm-yellow">Kampus Biru</span></h2>
-                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
-                        <p>Universitas Gadjah Mada (UGM) memiliki akar sejarah yang kuat sebagai <strong>universitas nasional pertama</strong> di Indonesia. Didirikan secara resmi pada tanggal <span class="font-bold text-ugm-blue">19 Desember 1949</span>, kelahiran UGM tidak dapat dipisahkan dari semangat perjuangan mempertahankan kemerdekaan.</p>
-                        <p>Kini, UGM terus berkembang menjadi universitas kelas dunia namun tetap memegang teguh jati dirinya sebagai <strong>Universitas Kerakyatan</strong>, Universitas Perjuangan, dan Universitas Pancasila.</p>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-ugm-blue mb-6">
+                        Sejarah <span class="text-ugm-yellow">Kampus Biru</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify text-base">
+                        <p>
+                            Universitas Gadjah Mada (UGM) memiliki akar sejarah yang kuat sebagai <strong>Universitas Nasional Pertama</strong> di Indonesia, bukan institusi warisan kolonial. Didirikan secara resmi pada tanggal <span class="font-bold text-ugm-blue">19 Desember 1949</span>, kelahiran UGM tidak dapat dipisahkan dari semangat perjuangan mempertahankan kemerdekaan.
+                        </p>
+                        <p>
+                            Pada masa-masa awal, kegiatan perkuliahan bahkan meminjam ruangan di Keraton Yogyakarta, berkat kemurahan hati Sri Sultan Hamengkubuwono IX. Hal ini menjadikan UGM simbol sinergi antara keraton, rakyat, dan kaum intelektual.
+                        </p>
+                        <p>
+                            Kini, UGM terus berkembang menjadi universitas kelas dunia namun tetap memegang teguh jati dirinya sebagai <strong>Universitas Kerakyatan</strong>, Universitas Perjuangan, dan Universitas Pancasila.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: Warna Almamater -->
+            <!-- Filosofi Karung Goni -->
             <div class="flex flex-col md:flex-row-reverse items-center gap-12" data-aos="fade-left">
                 <div class="w-full md:w-1/2">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group border-4 border-ugm-gold/20">
-                        <img src="https://image2url.com/r2/bucket2/images/1767992854204-a0acb3e7-4ef7-4285-adfd-faedd10085e0.jpeg" alt="Jas Almamater UGM" class="w-full h-[400px] object-cover transition duration-700 group-hover:scale-110">
-                        <!-- Color Palette Indicator -->
-                        <div class="absolute top-6 right-6 bg-white/90 backdrop-blur p-3 rounded-lg shadow-lg flex flex-col items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-[#8b7d6b] border border-gray-300 shadow-inner" title="Kode Warna Karung Goni"></div>
-                            <span class="text-[10px] font-mono font-bold text-gray-600">#8B7D6B</span>
-                        </div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group border-4 border-ugm-gold/30 -rotate-1 hover:rotate-0 transition duration-500">
+                        <img src="https://image2url.com/r2/bucket2/images/1767992854204-a0acb3e7-4ef7-4285-adfd-faedd10085e0.jpeg" alt="Jas Almamater UGM" class="w-full h-[400px] object-cover">
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-ugm-blue mb-6">Filosofi <span class="text-ugm-gold">"Karung Goni"</span></h2>
-                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
-                        <p>Pernah bertanya-tanya mengapa warna jas almamater UGM terlihat seperti cokelat muda kehijauan? Warna ini secara resmi disebut sebagai warna <strong>"Karung Goni"</strong>.</p>
-                        <div class="bg-ugm-cream border-l-4 border-ugm-gold p-4 my-4 rounded-r-lg">
-                            <p class="text-sm italic text-gray-600">"Warna ini diambil untuk mengenang masa perjuangan fisik rakyat Indonesia, di mana saat itu rakyat saking miskinnya hingga terpaksa menggunakan karung goni sebagai pakaian."</p>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-ugm-blue mb-6">
+                        Filosofi <span class="text-ugm-gold">"Karung Goni"</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify text-base">
+                        <p>
+                            Pernah bertanya-tanya mengapa warna jas almamater UGM terlihat seperti cokelat muda kehijauan? Warna ini secara resmi disebut sebagai warna <strong>"Karung Goni"</strong>.
+                        </p>
+                        <div class="bg-ugm-cream border-l-4 border-ugm-gold p-6 my-4 rounded-r-xl italic text-gray-700 font-medium">
+                            "Warna ini diambil untuk mengenang masa perjuangan fisik rakyat Indonesia, di mana saat itu rakyat saking miskinnya hingga terpaksa menggunakan karung goni sebagai pakaian."
                         </div>
-                        <p>Filosofi ini sangat mendalam. Mengenakan jas almamater UGM berarti mengenakan pengingat abadi bahwa mahasiswa UGM tidak boleh lupa pada penderitaan rakyat. Jas ini adalah simbol mandat untuk selalu mengabdi kepada kepentingan rakyat, bangsa, dan negara, bukan untuk gagah-gagahan semata.</p>
+                        <p>
+                            Filosofi ini sangat mendalam. Mengenakan jas almamater UGM berarti mengenakan pengingat abadi bahwa mahasiswa UGM tidak boleh lupa pada penderitaan rakyat. Jas ini adalah simbol mandat untuk selalu mengabdi kepada kepentingan rakyat, bangsa, dan negara, bukan untuk gagah-gagahan semata.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -263,22 +293,49 @@
             <!-- PIONIR Special Feature -->
             <div class="bg-ugm-blue text-white rounded-3xl shadow-2xl overflow-hidden border border-gray-700 mt-20" data-aos="fade-up">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-64 md:h-auto">
+                    <div class="relative h-72 md:h-auto">
                         <img src="https://image2url.com/r2/bucket3/images/1767990268136-6b836cec-56fe-4859-8124-650ec2f9ed58.jpeg" alt="Pionir Gadjah Mada" class="w-full h-full object-cover opacity-90">
                         <div class="absolute inset-0 bg-gradient-to-r from-ugm-blue via-transparent to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-8 w-full">
-                            <h3 class="text-3xl font-bold font-heading mb-1 text-white">PIONIR 2025</h3>
-                            <p class="text-ugm-yellow font-semibold">Inisiatif & Kolaboratif</p>
+                        <div class="absolute bottom-0 left-0 p-10 w-full">
+                            <h3 class="text-4xl font-bold font-heading mb-2 text-white">PIONIR 2025</h3>
+                            <p class="text-ugm-yellow font-bold text-xl text-glow tracking-wide">INISIATIF & KOLABORATIF</p>
                         </div>
                     </div>
-                    <div class="p-8 md:p-12 flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold text-ugm-yellow mb-4">Transformasi Gamada</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">PIONIR (Pelatihan Pembelajar Sukses bagi Mahasiswa Baru) adalah gerbang awal menjadi Gadjah Mada Muda. Bukan sekadar orientasi, ini adalah perayaan ide, kreativitas, dan kontribusi nyata melalui Selebrasi Formasi (Puspakara) dan Aksi Nyata.</p>
-                        <div class="relative w-full pb-[56.25%] h-0 rounded-xl overflow-hidden shadow-lg border border-white/20 mb-6 bg-black">
-                            <iframe src="https://www.youtube.com/embed/AsA4a7jhogA" title="YouTube video player" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="p-10 md:p-14 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-ugm-yellow mb-4">Transformasi Gadjah Mada Muda</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed text-base">
+                            PIONIR (Pelatihan Pembelajar Sukses bagi Mahasiswa Baru) adalah gerbang awal menjadi Gadjah Mada Muda (Gamada). Bukan sekadar orientasi, ini adalah perayaan ide, kreativitas, dan kontribusi nyata.
+                        </p>
+                        
+                        <!-- Highlight Inisiatif & Kolaboratif -->
+                        <div class="bg-white/5 p-6 rounded-xl border border-ugm-yellow/30 mb-8 shadow-glow-white hover:bg-white/10 transition">
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <h4 class="font-bold text-ugm-yellow text-lg flex items-center gap-2 mb-1"><i class="fas fa-lightbulb"></i> INISIATIF</h4>
+                                    <p class="text-sm text-gray-300">Gamada didorong untuk peka terhadap permasalahan sosial di sekitar dan berani mengambil langkah awal untuk memberikan solusi nyata.</p>
+                                </div>
+                                <div class="border-t border-white/20 pt-4">
+                                    <h4 class="font-bold text-ugm-yellow text-lg flex items-center gap-2 mb-1"><i class="fas fa-users"></i> KOLABORATIF</h4>
+                                    <p class="text-sm text-gray-300">Masalah kompleks tidak bisa diselesaikan sendiri. Gamada diajarkan bekerja sama lintas disiplin ilmu dalam menyusun "Action Plan" yang berdampak.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://www.instagram.com/pionirgadjahmada/" target="_blank" class="w-full px-6 py-3 bg-ugm-yellow text-ugm-blue rounded-full font-bold text-sm hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1"><i class="fab fa-instagram text-lg"></i> Follow @pionirgadjahmada</a>
+                        
+                        <div class="relative w-full pb-[56.25%] h-0 rounded-xl overflow-hidden shadow-lg border border-white/20 mb-8 bg-black">
+                            <iframe 
+                                src="https://www.youtube.com/embed/AsA4a7jhogA" 
+                                title="YouTube video player" 
+                                class="absolute top-0 left-0 w-full h-full" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://www.instagram.com/pionirgadjahmada/" target="_blank" class="w-full px-6 py-3.5 bg-ugm-yellow text-ugm-blue rounded-full font-bold text-sm hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg transform hover:-translate-y-1">
+                                <i class="fab fa-instagram text-xl"></i> Follow @pionirgadjahmada
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -286,239 +343,283 @@
         </div>
     </section>
 
-    <!-- Fakultas Accordion -->
-    <section id="akademik" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="text-center mb-10" data-aos="fade-up">
-                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Fakultas & Prodi</h2>
-                <p class="text-gray-500 mt-2 text-sm md:text-base">Pilihan Program Studi S1 dan Sarjana Terapan (D4) di UGM sangat beragam. Klik nama prodi untuk info lebih lanjut.</p>
+    <!-- Fakultas Accordion & Gallery (RESTORED & IMPROVED) -->
+    <section id="akademik" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-ugm-blue">Fakultas & Prodi</h2>
+                <div class="w-20 h-1.5 bg-ugm-yellow mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-600 mt-4 text-base">Pilihan Program Studi S1 dan Sarjana Terapan (D4) di UGM sangat beragam.</p>
             </div>
 
-            <div class="space-y-4 mb-10" data-aos="fade-up">
+            <!-- Creative Masonry Grid -->
+            <div class="faculty-grid mb-12" data-aos="fade-up">
+                <!-- Vokasi (Span 2 cols) -->
+                <div class="faculty-item col-span-2 group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768081558725-f4d969c2-08ca-4fa5-b1ce-5c108850ee2b.png" alt="Sekolah Vokasi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Sekolah Vokasi</span>
+                    </div>
+                </div>
                 
+                <!-- Teknik (Size adjusted, no longer oversized) -->
+                 <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768079569139-08623393-088a-4391-99b7-0f5389fd51cb.png" alt="Fakultas Teknik">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Teknik</span>
+                    </div>
+                </div>
+
+                <!-- FKKMK -->
+                 <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket2/images/1768079729736-1cf85120-78ca-4848-a787-e1447dfd2c15.png" alt="FKKMK">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">FKKMK</span>
+                    </div>
+                </div>
+                
+                <!-- FKG -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/ce3191b114a9f32552c5097cfeef7c4a.png" alt="Kedokteran Gigi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Kedokteran Gigi</span>
+                    </div>
+                </div>
+
+                <!-- Farmasi -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/c3a312ca5750e93f27524f1477818482.webp" alt="Farmasi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Farmasi</span>
+                    </div>
+                </div>
+
+                <!-- Biologi -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/0cef6cfd07984de0313cdacf657ef6f8.jpg" alt="Biologi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Biologi</span>
+                    </div>
+                </div>
+
+                <!-- MIPA -->
+                 <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket3/images/1768080227254-a9e9c46f-9e1b-4a3a-a3b7-cc29acb7aec2.png" alt="MIPA">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas MIPA</span>
+                    </div>
+                </div>
+
+                <!-- Geografi -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/593aca102d24101dba8051ee49424e47.webp" alt="Geografi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Geografi</span>
+                    </div>
+                </div>
+
+                <!-- Pertanian -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/dd3ccbb4c4a674dbf9f943b4276ff9c5.webp" alt="Pertanian">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Pertanian</span>
+                    </div>
+                </div>
+
+                <!-- FTP -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768080042774-66a0ff0d-73ac-4886-9484-4ae32fcc7a38.jpeg" alt="Teknologi Pertanian">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Teknologi Pertanian</span>
+                    </div>
+                </div>
+
+                 <!-- Kehutanan -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/7f4669abc75108d79d9e4b835b36ecb1.jpeg" alt="Kehutanan">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Kehutanan</span>
+                    </div>
+                </div>
+                
+                 <!-- Peternakan -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/9c0bb58487327b3000594ba7c0f1b513.jpeg" alt="Peternakan">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Peternakan</span>
+                    </div>
+                </div>
+
+                 <!-- Kedokteran Hewan -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/90ca8c641b5a38e160e82920cf939c09.jpg" alt="Kedokteran Hewan">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Kedokteran Hewan</span>
+                    </div>
+                </div>
+
+                <!-- Hukum -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768079290987-2975b771-82a6-40e4-b6f9-1576d86a4722.png" alt="Hukum">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Hukum</span>
+                    </div>
+                </div>
+
+                <!-- FEB -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768079157672-735b9fd5-51ed-4a6c-a560-500628df15e5.png" alt="FEB">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Ekonomika & Bisnis</span>
+                    </div>
+                </div>
+
+                <!-- Fisipol -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket2/images/1768079377994-2e96cb2e-5be8-4c85-91ef-0a39c6bab2dc.png" alt="Fisipol">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Isipol</span>
+                    </div>
+                </div>
+
+                 <!-- Psikologi -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket2/images/1768079338484-4f3b1929-35f0-4099-9f3d-d55ad6c48cb8.png" alt="Psikologi">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Psikologi</span>
+                    </div>
+                </div>
+
+                 <!-- FIB -->
+                <div class="faculty-item group">
+                    <img src="https://image2url.com/r2/bucket1/images/1768079620961-21308083-ae68-4c0e-a38b-6232732a7358.png" alt="FIB">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Ilmu Budaya</span>
+                    </div>
+                </div>
+
+                 <!-- Filsafat -->
+                <div class="faculty-item group">
+                    <img src="https://img.sanishtech.com/u/5a53b931440023927153c8432641c5a4.jpeg" alt="Filsafat">
+                    <div class="faculty-overlay">
+                        <span class="text-white font-bold text-lg font-heading">Fakultas Filsafat</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Lists (Reorganized & Separated) -->
+            <div class="space-y-4 mb-12 max-w-5xl mx-auto" data-aos="fade-up">
                 <!-- Sekolah Vokasi -->
-                <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-blue-50 hover:bg-blue-100 transition focus:outline-none" onclick="toggleAccordion('vokasi')">
-                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-tools text-sm"></i> Sekolah Vokasi (Sarjana Terapan / D4)</span>
-                        <i id="icon-vokasi" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
+                <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center bg-blue-50 hover:bg-blue-100 transition focus:outline-none" onclick="toggleAccordion('vokasi')">
+                        <span class="font-bold text-ugm-blue text-lg flex items-center gap-3"><i class="fas fa-tools text-base"></i> Sekolah Vokasi (Sarjana Terapan / D4)</span>
+                        <i id="icon-vokasi" class="fas fa-chevron-down text-gray-500 transition-transform"></i>
                     </button>
-                    <div id="content-vokasi" class="hidden px-6 py-5 bg-white text-sm text-gray-700">
+                    <div id="content-vokasi" class="hidden px-8 py-6 bg-white text-sm text-gray-700 border-t border-gray-100">
                         <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
                             <div>
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Layanan & Informasi Kesehatan</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/manajemen-informasi-kesehatan-mik/" target="_blank" class="prodi-link">Manajemen Informasi Kesehatan</a></li>
-                                </ul>
-                                
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknologi Kebumian</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-survei-dan-pemetaan-dasar-tspd/" target="_blank" class="prodi-link">Teknologi Survei dan Pemetaan Dasar</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/sistem-informasi-geografis-sig/" target="_blank" class="prodi-link">Sistem Informasi Geografis</a></li>
-                                </ul>
-
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Tek. Hayati & Veteriner</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/pengelolaan-hutan-ph/" target="_blank" class="prodi-link">Pengelolaan Hutan</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-veteriner-tv/" target="_blank" class="prodi-link">Teknologi Veteriner</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/pengembangan-produk-agroindustri-ppa/" target="_blank" class="prodi-link">Pengembangan Produk Agroindustri</a></li>
-                                </ul>
-
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknik Mesin</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2">
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-mesin-trm/" target="_blank" class="prodi-link">Teknologi Rekayasa Mesin</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknik-pengelolaan-dan-perawatan-alat-berat-tppab/" target="_blank" class="prodi-link">Teknik Pengelolaan dan Perawatan Alat Berat</a></li>
-                                </ul>
+                                <h5 class="font-bold text-ugm-blue mb-2">Saintek</h5>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1"><li>Manajemen Informasi Kesehatan</li><li>Teknologi Survei dan Pemetaan Dasar</li><li>Sistem Informasi Geografis</li><li>Pengelolaan Hutan</li><li>Teknologi Veteriner</li><li>Pengembangan Produk Agroindustri</li><li>Teknologi Rekayasa Mesin</li><li>Teknik Pengelolaan dan Perawatan Alat Berat</li><li>Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil</li><li>Teknologi Rekayasa Pelaksanaan Bangunan Sipil</li><li>Teknologi Rekayasa Perangkat Lunak</li><li>Teknologi Rekayasa Elektro</li><li>Teknologi Rekayasa Instrumentasi dan Kontrol</li><li>Teknologi Rekayasa Internet</li></ul>
                             </div>
-                            
                             <div>
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Teknik Sipil</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/teknik-pengelolaan-dan-pemeliharaan-infrastruktur-sipil-tppis/" target="_blank" class="prodi-link">Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-pelaksanaan-bangunan-sipil-trpbs/" target="_blank" class="prodi-link">Teknologi Rekayasa Pelaksanaan Bangunan Sipil</a></li>
-                                </ul>
-
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Tek. Elektro & Informatika</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-perangkat-lunak-trpl/" target="_blank" class="prodi-link">Teknologi Rekayasa Perangkat Lunak</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-elektro-tre/" target="_blank" class="prodi-link">Teknologi Rekayasa Elektro</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-instrumentasi-dan-kontrol-trik/" target="_blank" class="prodi-link">Teknologi Rekayasa Instrumentasi dan Kontrol</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/teknologi-rekayasa-internet-tri/" target="_blank" class="prodi-link">Teknologi Rekayasa Internet</a></li>
-                                </ul>
-
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Ekonomika & Bisnis</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2 mb-3">
-                                    <li><a href="https://sv.ugm.ac.id/manajemen-dan-penilaian-properti-mpp/" target="_blank" class="prodi-link">Manajemen dan Penilaian Properti</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/perbankan-p/" target="_blank" class="prodi-link">Perbankan</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/akuntansi-sektor-publik-asp/" target="_blank" class="prodi-link">Akuntansi Sektor Publik</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/pembangunan-ekonomi-kewilayahan-pek/" target="_blank" class="prodi-link">Pembangunan Ekonomi Kewilayahan</a></li>
-                                </ul>
-
-                                <h5 class="font-bold text-ugm-blue mb-1">Dep. Bahasa, Seni & Man. Budaya</h5>
-                                <ul class="list-disc list-inside text-gray-600 text-xs ml-2">
-                                    <li><a href="https://sv.ugm.ac.id/pengelolaan-arsip-dan-rekaman-informasi-pari/" target="_blank" class="prodi-link">Pengelolaan Arsip dan Rekaman Informasi</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/bahasa-inggris-bing/" target="_blank" class="prodi-link">Bahasa Inggris</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/bisnis-perjalanan-wisata-bpw/" target="_blank" class="prodi-link">Bisnis Perjalanan Wisata</a></li>
-                                    <li><a href="https://sv.ugm.ac.id/bahasa-jepang-untuk-komunikasi-bisnis-dan-profesional-kombispro/" target="_blank" class="prodi-link">Bahasa Jepang untuk Komunikasi Bisnis dan Profesional</a></li>
-                                </ul>
+                                <h5 class="font-bold text-ugm-blue mb-2">Soshum</h5>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1"><li>Manajemen dan Penilaian Properti</li><li>Perbankan</li><li>Akuntansi Sektor Publik</li><li>Pembangunan Ekonomi Kewilayahan</li><li>Pengelolaan Arsip dan Rekaman Informasi</li><li>Bahasa Inggris</li><li>Bisnis Perjalanan Wisata</li><li>Bahasa Jepang untuk Komunikasi Bisnis</li></ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Saintek -->
-                <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('saintek')">
-                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-microscope text-sm"></i> Klaster Saintek & Kesehatan</span>
-                        <i id="icon-saintek" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
+                <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('saintek')">
+                        <span class="font-bold text-ugm-blue text-lg flex items-center gap-3"><i class="fas fa-microscope text-base"></i> Klaster Saintek & Kesehatan</span>
+                        <i id="icon-saintek" class="fas fa-chevron-down text-gray-500 transition-transform"></i>
                     </button>
-                    <div id="content-saintek" class="hidden px-6 py-5 bg-gray-50 text-sm text-gray-700">
-                        <div class="space-y-6">
+                    <div id="content-saintek" class="hidden px-8 py-6 bg-gray-50 text-sm text-gray-700 border-t border-gray-100">
+                         <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
                             <div>
-                                <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">Fakultas Teknik</h4>
-                                <div class="grid md:grid-cols-2 gap-2">
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://archiplan.ugm.ac.id" target="_blank" class="prodi-link">Arsitektur dan Perencanaan</a></li>
-                                        <li><a href="https://jteti.ugm.ac.id" target="_blank" class="prodi-link">Teknik Elektro</a></li>
-                                        <li><a href="https://tf.ugm.ac.id" target="_blank" class="prodi-link">Teknik Fisika</a></li>
-                                        <li><a href="https://geodesi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Geodesi</a></li>
-                                    </ul>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://geologi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Geologi</a></li>
-                                        <li><a href="https://chemeng.ugm.ac.id" target="_blank" class="prodi-link">Teknik Kimia</a></li>
-                                        <li><a href="https://tmi.ugm.ac.id" target="_blank" class="prodi-link">Teknik Mesin dan Industri</a></li>
-                                        <li><a href="https://tsipil.ugm.ac.id" target="_blank" class="prodi-link">Teknik Sipil dan Lingkungan</a></li>
-                                    </ul>
-                                </div>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Teknik</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Arsitektur</li><li>Perencanaan Wilayah & Kota</li><li>Teknik Elektro</li><li>Teknik Fisika</li><li>Teknik Geodesi</li><li>Teknik Geologi</li><li>Teknik Kimia</li><li>Teknik Mesin</li><li>Teknik Industri</li><li>Teknik Sipil</li><li>Teknik Lingkungan</li><li>Teknik Biomedis</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas MIPA</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Matematika</li><li>Statistika</li><li>Ilmu Komputer</li><li>Elektronika & Instrumentasi</li><li>Fisika</li><li>Geofisika</li><li>Kimia</li><li>Ilmu Aktuaria</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Biologi</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Biologi</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Geografi</h4>
+                                <ul class="list-disc list-inside text-xs ml-2"><li>Geografi Lingkungan</li><li>Kartografi & Penginderaan Jauh</li><li>Pembangunan Wilayah</li></ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">FMIPA</h4>
-                                <ul class="list-disc list-inside ml-2 grid md:grid-cols-2 gap-1 text-xs">
-                                    <li><a href="https://dcse.ugm.ac.id" target="_blank" class="prodi-link">Elektronika dan Instrumentasi (Elins)</a></li>
-                                    <li><a href="https://fi.ugm.ac.id" target="_blank" class="prodi-link">Fisika</a></li>
-                                    <li><a href="https://fi.ugm.ac.id" target="_blank" class="prodi-link">Geofisika</a></li>
-                                    <li><a href="https://chem.ugm.ac.id" target="_blank" class="prodi-link">Kimia</a></li>
-                                    <li><a href="https://dcse.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Komputer</a></li>
-                                    <li><a href="https://math.ugm.ac.id" target="_blank" class="prodi-link">Matematika</a></li>
-                                    <li><a href="https://math.ugm.ac.id" target="_blank" class="prodi-link">Statistika</a></li>
-                                </ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Kedokteran, Kesehatan Masyarakat, dan Keperawatan (FKKMK)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Kedokteran</li><li>Ilmu Keperawatan</li><li>Gizi Kesehatan</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Kedokteran Gigi (FKG)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Kedokteran Gigi</li><li>Higiene Gigi</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Farmasi</h4>
+                                <ul class="list-disc list-inside text-xs ml-2"><li>Farmasi</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soshum (Separated Faculties) -->
+                <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('soshum')">
+                        <span class="font-bold text-ugm-blue text-lg flex items-center gap-3"><i class="fas fa-balance-scale text-base"></i> Klaster Soshum</span>
+                        <i id="icon-soshum" class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                    </button>
+                    <div id="content-soshum" class="hidden px-8 py-6 bg-gray-50 text-sm text-gray-700 border-t border-gray-100">
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                            <div>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Ekonomika & Bisnis (FEB)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Akuntansi</li><li>Manajemen</li><li>Ilmu Ekonomi</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Hukum</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Hukum</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Psikologi</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Psikologi</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Filsafat</h4>
+                                <ul class="list-disc list-inside text-xs ml-2"><li>Filsafat</li></ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-ugm-blue mb-2 text-base border-b border-gray-200 pb-1">FKKMK (Kedokteran)</h4>
-                                <ul class="list-disc list-inside ml-2 text-xs">
-                                    <li><a href="https://kedokteran.fk.ugm.ac.id" target="_blank" class="prodi-link">Kedokteran (Sangat Populer!)</a></li>
-                                    <li><a href="https://keperawatan.fkkmk.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Keperawatan</a></li>
-                                    <li><a href="https://gizikesehatan.fkkmk.ugm.ac.id" target="_blank" class="prodi-link">Gizi Kesehatan</a></li>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Ilmu Sosial dan Ilmu Politik (Fisipol)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Ilmu Komunikasi</li><li>Hubungan Internasional</li><li>Manajemen & Kebijakan Publik</li><li>Politik & Pemerintahan</li><li>Pembangunan Sosial & Kesejahteraan</li><li>Sosiologi</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Ilmu Budaya (FIB)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2">
+                                    <li><a href="#" class="prodi-link">Antropologi Budaya</a></li>
+                                    <li><a href="#" class="prodi-link">Arkeologi</a></li>
+                                    <li><a href="#" class="prodi-link">Bahasa dan Kebudayaan Korea</a></li>
+                                    <li><a href="#" class="prodi-link">Bahasa dan Sastra Indonesia</a></li>
+                                    <li><a href="#" class="prodi-link">Pariwisata</a></li>
+                                    <li><a href="#" class="prodi-link">Sastra Arab</a></li>
+                                    <li><a href="#" class="prodi-link">Sastra Inggris</a></li>
+                                    <li><a href="#" class="prodi-link">Sastra Jawa</a></li>
+                                    <li><a href="#" class="prodi-link">Sastra Jepang</a></li>
+                                    <li><a href="#" class="prodi-link">Sastra Perancis</a></li>
+                                    <li><a href="#" class="prodi-link">Sejarah</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Soshum -->
-                <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('soshum')">
-                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-balance-scale text-sm"></i> Klaster Soshum</span>
-                        <i id="icon-soshum" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
+                <!-- Agro -->
+                <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('agro')">
+                        <span class="font-bold text-ugm-blue text-lg flex items-center gap-3"><i class="fas fa-seedling text-base"></i> Klaster Agro</span>
+                        <i id="icon-agro" class="fas fa-chevron-down text-gray-500 transition-transform"></i>
                     </button>
-                    <div id="content-soshum" class="hidden px-6 py-5 bg-gray-50 text-sm text-gray-700">
-                        <div class="grid md:grid-cols-2 gap-8">
-                             <div>
-                                <h4 class="font-bold text-ugm-blue mb-2 text-base">FIB (Ilmu Budaya)</h4>
-                                <ul class="list-disc list-inside ml-2 space-y-1 text-xs">
-                                    <li><a href="https://arab.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Arab</a></li>
-                                    <li><a href="https://pariwisata.fib.ugm.ac.id" target="_blank" class="prodi-link">Pariwisata</a></li>
-                                    <li><a href="https://indonesia.fib.ugm.ac.id" target="_blank" class="prodi-link">Bahasa dan Sastra Indonesia</a></li>
-                                    <li><a href="https://korea.fib.ugm.ac.id" target="_blank" class="prodi-link">Bahasa dan Kebudayaan Korea</a></li>
-                                    <li><a href="https://arkeologi.fib.ugm.ac.id" target="_blank" class="prodi-link">Arkeologi</a></li>
-                                    <li><a href="https://antropologi.fib.ugm.ac.id" target="_blank" class="prodi-link">Antropologi Budaya</a></li>
-                                    <li><a href="https://sejarah.fib.ugm.ac.id" target="_blank" class="prodi-link">Sejarah</a></li>
-                                    <li><a href="https://perancis.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Perancis</a></li>
-                                    <li><a href="https://jepang.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Jepang</a></li>
-                                    <li><a href="https://jawa.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Jawa</a></li>
-                                    <li><a href="https://inggris.fib.ugm.ac.id" target="_blank" class="prodi-link">Sastra Inggris</a></li>
-                                </ul>
+                    <div id="content-agro" class="hidden px-8 py-6 bg-gray-50 text-sm text-gray-700 border-t border-gray-100">
+                         <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                            <div>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Pertanian</h4>
+                                <ul class="list-disc list-inside text-xs ml-2"><li>Agronomi</li><li>Akuakultur</li><li>Ekonomi Pertanian & Agribisnis</li><li>Ilmu Tanah</li><li>Manajemen Sumberdaya Akuatik</li><li>Mikrobiologi Pertanian</li><li>Penyuluhan & Komunikasi Pertanian</li><li>Proteksi Tanaman</li><li>Teknologi Hasil Perikanan</li></ul>
                             </div>
                             <div>
-                                <div class="mb-4">
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">FISIPOL</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://dikom.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Komunikasi</a></li>
-                                        <li><a href="https://hi.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Hubungan Internasional</a></li>
-                                        <li><a href="https://sosiologi.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Sosiologi</a></li>
-                                        <li><a href="https://mkp.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Manajemen & Kebijakan Publik</a></li>
-                                        <li><a href="https://hpp.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Politik dan Pemerintahan</a></li>
-                                        <li><a href="https://psd.fisipol.ugm.ac.id" target="_blank" class="prodi-link">Pembangunan Sosial dan Kesejahteraan</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">Psikologi</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://psikologi.ugm.ac.id" target="_blank" class="prodi-link">Psikologi</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">Hukum</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://law.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Hukum</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">FEB (Ekonomi)</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://manajemen.feb.ugm.ac.id" target="_blank" class="prodi-link">Manajemen</a></li>
-                                        <li><a href="https://akuntansi.feb.ugm.ac.id" target="_blank" class="prodi-link">Akuntansi</a></li>
-                                        <li><a href="https://economics.feb.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Ekonomi</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  
-                 <!-- Agro -->
-                 <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
-                    <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition focus:outline-none" onclick="toggleAccordion('agro')">
-                        <span class="font-bold text-ugm-blue text-base md:text-lg flex items-center gap-2"><i class="fas fa-seedling text-sm"></i> Klaster Agro</span>
-                        <i id="icon-agro" class="fas fa-chevron-down text-gray-400 transition-transform text-sm"></i>
-                    </button>
-                    <div id="content-agro" class="hidden px-6 py-5 bg-gray-50 text-sm text-gray-700">
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="font-bold text-ugm-blue mb-2 text-base">Fakultas Pertanian</h4>
-                                <ul class="list-disc list-inside ml-2 space-y-1 text-xs">
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Agronomi</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Hasil Perikanan</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Proteksi Tanaman</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Penyuluhan dan Komunikasi Pertanian</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Mikrobiologi Pertanian</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Manajemen Sumberdaya Akuatik</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Ilmu Tanah</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Ekonomi Pertanian dan Agribisnis</a></li>
-                                    <li><a href="https://faperta.ugm.ac.id" target="_blank" class="prodi-link">Akuakultur</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <div class="mb-4">
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">Teknologi Pertanian (FTP)</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://s1tphp.tp.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Pangan dan Hasil Pertanian</a></li>
-                                        <li><a href="https://tp.ugm.ac.id" target="_blank" class="prodi-link">Teknologi Industri Pertanian</a></li>
-                                        <li><a href="https://tp.ugm.ac.id" target="_blank" class="prodi-link">Teknik Pertanian</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">Fakultas Peternakan</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://fapet.ugm.ac.id" target="_blank" class="prodi-link">Ilmu dan Industri Peternakan</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-ugm-blue mb-2 text-base">Kehutanan & Kedokteran Hewan</h4>
-                                    <ul class="list-disc list-inside ml-2 text-xs">
-                                        <li><a href="https://fkt.ugm.ac.id" target="_blank" class="prodi-link">Kehutanan</a></li>
-                                        <li><a href="https://fkh.ugm.ac.id" target="_blank" class="prodi-link">Kedokteran Hewan</a></li>
-                                    </ul>
-                                </div>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Teknologi Pertanian (FTP)</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Teknik Pertanian</li><li>Teknologi Industri Pertanian</li><li>Teknologi Pangan & Hasil Pertanian</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Peternakan</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Ilmu & Industri Peternakan</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Kehutanan</h4>
+                                <ul class="list-disc list-inside text-xs ml-2 mb-4"><li>Kehutanan</li></ul>
+                                <h4 class="font-bold text-ugm-blue mb-2">Fakultas Kedokteran Hewan</h4>
+                                <ul class="list-disc list-inside text-xs ml-2"><li>Kedokteran Hewan</li></ul>
                             </div>
                         </div>
                     </div>
@@ -526,7 +627,7 @@
             </div>
 
             <div class="flex justify-center" data-aos="fade-up">
-                <a href="https://pionir.ugm.ac.id/kembaraloka/" target="_blank" class="px-8 py-4 bg-white border-2 border-ugm-blue text-ugm-blue rounded-full font-bold text-base hover:bg-ugm-blue hover:text-white transition flex items-center gap-3 shadow-lg group">
+                <a href="https://pionir.ugm.ac.id/kembaraloka/" target="_blank" class="px-10 py-4 bg-white border-2 border-ugm-blue text-ugm-blue rounded-full font-bold text-base hover:bg-ugm-blue hover:text-white transition flex items-center gap-3 shadow-lg group hover-lift">
                     <i class="fas fa-vr-cardboard text-2xl group-hover:text-yellow-400 transition"></i> 
                     <span>Jalan-Jalan Virtual (Kembara Loka)</span>
                 </a>
@@ -534,12 +635,229 @@
         </div>
     </section>
 
-    <!-- Jalur Masuk (Updated Grid for 4 Items) -->
-    <section id="jalur" class="py-12 bg-white">
+    <!-- FASILITAS KAMPUS (UI OVERHAUL) -->
+    <section id="fasilitas" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-ugm-blue">Fasilitas Kampus</h2>
+                <div class="w-24 h-1.5 bg-ugm-yellow mx-auto mt-4 mb-4 rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Klik pada kartu fasilitas untuk melihat suasana kampus melalui galeri video TikTok.</p>
+            </div>
+
+            <!-- Facilities Grid (Bento Style) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- 1. Rumah Ibadah -->
+                <div onclick="openTikTokModal('ibadah')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-ibadah" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-place-of-worship text-ugm-yellow"></i> Kompleks Rumah Ibadah</h4>
+                        <p class="text-sm text-gray-600">Pusat kerohanian toleransi. Terdapat Masjid Kampus, Gereja Katolik & Kristen, Wihara, Kelenteng, dan Pura dalam satu area terpadu.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Wisdom Park -->
+                <div onclick="openTikTokModal('wisdom')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-wisdom" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-tree text-ugm-yellow"></i> Wisdom Park</h4>
+                        <p class="text-sm text-gray-600">Taman lembah UGM untuk jogging dan rekreasi. Terbuka untuk umum dengan pemandangan danau dan rimbun pepohonan.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Bus Tayogama -->
+                <div onclick="openTikTokModal('tayo')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-tayo" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-bus text-ugm-yellow"></i> Bus Listrik Tayogama</h4>
+                        <p class="text-sm text-gray-600">Transportasi kampus GRATIS berbasis listrik yang ramah lingkungan. Menghubungkan berbagai klaster fakultas dengan jadwal rutin dan halte yang nyaman.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Toyagama -->
+                <div onclick="openTikTokModal('toya')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-toya" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-tint text-ugm-yellow"></i> Toyagama</h4>
+                        <p class="text-sm text-gray-600">Sistem Penyediaan Air Minum (SPAM) UGM. Mahasiswa bisa isi ulang botol minum GRATIS di berbagai water station kampus.</p>
+                    </div>
+                </div>
+
+                <!-- 5. GIK -->
+                <div onclick="openTikTokModal('gik')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-gik" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-lightbulb text-ugm-yellow"></i> GIK (Gelanggang Inovasi)</h4>
+                        <p class="text-sm text-gray-600">Pusat kreativitas mahasiswa super modern & terbesar. Tempat kolaborasi lintas disiplin, pameran seni, amphitheater, dan inovasi teknologi.</p>
+                    </div>
+                </div>
+
+                <!-- 6. Perpustakaan Pusat -->
+                <div onclick="openTikTokModal('perpus')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-perpus" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-book text-ugm-yellow"></i> Perpustakaan Pusat</h4>
+                        <p class="text-sm text-gray-600 mb-2">Gedung ikonik dengan koleksi lengkap, ruang diskusi nyaman, cafe, & museum. Tempat nugas paling nyaman.</p>
+                        <span class="text-xs text-blue-600 font-semibold bg-blue-50 px-2 py-1 rounded">Klik untuk lihat Unit Perpustakaan lainnya</span>
+                    </div>
+                </div>
+
+                <!-- 7. GOR Pancasila -->
+                <div onclick="openTikTokModal('gor')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-gor" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-basketball-ball text-ugm-yellow"></i> GOR Pancasila</h4>
+                        <p class="text-sm text-gray-600">Gelanggang olahraga indoor untuk basket, voli, bulutangkis, serta venue konser dan acara besar mahasiswa.</p>
+                    </div>
+                </div>
+                
+                 <!-- 8. Stadion Pancasila -->
+                <div onclick="openTikTokModal('stadion')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-stadion" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-running text-ugm-yellow"></i> Stadion Pancasila</h4>
+                        <p class="text-sm text-gray-600">Lapangan sepak bola dan atletik luas. Pusat kegiatan UKM olahraga dan Porsenigama.</p>
+                    </div>
+                </div>
+
+                <!-- 9. Kantin UGM -->
+                <div onclick="openTikTokModal('kantin')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-kantin" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-utensils text-ugm-yellow"></i> Kantin & Food Court</h4>
+                        <p class="text-sm text-gray-600">Surga kuliner mahasiswa! Bonbin, Pujale, Plaza Agro, dan kantin fakultas menyediakan makanan enak, murah, dan higienis.</p>
+                    </div>
+                </div>
+
+                 <!-- 10. GMC & Klinik -->
+                <div onclick="openTikTokModal('gmc')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-gmc" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-clinic-medical text-ugm-yellow"></i> GMC & Klinik Korpagama</h4>
+                        <p class="text-sm text-gray-600">Fasilitas kesehatan primer gratis bagi mahasiswa yang memindahkan faskes BPJS. Dokter umum, gigi, dan spesialis tersedia.</p>
+                    </div>
+                </div>
+
+                 <!-- 11. Co-working Space -->
+                <div onclick="openTikTokModal('cowork')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-cowork" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-laptop text-ugm-yellow"></i> Co-working Space</h4>
+                        <p class="text-sm text-gray-600">Ruang belajar modern tersebar di fakultas. Desain nyaman, stopkontak banyak, dan Wi-Fi kencang untuk produktivitas.</p>
+                    </div>
+                </div>
+
+                 <!-- 12. Grha Sabha Permana -->
+                <div onclick="openTikTokModal('gsp')" class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition border border-gray-100 cursor-pointer h-full flex flex-col hover-lift">
+                    <div id="carousel-gsp" class="relative w-full h-56 overflow-hidden bg-gray-200"></div>
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-lg text-ugm-blue mb-2 flex items-center gap-2"><i class="fas fa-building text-ugm-yellow"></i> Grha Sabha Permana (GSP)</h4>
+                        <p class="text-sm text-gray-600">Gedung ikonik pusat wisuda, pameran buku, job fair, dan acara seremonial universitas.</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- UGM Residence (Asrama) -->
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden" data-aos="fade-up">
+                <div class="bg-ugm-blue p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/10"></div>
+                    <img src="https://img.sanishtech.com/u/cc859808cc7f04d8e1c29d662e7ebfd7.jpg" alt="Logo UGM Residence" class="h-24 mx-auto mb-4 rounded-full border-4 border-white/20 shadow-lg relative z-10 hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold text-white relative z-10">Asrama Mahasiswa (UGM Residence)</h3>
+                    <p class="text-gray-200 text-sm mt-2 relative z-10 font-medium">"Rumah Kedua" yang nyaman, aman, dan strategis khusus untuk mahasiswa baru.</p>
+                </div>
+                
+                <div class="p-8 bg-gray-50">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <!-- Putra -->
+                        <div>
+                            <h4 class="font-bold text-ugm-blue mb-6 border-b-2 border-ugm-yellow pb-2 flex items-center gap-2 text-lg"><i class="fas fa-male text-2xl text-ugm-yellow"></i> Asrama Putra</h4>
+                            <div class="space-y-4">
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-blue-200">
+                                    <img src="https://image2url.com/r2/bucket1/images/1768053227239-1c240811-4ba6-4aeb-a6f5-efe0d0c880d8.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Darmaputera Baciro</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Gondokusuman • Kapasitas: 358</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Lokasi di tengah kota, dekat stasiun Lempuyangan. Suasana tenang dan kekeluargaan yang erat.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-blue-200">
+                                    <img src="https://image2url.com/r2/bucket2/images/1768055554051-23fde7b2-c9cd-42c3-b613-958a4013a576.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Darmaputera Karanggayam</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Depok, Sleman • Kapasitas: 286</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Sangat dekat dengan Fakultas MIPA, Teknik, dan Kehutanan. Lingkungan sangat akademis.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-blue-200">
+                                    <img src="https://image2url.com/r2/bucket2/images/1768055462198-60c4650a-b560-4923-9bfc-3bab4ca2041d.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Darmaputera Santren</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Depok, Sleman • Kapasitas: 384</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Dekat dengan lembah UGM dan area kuliner murah Klebengan. Fasilitas olahraga memadai.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Putri -->
+                         <div>
+                            <h4 class="font-bold text-ugm-blue mb-6 border-b-2 border-ugm-yellow pb-2 flex items-center gap-2 text-lg"><i class="fas fa-female text-2xl text-ugm-yellow"></i> Asrama Putri</h4>
+                            <div class="space-y-4 h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-pink-200">
+                                    <img src="https://image2url.com/r2/bucket1/images/1768050011139-b68dfd61-e2ca-4560-b91a-a022fbc2982a.jpg" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Ratnaningsih Bulaksumur</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Bulaksumur • Kapasitas: 336</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Lokasi premium di dalam kampus, sangat dekat dengan GSP, Peternakan, dan FIB.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-pink-200">
+                                    <img src="https://image2url.com/r2/bucket2/images/1768050158920-bee3d0a6-1db9-4afa-acdd-924d941b11ce.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Ratnaningsih Sagan</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Gondokusuman • Kapasitas: 105</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Suasana "homey" seperti di rumah, dekat dengan pusat belanja dan kuliner Sagan/Galeria.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-pink-200">
+                                    <img src="https://image2url.com/r2/bucket1/images/1768052661949-e5e15014-c460-469c-ab74-256da019ef10.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Ratnaningsih Kinanti 2 & 3</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Mlati, Sleman • Kapasitas: 368</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Bangunan baru bertingkat dengan fasilitas modern dan sistem keamanan 24 jam.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-pink-200">
+                                    <img src="https://image2url.com/r2/bucket1/images/1768052827851-2477facf-a9eb-422d-a82d-b9de06e352b1.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Ratnaningsih Sendowo</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Mlati, Sleman • Kapasitas: 360</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Sangat dekat dengan RS Sardjito, FKKMK, dan Kedokteran Gigi. Strategis.</p>
+                                    </div>
+                                </div>
+                                 <div class="flex gap-4 items-start p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-gray-100 hover:border-pink-200">
+                                    <img src="https://image2url.com/r2/bucket2/images/1768053015789-f801f63c-6eb5-4148-94e1-c8e9e5cd3a21.png" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h5 class="font-bold text-ugm-blue">Ratnaningsih Kinanti 1</h5>
+                                        <p class="text-xs text-gray-500 mt-1 mb-2 font-semibold">Depok, Sleman • Kapasitas: 580</p>
+                                        <p class="text-xs text-gray-700 leading-relaxed">Kompleks asrama putri terbesar. Dekat dengan akses Jalan Kaliurang dan kuliner.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Jalur Masuk & Beasiswa Sections (RESTORED FULLY) -->
+     <section id="jalur" class="py-12 bg-white">
+        <!-- ... Jalur Masuk Content (SNBP, SNBT, Mandiri, IUP) ... -->
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Jalur Masuk UGM</h2>
-                <div class="w-20 h-1 bg-ugm-yellow mx-auto mt-4"></div>
+                <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-ugm-blue">Jalur Masuk UGM</h2>
+                <div class="w-20 h-1.5 bg-ugm-yellow mx-auto mt-4 rounded-full"></div>
             </div>
 
             <div class="w-full max-w-5xl mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up">
@@ -549,7 +867,7 @@
             <!-- Changed Grid to 4 Columns -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- SNBP -->
-                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Prestasi</div>
                     <div class="h-16 mb-2 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket1/images/1768046897829-7c19519f-d1d8-4138-a66e-c91d4e751a04.png" class="h-full object-contain">
@@ -558,14 +876,14 @@
                         <i class="fas fa-medal text-xl text-blue-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBP</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Seleksi Nasional Berdasarkan Prestasi. Menggunakan nilai rapor semester 1-5 dan portofolio (Seni/Olahraga).</p>
                     <button onclick="openGenericModal('snbp-modal')" class="w-full py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap SNBP
                     </button>
                 </div>
 
                 <!-- SNBT -->
-                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+                <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="200">
                     <div class="absolute top-0 right-0 bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-bl-lg font-bold">Tes Tulis</div>
                     <div class="h-16 mb-2 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket3/images/1768046827027-a25bd4ad-413f-466c-a4f3-9f10a50d6b21.png" class="h-full object-contain">
@@ -574,14 +892,14 @@
                         <i class="fas fa-pencil-alt text-xl text-yellow-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">SNBT</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Menggunakan tes UTBK SNPMB.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Menggunakan tes UTBK SNPMB. Kesempatan 1x per tahun, maksimal 3x pasca lulus.</p>
                     <button onclick="openGenericModal('snbt-modal')" class="w-full py-2 border border-yellow-600 text-yellow-600 rounded hover:bg-yellow-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap SNBT
                     </button>
                 </div>
 
                 <!-- Mandiri -->
-                <div class="border border-ugm-blue/30 bg-ugm-blue/5 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
+                <div class="border border-ugm-blue/30 bg-ugm-blue/5 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="300">
                     <div class="absolute top-0 right-0 bg-ugm-blue text-white text-xs px-3 py-1 rounded-bl-lg font-bold">Khas UGM</div>
                     <div class="h-16 mb-2 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-full object-contain">
@@ -590,14 +908,14 @@
                         <i class="fas fa-university text-xl text-ugm-blue"></i>
                         <h3 class="text-xl font-bold text-gray-800">Mandiri</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">UM-CBT (Tes) & Jalur PBU (Prestasi/Afirmasi).</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">Terdiri dari UM-CBT (Tes Tulis) & Jalur PBU (Prestasi/Afirmasi/Kemitraan/3T).</p>
                     <button onclick="document.getElementById('um-modal').classList.remove('hidden')" class="w-full py-2 bg-ugm-blue text-white rounded hover:bg-blue-900 transition font-semibold text-sm">
                         Info Lengkap UM UGM
                     </button>
                 </div>
 
                 <!-- IUP (New Card) -->
-                <div class="border border-purple-200 bg-purple-50 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full" data-aos="fade-up" data-aos-delay="400">
+                <div class="border border-purple-200 bg-purple-50 rounded-xl p-6 hover:shadow-xl transition relative overflow-hidden flex flex-col h-full hover-lift" data-aos="fade-up" data-aos-delay="400">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">International</div>
                     <div class="h-16 mb-2 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-full object-contain">
@@ -606,7 +924,7 @@
                         <i class="fas fa-globe text-xl text-purple-600"></i>
                         <h3 class="text-xl font-bold text-gray-800">IUP UGM</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">International Undergraduate Program. Kelas Bahasa Inggris & Exposure Global.</p>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-grow text-center">International Undergraduate Program. Kelas Bahasa Inggris 100%, Double Degree, & Exposure Global.</p>
                     <button onclick="openGenericModal('iup-modal')" class="w-full py-2 border border-purple-600 text-purple-600 rounded hover:bg-purple-600 hover:text-white transition font-semibold text-sm">
                         Info Lengkap IUP
                     </button>
@@ -615,390 +933,30 @@
         </div>
     </section>
 
-    <!-- Generic Modal Wrapper -->
-    <div id="generic-modal" class="hidden fixed inset-0 z-[75] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto relative">
-            <button onclick="document.getElementById('generic-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-            <div id="generic-modal-content"></div>
-        </div>
-    </div>
-
-    <!-- Hidden Content for SNBP/SNBT/IUP -->
-    <div class="hidden">
-        <!-- SNBP Content -->
-        <div id="snbp-modal-content">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket1/images/1768046897829-7c19519f-d1d8-4138-a66e-c91d4e751a04.png" class="h-20 mx-auto mb-2 object-contain">
-                <h3 class="text-2xl font-bold text-ugm-blue">SNBP 2025</h3>
-                <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Prestasi</p>
-            </div>
-            <div class="space-y-4 text-sm text-gray-700">
-                <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-600">
-                    <h4 class="font-bold text-blue-800">📌 Prinsip Seleksi</h4>
-                    <p>Berdasarkan nilai akademik saja atau nilai akademik + prestasi lainnya. Biaya seleksi <strong>GRATIS</strong> (ditanggung pemerintah).</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Syarat Siswa (Eligible)</h4>
-                    <ul class="list-disc list-inside ml-2">
-                        <li>Siswa SMA/SMK/MA kelas 12 pada tahun 2025.</li>
-                        <li>Memiliki prestasi akademik unggul dan terdaftar di PDSS.</li>
-                        <li>Memiliki NISN dan terdaftar di SNPMB.</li>
-                        <li>Wajib unggah <strong>Portofolio</strong> bagi pemilih prodi Seni & Olahraga.</li>
-                    </ul>
-                </div>
-                <div class="mt-4 text-center">
-                    <a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SNBT Content -->
-        <div id="snbt-modal-content">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket3/images/1768046827027-a25bd4ad-413f-466c-a4f3-9f10a50d6b21.png" class="h-20 mx-auto mb-2 object-contain">
-                <h3 class="text-2xl font-bold text-ugm-blue">SNBT 2025</h3>
-                <p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Tes (UTBK)</p>
-            </div>
-            <div class="space-y-4 text-sm text-gray-700">
-                <div class="bg-yellow-50 p-4 rounded border-l-4 border-yellow-600">
-                    <h4 class="font-bold text-yellow-800">📌 Materi UTBK</h4>
-                    <ul class="list-disc list-inside ml-1 mt-1">
-                        <li><strong>Tes Potensi Skolastik (TPS):</strong> Kemampuan Kognitif, Logika, Bacaan.</li>
-                        <li><strong>Literasi:</strong> Bahasa Indonesia & Bahasa Inggris.</li>
-                        <li><strong>Penalaran Matematika.</strong></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Ketentuan Umum & Kesempatan Tes</h4>
-                    <ul class="list-disc list-inside ml-2">
-                        <li>Peserta: Siswa lulusan 2025, 2024, dan 2023.</li>
-                        <li>Biaya UTBK: <strong>Rp200.000,-</strong> (kecuali peserta KIP Kuliah).</li>
-                        <li><strong>Frekuensi Tes:</strong> Kesempatan tes <strong>1x per tahun</strong>.</li>
-                        <li><strong>Batas Maksimal:</strong> Maksimal mengikuti 3x pasca lulus SMA (jika lebih harus mengulang Paket C).</li>
-                    </ul>
-                </div>
-                <div class="mt-4 text-center">
-                    <a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- IUP Content -->
-        <div id="iup-modal-content">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket1/images/1768047047114-31375ffd-fae4-44a8-8d16-922dba587260.png" class="h-20 mx-auto mb-2 object-contain">
-                <h3 class="text-2xl font-bold text-ugm-blue">International Undergraduate Program (IUP)</h3>
-                <p class="text-gray-500 text-sm">Global Experience & World Class Education</p>
-            </div>
-            <div class="space-y-5 text-sm text-gray-700 h-96 overflow-y-auto pr-2">
-                <div class="bg-purple-50 p-4 rounded border-l-4 border-purple-600">
-                    <h4 class="font-bold text-purple-800 mb-2">🌟 Keunggulan Utama</h4>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li><strong>Eksposur Internasional:</strong> Wajib/opsional exchange ke mitra (Eropa, Australia, Asia).</li>
-                        <li><strong>Double Degree:</strong> Peluang dapat 2 gelar (UGM + Univ Mitra).</li>
-                        <li><strong>Bahasa Inggris 100%:</strong> Perkuliahan full English.</li>
-                        <li><strong>Dosen Tamu Asing:</strong> Pengajar dari luar negeri setiap semester.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Fakultas Penyelenggara</h4>
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <ul class="list-disc list-inside">
-                            <li><strong>FEB:</strong> Manajemen, Akuntansi, Ilmu Ekonomi.</li>
-                            <li><strong>Hukum:</strong> Law (Double Degree Maastricht, Groningen).</li>
-                            <li><strong>Psikologi:</strong> Double Degree Leeds, Exchange Groningen.</li>
-                        </ul>
-                        <ul class="list-disc list-inside">
-                            <li><strong>Teknik:</strong> Sipil, Mesin, Kimia, Elektro, dll.</li>
-                            <li><strong>FKKMK:</strong> Kedokteran (Visiting Professor).</li>
-                            <li><strong>MIPA:</strong> Ilmu Komputer, Kimia, Elektronika.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">💰 Struktur Biaya</h4>
-                    <p class="mb-2">Berbeda dengan Reguler, biaya IUP terdiri dari:</p>
-                    <ul class="list-disc list-inside ml-2">
-                        <li><strong>UKT (Tuition Fee):</strong> Dibayar per semester (Flat/Tetap).</li>
-                        <li><strong>IPI (Institutional Development Fee):</strong> Dibayar 1x di awal masuk.</li>
-                    </ul>
-                    <p class="text-xs italic mt-1 text-gray-500">*Nominal bervariasi tergantung fakultas & kewarganegaraan (WNI/WNA).</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- UM UGM Detail Modal (Updated PBU Content) -->
-    <div id="um-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h3 class="text-2xl font-bold text-ugm-blue">Detail Lengkap UM UGM 2025</h3>
-                <button onclick="document.getElementById('um-modal').classList.add('hidden')" class="text-gray-500 hover:text-red-500">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-            
-            <div class="space-y-8">
-                <!-- UM-CBT Section -->
-                <div>
-                    <h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2">
-                        <i class="fas fa-laptop-code text-ugm-yellow"></i> 1. UM-CBT (Ujian Tulis)
-                    </h4>
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
-                         <p class="text-sm text-red-700 font-bold">Syarat Wajib:</p>
-                         <p class="text-sm text-red-600">Peserta WAJIB mengikuti UTBK-SNBT 2025 karena skor UTBK menjadi syarat.</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700 mb-4">
-                        <div class="bg-gray-50 p-3 rounded">
-                            <strong>Lokasi:</strong> Yogyakarta, Jakarta, Medan, Pekanbaru, Balikpapan, dll.
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded">
-                            <strong>Materi:</strong> TKA (Saintek/Soshum) sesuai prodi pilihan.
-                        </div>
-                    </div>
-                    <div class="border border-yellow-200 bg-yellow-50 p-4 rounded-lg">
-                        <h5 class="font-bold text-sm text-yellow-800 mb-2">📚 Materi Uji TKA 2025 (Baru!)</h5>
-                        <p class="text-sm text-gray-700 mb-3">
-                            Tahun 2025, subtes TKA berbeda-beda tergantung pilihan program studi yang kamu ambil. Pastikan cek tabel mata ujinya!
-                        </p>
-                        <a href="https://um.ugm.ac.id/wp-content/uploads/2025/03/Mata-Uji-UM-UGM-CBT-Tahun-2025_REV.pdf" target="_blank" class="inline-block px-4 py-2 bg-ugm-blue text-white text-sm rounded hover:bg-blue-900 transition">
-                            <i class="fas fa-file-pdf mr-2"></i> Download Tabel Mata Uji TKA 2025
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PBU Section (HEAVILY UPDATED CONTENT) -->
-                <div>
-                    <h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2">
-                        <i class="fas fa-award text-ugm-yellow"></i> 2. Jalur PBU (Tanpa Tes Tulis)
-                    </h4>
-                    <div class="space-y-4">
-                        <!-- PBUB -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🏆 PBU Berprestasi (PBUB)</h5>
-                            <p class="text-sm text-gray-600 mb-2">Untuk siswa dengan prestasi di bidang IPTEK, Olahraga, atau Seni.</p>
-                            <ul class="text-xs text-gray-500 list-disc list-inside">
-                                <li>Juara Lomba Tingkat Provinsi (Juara 1), Nasional/Internasional (Juara 1-3).</li>
-                                <li>Termasuk Hafiz Al-Qur'an (minimal hafalan tertentu).</li>
-                                <li>Ketua OSIS (kadang masuk kategori khusus/kemitraan sekolah).</li>
-                            </ul>
-                        </div>
-
-                        <!-- PBUTM -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🤝 PBU Tidak Mampu (PBUTM)</h5>
-                            <p class="text-sm text-gray-600 mb-2">Jalur afirmasi bagi siswa berprestasi akademik tinggi namun terkendala ekonomi.</p>
-                            <ul class="text-xs text-gray-500 list-disc list-inside">
-                                <li>Pemegang KIP-K atau masuk DTKS Kemensos.</li>
-                                <li>Direkomendasikan sekolah (masuk 25% terbaik di kelas).</li>
-                                <li>UKT akan disesuaikan dengan kemampuan ekonomi (bisa UKT 0).</li>
-                            </ul>
-                        </div>
-
-                        <!-- PBUK -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🏢 PBU Kemitraan (PBUK)</h5>
-                            <p class="text-sm text-gray-600 mb-2">Kerjasama antara UGM dengan Pemda/Instansi/Perusahaan untuk pembangunan daerah.</p>
-                            <ul class="text-xs text-gray-500 list-disc list-inside">
-                                <li>Diusulkan oleh mitra yang memiliki MoU dengan UGM.</li>
-                                <li>Adanya komitmen pendanaan (biaya kuliah ditanggung mitra).</li>
-                            </ul>
-                        </div>
-
-                        <!-- PBU 3T -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
-                            <h5 class="font-bold text-ugm-blue text-lg mb-2">🇮🇩 PBU Afirmasi & 3T</h5>
-                            <p class="text-sm text-gray-600">Khusus bagi putra-putri daerah Tertinggal, Terdepan, dan Terluar (3T) atau wilayah afirmasi khusus untuk pemerataan pendidikan.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scholarship Detail Modal -->
-    <div id="scholarship-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8 max-h-[90vh] overflow-y-auto relative">
-            <button onclick="document.getElementById('scholarship-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-            <div id="scholarship-modal-content">
-                <!-- Content will be injected here via JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- UKT Reassurance Modal -->
-    <div id="ukt-reassurance-modal" class="hidden fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center relative animate-fade-in-up">
-            <button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            
-            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-heart text-4xl text-blue-500 animate-pulse"></i>
-            </div>
-            
-            <h3 class="text-2xl font-bold text-ugm-blue mb-4">Tenang, Jangan Panik Dulu! 💙</h3>
-            
-            <div class="text-gray-600 space-y-4 text-sm leading-relaxed mb-8">
-                <p>
-                    Jangan khawatir masalah biaya. UGM berkomitmen tidak ada mahasiswa yang putus kuliah (DO) karena kendala biaya.
-                </p>
-                <p>
-                    Jangan takut mendapat UKT "rata kanan" jika kondisi ekonomi memang tidak mencukupi. Sistem UGM adil, kamu bisa mengajukan <strong>Banding UKT</strong> di awal dan <strong>Penundaan/Keringanan</strong> setiap semester.
-                </p>
-                <p class="font-semibold text-ugm-blue">
-                    Sekarang tugasmu hanya satu: Fokus Belajar & Masuk Kampus Dulu!
-                </p>
-                <p>
-                    Urusan daftar ulang, UKT, kos, dan biaya hidup kita pikirkan bersama setelah kamu dinyatakan lolos seleksi. Semangat! ✊
-                </p>
-            </div>
-            
-            <button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="px-8 py-3 bg-ugm-blue text-white rounded-full font-bold hover:bg-blue-900 transition shadow-lg w-full">
-                Siap, Saya Mengerti!
-            </button>
-        </div>
-    </div>
-
-    <!-- Hidden Scholarship Content Sources -->
-    <div class="hidden">
-        <!-- KIP K Content -->
-        <div id="content-kip">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket1/images/1767994442917-b7b41c85-7e3e-4249-8048-75389b945153.png" alt="Logo KIP-K" class="h-20 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">KIP Kuliah</h3>
-                <p class="text-sm text-gray-500 mt-2 font-semibold">Pemerintah Indonesia</p>
-                <p class="text-xs text-gray-400 mt-1">Bantuan Pemerintah untuk Mahasiswa Berprestasi dengan Keterbatasan Ekonomi</p>
-            </div>
-            
-            <div class="space-y-6 text-sm text-gray-700">
-                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
-                    <h4 class="font-bold text-blue-800 mb-2"><i class="fas fa-gift mr-2"></i>Benefit & Fasilitas</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-1">
-                        <li><strong>Bebas Biaya Pendidikan:</strong> UKT dibayarkan penuh oleh pemerintah (Rp0,-) selama 8 semester.</li>
-                        <li><strong>Biaya Hidup (Living Cost):</strong> Diterima mahasiswa sebesar <strong>Rp1.100.000 per bulan</strong> (mengikuti indeks harga Klaster 2 wilayah Sleman/Yogyakarta).</li>
-                        <li><strong>Pencairan:</strong> Dana biaya hidup langsung diterima mahasiswa mulai <strong>Semester 1</strong>.</li>
-                        <li>Tidak ada biaya pendaftaran seleksi masuk PTN (SNBP/SNBT).</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue mb-2 border-b pb-1">📋 Persyaratan Utama</h4>
-                    <ul class="list-disc list-inside space-y-1 ml-2">
-                        <li>Siswa lulusan tahun berjalan (2025) atau maksimal 2 tahun sebelumnya (2024, 2023).</li>
-                        <li>Memiliki potensi akademik baik tetapi memiliki keterbatasan ekonomi.</li>
-                        <li>Lulus seleksi penerimaan mahasiswa baru di PTN.</li>
-                        <li><strong>Prioritas:</strong> Pemegang KIP SMA, terdata di DTKS Kemensos, atau Pensasaran Percepatan Penghapusan Kemiskinan Ekstrem (P3KE).</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue mb-2 border-b pb-1">⚙️ Prosedur</h4>
-                    <ol class="list-decimal list-inside space-y-2 ml-2">
-                        <li>Daftar akun di <a href="https://kip-kuliah.kemdikbud.go.id" class="text-blue-600 underline">kip-kuliah.kemdikbud.go.id</a>.</li>
-                        <li>Pilih jalur seleksi (SNBP/SNBT/Mandiri) di dashboard KIP-K.</li>
-                        <li>Jika lolos seleksi masuk, ikuti verifikasi data oleh Ditmawa UGM.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tanoto Content -->
-        <div id="content-tanoto">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket2/images/1768031870024-793d87c5-4cee-4c09-a18c-1c84b275e9a1.png" alt="Logo Tanoto" class="h-16 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Beasiswa Teladan</h3>
-                <p class="text-sm text-gray-500 mt-2 font-semibold">Tanoto Foundation</p>
-                <p class="text-xs text-gray-400 mt-1">Program Kepemimpinan & Beasiswa untuk Mahasiswa S1</p>
-            </div>
-            
-            <div class="space-y-6 text-sm text-gray-700">
-                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-600">
-                    <h4 class="font-bold text-yellow-800 mb-2"><i class="fas fa-gift mr-2"></i>Rincian Benefit Per Semester</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-1">
-                        <li><strong>Biaya Kuliah (UKT):</strong> Ditanggung penuh 100% (hingga Semester 8).</li>
-                        <li><strong>Tunjangan Bulanan:</strong> Uang saku sebesar estimasi <strong>Rp1.000.000+ per bulan</strong> (dibayarkan langsung ke rekening penerima).</li>
-                        <li><strong>Program Pengembangan:</strong> Pelatihan kepemimpinan berjenjang (Lead Self, Lead Others, Lead Professional) dari Semester 2 s.d. lulus.</li>
-                        <li><strong>Global Network:</strong> Kesempatan summer course/exchange ke luar negeri & magang di Royal Golden Eagle (RGE) Group.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue mb-2 border-b pb-1">📋 Syarat Pendaftaran</h4>
-                    <ul class="list-disc list-inside space-y-1 ml-2">
-                        <li>Mahasiswa aktif S1 Reguler UGM <strong>Semester 1</strong>.</li>
-                        <li>Memiliki prestasi akademik yang baik (Min. rata-rata rapor kelas 12 adalah 8.0).</li>
-                        <li>Memiliki pengalaman organisasi dan potensi kepemimpinan yang kuat.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Jardine Content -->
-        <div id="content-jardine">
-            <div class="text-center mb-6">
-                <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Logo Jardine" class="h-20 mx-auto mb-4 object-contain">
-                <h3 class="text-2xl font-heading font-bold text-ugm-blue">Jardine UGM Scholarship</h3>
-                <p class="text-sm text-gray-500 mt-2 font-semibold">Jardine Foundation</p>
-                <p class="text-xs text-gray-400 mt-1">Beasiswa Prestisius Penuh dari Jardine Foundation</p>
-            </div>
-            
-            <div class="space-y-6 text-sm text-gray-700">
-                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-600">
-                    <h4 class="font-bold text-green-800 mb-2"><i class="fas fa-gift mr-2"></i>Rincian Benefit Eksklusif</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-1">
-                        <li><strong>Full Coverage UKT:</strong> Biaya pendidikan ditanggung 100% tanpa potongan hingga lulus (maksimal 8 semester).</li>
-                        <li><strong>Biaya Hidup (Living Allowance):</strong> Tunjangan biaya hidup bulanan yang sangat kompetitif.</li>
-                        <li><strong>Akomodasi:</strong> Bantuan biaya tempat tinggal/kos.</li>
-                        <li>Akses jejaring alumni Jardine Foundation internasional.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-ugm-blue mb-2 border-b pb-1">📋 Kriteria Kandidat</h4>
-                    <ul class="list-disc list-inside space-y-1 ml-2">
-                        <li>Mahasiswa aktif S1 UGM Angkatan 2025 (Semester 1).</li>
-                        <li>Memiliki prestasi akademik SMA/SMK yang luar biasa (Nilai rata-rata rapor sangat tinggi).</li>
-                        <li>Aktif dalam kegiatan ekstrakurikuler (olahraga, seni, atau pengabdian masyarakat).</li>
-                        <li>Memiliki jiwa kepemimpinan dan komitmen tinggi untuk berkontribusi bagi masyarakat.</li>
-                        <li>Tidak sedang menerima beasiswa lain.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Beasiswa Section -->
-    <section id="beasiswa" class="py-12 bg-white">
+     <section id="beasiswa" class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-heading font-bold text-ugm-blue">Info Beasiswa</h2>
+                <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-ugm-blue">Info Beasiswa</h2>
                 <p class="text-gray-600 text-sm md:text-base">Banyak beasiswa terafiliasi Ditmawa UGM yang bisa didaftar sejak Maba (Mahasiswa Baru).</p>
             </div>
 
             <!-- Other Scholarships Cards (Now on Top) -->
             <div class="grid md:grid-cols-3 gap-6 mb-12">
                 <!-- KIP-K -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group hover-lift">
                     <div class="h-16 mb-4 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket1/images/1767994442917-b7b41c85-7e3e-4249-8048-75389b945153.png" alt="KIP Kuliah" class="h-full object-contain group-hover:scale-110 transition duration-300">
                     </div>
                     <h4 class="font-bold text-lg text-ugm-blue">KIP Kuliah</h4>
                     <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Pemerintah Indonesia</p>
-                    <p class="text-sm text-gray-600 flex-grow mb-4">Program pemerintah. Gratis UKT + Biaya Hidup. Harus mendaftar di web Kemendikbud.</p>
+                    <p class="text-sm text-gray-600 flex-grow mb-4">Bantuan Pemerintah untuk Mahasiswa Berprestasi dengan Keterbatasan Ekonomi. Gratis UKT + Living Cost.</p>
                     <button onclick="openScholarshipModal('kip')" class="w-full py-2 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition text-sm font-bold">
                         Lihat Detail Lengkap
                     </button>
                 </div>
 
                 <!-- Tanoto -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group hover-lift">
                     <div class="h-16 mb-4 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket2/images/1768031870024-793d87c5-4cee-4c09-a18c-1c84b275e9a1.png" alt="Tanoto Foundation" class="h-full object-contain group-hover:scale-110 transition duration-300">
                     </div>
@@ -1011,13 +969,13 @@
                 </div>
 
                 <!-- Jardine -->
-                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group">
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition flex flex-col h-full items-center text-center group hover-lift">
                     <div class="h-16 mb-4 flex items-center justify-center">
                         <img src="https://image2url.com/r2/bucket1/images/1767994510660-c007e45d-2174-49c6-8158-2aedd4f42f91.png" alt="Jardine Scholarship" class="h-full object-contain group-hover:scale-110 transition duration-300">
                     </div>
                     <h4 class="font-bold text-lg text-ugm-blue">Jardine Scholarship</h4>
                     <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Jardine Foundation</p>
-                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa swasta prestisius. Full UKT + Biaya Hidup Tinggi.</p>
+                    <p class="text-sm text-gray-600 flex-grow mb-4">Beasiswa swasta prestisius. Full Coverage UKT + Living Cost Tinggi.</p>
                     <button onclick="openScholarshipModal('jardine')" class="w-full py-2 border-2 border-green-600 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition text-sm font-bold">
                         Lihat Detail Lengkap
                     </button>
@@ -1025,22 +983,22 @@
             </div>
 
             <!-- Bayan Peduli Spotlight (Updated Design) -->
-            <div class="bg-bayan-green text-white rounded-3xl shadow-2xl overflow-hidden border border-yellow-400 mb-12" data-aos="zoom-in">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-yellow-400 mb-12" data-aos="zoom-in">
                 <div class="grid md:grid-cols-2">
                     <!-- Image Side -->
                     <div class="relative h-64 md:h-auto bg-white mt-6 md:mt-0">
                         <img src="https://image2url.com/r2/bucket2/images/1768033598626-444ed095-5cc1-49b9-a77c-555b479751df.png" alt="Suasana Bayan" class="w-full h-full object-cover">
                         <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-bayan-green via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-bayan-green via-transparent to-transparent opacity-90"></div>
                         
-                        <!-- Logo (Adjusted Position for Mobile/Desktop) -->
-                        <div class="absolute top-4 right-4 md:bottom-6 md:right-6 md:top-auto w-24 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
-                            <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan" class="w-full object-contain opacity-90">
+                        <!-- Logo (Adjusted Position) -->
+                        <div class="absolute top-4 right-4 md:bottom-6 md:right-6 md:top-auto w-24 p-2">
+                            <img src="https://image2url.com/r2/bucket2/images/1767994353847-361ba4f4-7edf-4bcc-8252-a022096035ca.png" alt="Logo Bayan" class="w-full object-contain opacity-80 filter brightness-0 invert">
                         </div>
                     </div>
 
                     <!-- Content Side -->
-                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                    <div class="p-8 md:p-10 flex flex-col justify-center bg-bayan-green text-white">
                         <div class="mb-4">
                              <div class="inline-flex items-center gap-2 bg-yellow-400 text-bayan-green px-3 py-1 rounded-full text-xs font-bold shadow-md uppercase tracking-wide">
                                 <i class="fas fa-star"></i> Spotlight
@@ -1050,7 +1008,7 @@
                         <p class="mb-6 text-yellow-100 text-sm font-medium">Full Scholarship + High Living Cost</p>
                         
                         <p class="text-sm text-gray-200 mb-6 leading-relaxed border-l-2 border-yellow-400 pl-4">
-                            Beasiswa ini merupakan inisiatif filantropi dari <strong>Dato' Dr. Low Tuck Kwong</strong>, pendiri PT Bayan Resources Tbk. Beliau memiliki komitmen kuat untuk memajukan pendidikan di Indonesia melalui program Bayan Peduli, dengan fokus memberikan akses pendidikan berkualitas bagi mahasiswa berprestasi yang memiliki keterbatasan finansial.
+                            Beasiswa ini merupakan inisiatif filantropi dari <strong>Dato' Dr. Low Tuck Kwong</strong>, pendiri PT Bayan Resources Tbk. Beliau memiliki komitmen kuat untuk memajukan pendidikan di Indonesia melalui program Bayan Peduli.
                         </p>
 
                         <div class="grid gap-4">
@@ -1119,182 +1077,206 @@
         <i id="musicToggleIcon" class="fas fa-volume-up"></i>
     </button>
 
+    <!-- NEW TIKTOK GALLERY MODAL (Vertical Mobile Layout) -->
+    <div id="tiktok-gallery-modal" class="hidden fixed inset-0 z-[90] flex items-center justify-center bg-black/80 backdrop-blur-lg p-4 modal-backdrop">
+        <div class="bg-transparent w-full h-full relative flex flex-col items-center justify-center">
+            <button onclick="document.getElementById('tiktok-gallery-modal').classList.add('hidden')" class="absolute top-4 right-4 text-white hover:text-ugm-yellow transition z-50 bg-black/50 rounded-full p-2">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <h3 id="tiktok-modal-title" class="text-white text-2xl font-bold mb-8 text-center mt-12 md:mt-0 shadow-lg font-heading tracking-wide"></h3>
+            
+            <!-- Horizontal Scroll Container for TikToks (Snap-like feel) -->
+            <div id="tiktok-scroll-container" class="tiktok-scroll-container w-full flex overflow-x-auto gap-6 px-8 pb-8 snap-x snap-mandatory justify-start md:justify-center h-[80vh] items-center tiktok-scrollbar">
+                <!-- Videos injected here -->
+            </div>
+            <p class="text-white/70 text-xs mt-4 animate-pulse md:hidden flex items-center gap-2"><i class="fas fa-arrows-alt-h"></i> Geser untuk video lainnya</p>
+        </div>
+    </div>
+
+    <!-- Other Modals (Preserved) -->
+    <!-- Perpus List Modal -->
+    <div id="perpus-list-modal" class="hidden fixed inset-0 z-[80] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"><div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative h-[80vh] flex flex-col animate-fade-in-up"><button onclick="document.getElementById('perpus-list-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500"><i class="fas fa-times text-xl"></i></button><h3 class="font-bold text-xl text-ugm-blue mb-4">Unit Perpustakaan UGM</h3><div class="overflow-y-auto pr-2 flex-grow text-sm text-gray-700 space-y-2"><p>Selain Perpustakaan Pusat, terdapat unit perpustakaan di setiap fakultas dan sekolah.</p><ul class="list-disc list-inside"><li>Fakultas Biologi</li><li>Fakultas Ekonomika dan Bisnis</li><li>Fakultas Farmasi</li><li>Fakultas Filsafat</li><li>Fakultas Geografi</li><li>Fakultas Hukum</li><li>Fakultas Ilmu Budaya</li><li>Fakultas Ilmu Sosial dan Ilmu Politik</li><li>Fakultas Kedokteran Gigi</li><li>Fakultas Kedokteran Hewan</li><li>Fakultas Kedokteran, Kesehatan Masyarakat, dan Keperawatan</li><li>Fakultas Kehutanan</li><li>Fakultas MIPA</li><li>Fakultas Pertanian</li><li>Fakultas Peternakan</li><li>Fakultas Psikologi</li><li>Fakultas Teknik</li><li>Fakultas Teknologi Pertanian</li><li>Sekolah Pascasarjana</li><li>Sekolah Vokasi</li><li>Kampus Jakarta</li></ul></div></div></div>
+    
+    <!-- Generic Modal Wrapper -->
+    <div id="generic-modal" class="hidden fixed inset-0 z-[75] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm"><div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto relative animate-fade-in-up"><button onclick="document.getElementById('generic-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition"><i class="fas fa-times text-2xl"></i></button><div id="generic-modal-content"></div></div></div>
+    
+    <!-- Scholarship Modal Wrapper -->
+    <div id="scholarship-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm"><div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8 max-h-[90vh] overflow-y-auto relative animate-fade-in-up"><button onclick="document.getElementById('scholarship-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition"><i class="fas fa-times text-2xl"></i></button><div id="scholarship-modal-content"></div></div></div>
+    
+    <!-- UM UGM Modal -->
+    <div id="um-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm"><div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-8 max-h-[90vh] overflow-y-auto relative animate-fade-in-up"><button onclick="document.getElementById('um-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition"><i class="fas fa-times text-2xl"></i></button><div class="flex justify-between items-center mb-6 border-b pb-4"><h3 class="text-2xl font-bold text-ugm-blue">Detail Lengkap UM UGM 2025</h3></div><div class="space-y-8"><div><h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2"><i class="fas fa-laptop-code text-ugm-yellow"></i> 1. UM-CBT (Ujian Tulis)</h4><div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4"><p class="text-sm text-red-700 font-bold">Syarat Wajib:</p><p class="text-sm text-red-600">Peserta WAJIB mengikuti UTBK-SNBT 2025 karena skor UTBK menjadi syarat.</p></div><div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700 mb-4"><div class="bg-gray-50 p-3 rounded"><strong>Lokasi:</strong> Yogyakarta, Jakarta, Medan, Pekanbaru, Balikpapan, dll.</div><div class="bg-gray-50 p-3 rounded"><strong>Materi:</strong> TKA (Saintek/Soshum) sesuai prodi pilihan.</div></div><div class="border border-yellow-200 bg-yellow-50 p-4 rounded-lg"><h5 class="font-bold text-sm text-yellow-800 mb-2">📚 Materi Uji TKA 2025 (Baru!)</h5><p class="text-sm text-gray-700 mb-3">Tahun 2025, subtes TKA berbeda-beda tergantung pilihan program studi yang kamu ambil.</p><a href="https://um.ugm.ac.id/wp-content/uploads/2025/03/Mata-Uji-UM-UGM-CBT-Tahun-2025_REV.pdf" target="_blank" class="inline-block px-4 py-2 bg-ugm-blue text-white text-sm rounded hover:bg-blue-900 transition"><i class="fas fa-file-pdf mr-2"></i> Download Tabel Mata Uji TKA 2025</a></div></div><div><h4 class="font-bold text-xl text-ugm-blue mb-4 flex items-center gap-2"><i class="fas fa-award text-ugm-yellow"></i> 2. Jalur PBU (Tanpa Tes Tulis)</h4><div class="space-y-4"><div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition"><h5 class="font-bold text-ugm-blue text-lg mb-2">🏆 PBU Berprestasi (PBUB)</h5><p class="text-sm text-gray-600 mb-2">Untuk siswa dengan prestasi di bidang IPTEK, Olahraga, atau Seni. Juara Lomba Tingkat Provinsi (Juara 1), Nasional/Internasional (Juara 1-3). Termasuk Hafiz Al-Qur'an. Ketua OSIS.</p></div><div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition"><h5 class="font-bold text-ugm-blue text-lg mb-2">🤝 PBU Tidak Mampu (PBUTM)</h5><p class="text-sm text-gray-600 mb-2">Jalur afirmasi bagi siswa berprestasi akademik tinggi namun terkendala ekonomi. Pemegang KIP-K atau masuk DTKS Kemensos. Rekomendasi sekolah (25% terbaik). UKT disesuaikan (bisa 0).</p></div><div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition"><h5 class="font-bold text-ugm-blue text-lg mb-2">🏢 PBU Kemitraan (PBUK)</h5><p class="text-sm text-gray-600 mb-2">Kerjasama antara UGM dengan Pemda/Instansi/Perusahaan untuk pembangunan daerah. Diusulkan mitra MoU UGM. Adanya komitmen pendanaan.</p></div><div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition"><h5 class="font-bold text-ugm-blue text-lg mb-2">🇮🇩 PBU Afirmasi & 3T</h5><p class="text-sm text-gray-600">Khusus bagi putra-putri daerah Tertinggal, Terdepan, dan Terluar (3T) atau wilayah afirmasi khusus untuk pemerataan pendidikan.</p></div></div></div></div></div></div>
+    
+    <!-- UKT Reassurance Modal -->
+    <div id="ukt-reassurance-modal" class="hidden fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"><div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center relative animate-fade-in-up"><button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button><div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fas fa-heart text-4xl text-blue-500 animate-pulse"></i></div><h3 class="text-2xl font-bold text-ugm-blue mb-4">Tenang, Jangan Panik Dulu! 💙</h3><div class="text-gray-600 space-y-4 text-sm leading-relaxed mb-8"><p>Jangan khawatir masalah biaya. UGM berkomitmen tidak ada mahasiswa yang putus kuliah (DO) karena kendala biaya.</p><p>Jangan takut mendapat UKT "rata kanan". Sistem UGM adil, ada <strong>Banding UKT</strong> dan <strong>Keringanan</strong>.</p><p class="font-semibold text-ugm-blue">Sekarang tugasmu hanya satu: Fokus Belajar & Masuk Kampus Dulu!</p></div><button onclick="document.getElementById('ukt-reassurance-modal').classList.add('hidden')" class="px-8 py-3 bg-ugm-blue text-white rounded-full font-bold hover:bg-blue-900 transition shadow-lg w-full">Siap, Saya Mengerti!</button></div></div>
+    
+    <!-- Hidden Content for Modals (RESTORED COMPLETELY) -->
+    <div class="hidden">
+        <div id="snbp-modal-content"><div class="text-center mb-6"><i class="fas fa-medal text-5xl text-blue-600 mb-3"></i><h3 class="text-2xl font-bold text-ugm-blue">SNBP 2025</h3><p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Prestasi</p></div><div class="space-y-4 text-sm text-gray-700"><div class="bg-blue-50 p-4 rounded border-l-4 border-blue-600"><h4 class="font-bold text-blue-800">📌 Prinsip Seleksi</h4><p>Berdasarkan nilai akademik saja atau nilai akademik + prestasi lainnya. Biaya seleksi <strong>GRATIS</strong> (ditanggung pemerintah).</p></div><div><h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Syarat Siswa (Eligible)</h4><ul class="list-disc list-inside ml-2"><li>Siswa SMA/SMK/MA kelas 12 pada tahun 2025.</li><li>Memiliki prestasi akademik unggul dan terdaftar di PDSS.</li><li>Memiliki NISN dan terdaftar di SNPMB.</li><li>Wajib unggah <strong>Portofolio</strong> bagi pemilih prodi Seni & Olahraga.</li></ul></div><div class="mt-4 text-center"><a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a></div></div></div>
+        <div id="snbt-modal-content"><div class="text-center mb-6"><i class="fas fa-pencil-alt text-5xl text-yellow-600 mb-3"></i><h3 class="text-2xl font-bold text-ugm-blue">SNBT 2025</h3><p class="text-gray-500 text-sm">Seleksi Nasional Berdasarkan Tes (UTBK)</p></div><div class="space-y-4 text-sm text-gray-700"><div class="bg-yellow-50 p-4 rounded border-l-4 border-yellow-600"><h4 class="font-bold text-yellow-800">📌 Materi UTBK</h4><ul class="list-disc list-inside ml-1 mt-1"><li><strong>Tes Potensi Skolastik (TPS):</strong> Kemampuan Kognitif, Logika, Bacaan.</li><li><strong>Literasi:</strong> Bahasa Indonesia & Bahasa Inggris.</li><li><strong>Penalaran Matematika.</strong></li></ul></div><div><h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Ketentuan Umum</h4><ul class="list-disc list-inside ml-2"><li>Peserta: Siswa lulusan 2025, 2024, dan 2023.</li><li>Biaya UTBK: <strong>Rp200.000,-</strong> (kecuali peserta KIP Kuliah).</li><li><strong>Kesempatan Tes:</strong> Hanya <strong>1 kali</strong> per tahun.</li><li><strong>Batas Kepesertaan:</strong> Maksimal 3x pasca lulus SMA. Lebih dari itu wajib Paket C.</li></ul></div><div class="mt-4 text-center"><a href="https://snpmb.bppp.kemdikbud.go.id/" target="_blank" class="text-blue-600 font-bold hover:underline">Kunjungi Website Resmi SNPMB &rarr;</a></div></div></div>
+        <div id="iup-modal-content"><div class="text-center mb-6"><i class="fas fa-globe text-5xl text-purple-600 mb-3"></i><h3 class="text-2xl font-bold text-ugm-blue">IUP UGM</h3><p class="text-gray-500 text-sm">International Undergraduate Program</p></div><div class="space-y-4 text-sm text-gray-700 h-96 overflow-y-auto pr-2"><div class="bg-purple-50 p-4 rounded border-l-4 border-purple-600"><h4 class="font-bold text-purple-800 mb-2">🌟 Keunggulan Utama</h4><ul class="list-disc list-inside space-y-1"><li>Eksposur Internasional (Exchange).</li><li>Double Degree.</li><li>Bahasa Inggris 100%.</li><li>Dosen Tamu Asing.</li><li>Jaringan Global & Prospek Karir Internasional.</li></ul></div><div><h4 class="font-bold text-ugm-blue border-b pb-1 mb-2">Fakultas Penyelenggara</h4><ul class="list-disc list-inside ml-2"><li>FEB, Hukum, Psikologi, Teknik, FKKMK, MIPA, Biologi, Fisipol.</li></ul></div></div></div>
+        <div id="content-kip"><div class="text-center mb-6"><h3 class="text-2xl font-bold text-ugm-blue">KIP Kuliah</h3><p class="text-sm text-gray-500">Pemerintah Indonesia</p></div><div class="space-y-4 text-sm text-gray-700"><h4 class="font-bold text-ugm-blue">Benefit & Fasilitas</h4><ul class="list-disc list-inside"><li>Bebas Biaya Pendidikan (UKT Rp0).</li><li>Biaya Hidup (Living Cost) Rp1.100.000/bulan (cair akhir semester 1).</li><li>Tidak ada biaya pendaftaran seleksi.</li></ul><h4 class="font-bold text-ugm-blue mt-2">Persyaratan</h4><ul class="list-disc list-inside"><li>Lulusan tahun berjalan/maksimal 2 tahun sebelumnya.</li><li>Potensi akademik baik, keterbatasan ekonomi.</li><li>Prioritas: Pemegang KIP SMA, DTKS, P3KE.</li></ul><h4 class="font-bold text-ugm-blue mt-2">Prosedur</h4><ol class="list-decimal list-inside"><li>Daftar akun di kip-kuliah.kemdikbud.go.id.</li><li>Pilih seleksi SNBP/SNBT/Mandiri di dashboard.</li><li>Verifikasi kampus jika lolos.</li></ol></div></div>
+        <div id="content-tanoto"><div class="text-center mb-6"><h3 class="text-2xl font-bold text-ugm-blue">Beasiswa Teladan</h3><p class="text-sm text-gray-500">Tanoto Foundation</p></div><div class="space-y-4 text-sm text-gray-700"><h4 class="font-bold text-ugm-blue">Rincian Benefit</h4><ul class="list-disc list-inside"><li>Biaya Kuliah (UKT) 100% hingga Semester 8.</li><li>Tunjangan Bulanan Rp1.000.000+.</li><li>Program Pengembangan Kepemimpinan Berjenjang.</li><li>Global Network (Summer Course/Exchange/Magang RGE).</li></ul><h4 class="font-bold text-ugm-blue mt-2">Syarat</h4><ul class="list-disc list-inside"><li>Mahasiswa aktif S1 Reguler Semester 1.</li><li>Prestasi akademik baik (Rapor min 8.0).</li><li>Jiwa kepemimpinan kuat.</li></ul></div></div>
+        <div id="content-jardine"><div class="text-center mb-6"><h3 class="text-2xl font-bold text-ugm-blue">Jardine Scholarship</h3><p class="text-sm text-gray-500">Jardine Foundation</p></div><div class="space-y-4 text-sm text-gray-700"><h4 class="font-bold text-ugm-blue">Rincian Benefit Eksklusif</h4><ul class="list-disc list-inside"><li>Full Coverage UKT 100% hingga lulus.</li><li>Living Allowance bulanan yang sangat kompetitif.</li><li>Bantuan biaya Akomodasi/Kos.</li><li>Akses jejaring alumni internasional.</li></ul><h4 class="font-bold text-ugm-blue mt-2">Kriteria</h4><ul class="list-disc list-inside"><li>Mahasiswa aktif S1 Angkatan 2025.</li><li>Prestasi akademik luar biasa.</li><li>Aktif ekstrakurikuler/sosial.</li><li>Jiwa kepemimpinan.</li></ul></div></div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Init Animation on Scroll
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
-
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Accordion Logic
+        AOS.init({duration: 800, once: true});
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         function toggleAccordion(id) {
             const content = document.getElementById(`content-${id}`);
             const icon = document.getElementById(`icon-${id}`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.add('fa-chevron-down');
-                icon.classList.remove('fa-chevron-up');
-            }
+            if (content.classList.contains('hidden')) { content.classList.remove('hidden'); icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } 
+            else { content.classList.add('hidden'); icon.classList.add('fa-chevron-down'); icon.classList.remove('fa-chevron-up'); }
         }
-
-        // Generic Modal Logic for SNBP, SNBT, IUP
         function openGenericModal(contentId) {
             const modal = document.getElementById('generic-modal');
             const container = document.getElementById('generic-modal-content');
             const content = document.getElementById(`${contentId}-content`); 
-            
-            if (content) {
-                container.innerHTML = content.innerHTML;
-                modal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-            }
+            if (content) { container.innerHTML = content.innerHTML; modal.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); }
         }
-
-        // Scholarship Modal Logic
         function openScholarshipModal(id) {
             const modal = document.getElementById('scholarship-modal');
             const modalContent = document.getElementById('scholarship-modal-content');
             const sourceContent = document.getElementById(`content-${id}`);
-            
-            if (sourceContent) {
-                modalContent.innerHTML = sourceContent.innerHTML;
-                modal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden'); // Prevent background scrolling
-            }
+            if (sourceContent) { modalContent.innerHTML = sourceContent.innerHTML; modal.classList.remove('hidden'); document.body.classList.add('overflow-hidden'); }
         }
+        function showUKTReassurance() { document.getElementById('ukt-reassurance-modal').classList.remove('hidden'); }
+        document.querySelectorAll('.fixed').forEach(modal => { modal.addEventListener('click', function(e) { if (e.target === this) { this.classList.add('hidden'); document.body.classList.remove('overflow-hidden'); } }); });
 
-        // Close logic for generic modal
-        document.getElementById('generic-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
+        // TIKTOK GALLERY LOGIC (FIXED IDS & LINKS)
+        const tiktokEmbeds = {
+            'ibadah': [
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBjXJH/" data-video-id="730000001" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBjXJH/">@ugm.id</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBL61j/" data-video-id="730000002" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBL61j/">@ugm.id</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBhqSq/" data-video-id="730000003" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBhqSq/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'wisdom': [
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBrvpA/" data-video-id="730000004" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBrvpA/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5skEC4D/" data-video-id="730000005" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5skEC4D/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5skwjaE/" data-video-id="730000006" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5skwjaE/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBF1bc/" data-video-id="730000007" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBF1bc/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sS2y56/" data-video-id="730000008" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sS2y56/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'tayo': [
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sB6vnx/" data-video-id="730000009" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sB6vnx/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBGYob/" data-video-id="730000010" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBGYob/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sB5J7M/" data-video-id="730000011" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sB5J7M/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'toya': [
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBfadw/" data-video-id="730000012" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBfadw/">@ugm.id</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBPPk5/" data-video-id="730000013" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBPPk5/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'perpus': [
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBscsg/" data-video-id="730000014" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBscsg/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBt47o/" data-video-id="730000015" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBt47o/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBGNsR/" data-video-id="730000016" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBGNsR/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'gik': [
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBs1Qd/" data-video-id="730000017" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBs1Qd/">@ugm.id</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sS6AYc/" data-video-id="730000018" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sS6AYc/">@ugm.id</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBW1CE/" data-video-id="730000019" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBW1CE/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'gor': [
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBwPHj/" data-video-id="730000020" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBwPHj/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sSdbDs/" data-video-id="730000021" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sSdbDs/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sSJ4oR/" data-video-id="730000022" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sSJ4oR/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'stadion': [
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sB3KHH/" data-video-id="730000023" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sB3KHH/">@ugm.id</a> </section> </blockquote>',
+                 '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sS8Pjw/" data-video-id="730000024" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sS8Pjw/">@ugm.id</a> </section> </blockquote>'
+            ],
+            'kantin': [
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sS6eoU/" data-video-id="730000025" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sS6eoU/">Bonbin</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBEDty/" data-video-id="730000026" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBEDty/">Fisipol</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sBoRVF/" data-video-id="730000027" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sBoRVF/">FEB</a> </section> </blockquote>',
+                '<blockquote class="tiktok-embed" cite="https://vt.tiktok.com/ZS5sSebc5/" data-video-id="730000028" style="max-width: 325px;"> <section> <a target="_blank" href="https://vt.tiktok.com/ZS5sSebc5/">FMIPA</a> </section> </blockquote>'
+            ],
+            // For items without specific TikToks provided, use generic hashtag or placeholder
+            'gmc': ['<blockquote class="tiktok-embed" cite="https://www.tiktok.com/tag/gmcugm" data-video-id="7000" style="max-width: 325px;"><section><a target="_blank" href="https://www.tiktok.com/tag/gmcugm">#GMCUGM</a></section></blockquote>'],
+            'cowork': ['<blockquote class="tiktok-embed" cite="https://www.tiktok.com/tag/coworkingugm" data-video-id="7001" style="max-width: 325px;"><section><a target="_blank" href="https://www.tiktok.com/tag/coworkingugm">#CoWorkingUGM</a></section></blockquote>'],
+            'gsp': ['<blockquote class="tiktok-embed" cite="https://www.tiktok.com/tag/gspugm" data-video-id="7002" style="max-width: 325px;"><section><a target="_blank" href="https://www.tiktok.com/tag/gspugm">#GSPUGM</a></section></blockquote>']
+        };
 
-        // Close logic for scholarship modal
-        document.getElementById('scholarship-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
-
-        // UKT Reassurance Modal Logic
-        function showUKTReassurance() {
-            const modal = document.getElementById('ukt-reassurance-modal');
-            modal.classList.remove('hidden');
-            // We don't prevent background scrolling here to keep UX smooth as user might just quickly glance
-        }
-
-        // Navbar Scroll Effect & Back to Top visibility
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const backToTop = document.getElementById('backToTop');
+        function openTikTokModal(type) {
+            const modal = document.getElementById('tiktok-gallery-modal');
+            const container = document.getElementById('tiktok-scroll-container');
+            const title = document.getElementById('tiktok-modal-title');
             
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                backToTop.classList.remove('hidden');
+            const titles = {
+                'ibadah': 'Rumah Ibadah UGM', 'wisdom': 'Wisdom Park', 'tayo': 'Bus Tayogama', 'toya': 'Toyagama', 'perpus': 'Perpustakaan Pusat', 'gik': 'GIK UGM', 'gor': 'GOR Pancasila', 'stadion': 'Stadion Pancasila', 'kantin': 'Kantin UGM', 'gmc': 'Layanan Kesehatan', 'cowork': 'Co-working Space', 'gsp': 'Grha Sabha Permana'
+            };
+
+            title.innerText = titles[type];
+            // Safe check if array exists
+            const embeds = tiktokEmbeds[type] || [];
+            if(embeds.length > 0) {
+                 container.innerHTML = embeds.map(embed => `<div class="tiktok-scroll-item snap-center flex-shrink-0">${embed}</div>`).join('');
             } else {
-                navbar.classList.remove('shadow-lg');
-                backToTop.classList.add('hidden');
+                container.innerHTML = '<p class="text-white text-center w-full">Konten video sedang disiapkan.</p>';
             }
-        });
-        
-        // Prevent right click
-        document.addEventListener('contextmenu', event => event.preventDefault());
+            
+            // Reload scripts to render embeds
+            const script = document.createElement('script');
+            script.src = "https://www.tiktok.com/embed.js";
+            document.body.appendChild(script);
 
-        // --- YOUTUBE API LOGIC ---
+            modal.classList.remove('hidden');
+        }
+
+        // AUDIO & WELCOME LOGIC
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
         var player;
+        
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('music-player', {
-                height: '1',
-                width: '1',
-                videoId: 'qXT0B8ZN3Ls',
-                playerVars: {
-                    'autoplay': 0, // We handle playback manually via button
-                    'controls': 0,
-                    'start': 20, // Start at 0:20
-                    'loop': 1,
-                    'playlist': 'qXT0B8ZN3Ls',
-                    'origin': window.location.origin
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
+                height: '1', width: '1', videoId: 'qXT0B8ZN3Ls',
+                playerVars: { 'autoplay': 0, 'controls': 0, 'start': 20, 'loop': 1, 'playlist': 'qXT0B8ZN3Ls', 'origin': window.location.origin },
+                events: { 'onReady': onPlayerReady }
             });
         }
-
-        function onPlayerReady(event) {
-            event.target.setVolume(50);
-            // Player is ready, but we wait for user interaction (click button)
-        }
-
-        // --- WELCOME OVERLAY LOGIC ---
+        
+        function onPlayerReady(event) { event.target.setVolume(50); }
+        
         function enterSite() {
             const overlay = document.getElementById('welcome-overlay');
-            const bodyContainer = document.getElementById('body-container');
-            const musicBtn = document.getElementById('musicToggle');
-
-            // 1. Fade out overlay
             overlay.style.opacity = '0';
+            // Play Audio on Click
+            if (player && typeof player.playVideo === 'function') { player.playVideo(); }
             
-            // 2. Play Audio (Now allowed by browser because of click)
-            if (player && typeof player.playVideo === 'function') {
-                player.playVideo();
-                player.seekTo(20); // Ensure starts at 20s
-            }
-
-            // 3. Remove overlay from DOM after transition
             setTimeout(() => {
                 overlay.style.display = 'none';
-                // Unlock body scroll if locked (it was overflow-hidden)
-                bodyContainer.classList.remove('h-screen', 'overflow-hidden');
-                // Show floating music toggle
-                musicBtn.classList.remove('hidden');
+                document.getElementById('body-container').classList.remove('h-screen', 'overflow-hidden');
+                document.getElementById('musicToggle').classList.remove('hidden');
             }, 700);
         }
 
-        // --- MUSIC TOGGLE LOGIC ---
         function toggleMusic() {
             if (!player) return;
-            
-            if (player.getPlayerState() === 1) { // Playing
-                player.pauseVideo();
-                updateMusicButton(false);
-            } else {
-                player.playVideo();
-                updateMusicButton(true);
-            }
+            if (player.getPlayerState() === 1) { player.pauseVideo(); updateMusicButton(false); } 
+            else { player.playVideo(); updateMusicButton(true); }
         }
-
+        
         function updateMusicButton(isPlaying) {
             const icon = document.getElementById('musicToggleIcon');
-            if (isPlaying) {
-                icon.classList.remove('fa-volume-mute');
-                icon.classList.add('fa-volume-up');
-            } else {
-                icon.classList.remove('fa-volume-up');
-                icon.classList.add('fa-volume-mute');
-            }
+            if (isPlaying) { icon.classList.remove('fa-volume-mute'); icon.classList.add('fa-volume-up'); } 
+            else { icon.classList.remove('fa-volume-up'); icon.classList.add('fa-volume-mute'); }
         }
+        
+        // Window Scroll Logic
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 50) { navbar.classList.add('shadow-lg'); backToTop.classList.remove('hidden'); } 
+            else { navbar.classList.remove('shadow-lg'); backToTop.classList.add('hidden'); }
+        });
+        
+        document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
