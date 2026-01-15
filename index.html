@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamada Menyapa Sumedang</title>
+    <title>Gamada Menyapa SMAN 7 Tangsel</title>
 
     <link rel="shortcut icon" href="https://image2url.com/r2/default/images/1768364077583-de925df3-7e52-40ad-8f13-a7fe20b214a3.png?v=1">
     <link rel="icon" type="image/png" href="https://image2url.com/r2/default/images/1768364077583-de925df3-7e52-40ad-8f13-a7fe20b214a3.png?v=1">
@@ -1783,8 +1783,6 @@
     </div>
 </div>
     
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -1793,7 +1791,7 @@
     .font-apple { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
     .font-retro { font-family: 'Press Start 2P', cursive; line-height: 1.6; }
 
-    /* Glassmorphism Window (Container Utama) */
+    /* Glassmorphism Window */
     .glass-window {
         background: rgba(255, 255, 255, 0.80);
         backdrop-filter: blur(20px);
@@ -1854,21 +1852,24 @@
 
         <div class="w-full aspect-video bg-black relative group shrink-0">
             <video id="secretVideo" class="w-full h-full object-cover" controls playsinline controlsList="nodownload">
-                <source src="https://image2url.com/r2/default/videos/1768394132781-01d59a63-23e0-43fe-aeaa-29c206bfe40b.mp4" type="video/mp4">
+                <source src="https://image2url.com/r2/default/videos/1768456014956-77db587b-344f-4699-9acf-3a70d4f8e1f0.mp4">
                 Browser Anda tidak mendukung video.
             </video>
         </div>
 
         <div id="retroNotification" class="hidden w-full bg-transparent border-t border-gray-300 p-4 md:p-6 gap-4 md:gap-6 items-start">
             
-            <img src="https://image2url.com/r2/default/images/1768369157278-f8066e6c-6e39-4609-a59f-c89a8ab050f2.png" 
+            <img src="https://image2url.com/r2/default/images/1768455585068-4c283ee6-0d5f-43a2-9643-dc6ac6f14aac.png" 
                  class="w-28 h-28 md:w-36 md:h-36 object-contain drop-shadow-md filter contrast-125 shrink-0" 
-                 alt="Giwa">
+                 alt="Tim Gamada SMAN 7 Tangsel">
 
             <div class="flex-grow retro-box p-3 md:p-4 rounded-sm relative">
                 <div class="absolute top-4 -left-3 w-0 h-0 border-t-[8px] border-t-transparent border-r-[12px] border-r-[#1e40af] border-b-[8px] border-b-transparent"></div>
 
-                <h4 class="text-yellow-300 font-retro text-[10px] md:text-xs mb-2">GIWA SAYS:</h4>
+                <h4 class="text-yellow-300 font-retro text-[10px] md:text-xs mb-2 leading-relaxed">
+                    TIM GAMADA SMAN 7 TANGSEL SAYS:
+                </h4>
+                
                 <p class="text-white font-retro text-[8px] md:text-[10px] leading-loose mb-4">
                     Perjalanan kita udah selesai, nih! Jangan lupa scan <span class="text-yellow-300">QR Code</span> di atas dan mengisi link Padlet untuk bergabung ke grup ya!
                 </p>
@@ -1894,24 +1895,22 @@
     document.addEventListener("DOMContentLoaded", () => {
         // --- LOGIC TOMBOL MELAYANG (Footer Detection) ---
         const floatBtn = document.getElementById('floatBtnContainer');
-        const footerTarget = document.querySelector('footer'); // Mencari tag <footer>
+        const footerTarget = document.querySelector('footer'); 
 
         if (footerTarget) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Footer terlihat -> Munculkan Tombol
                         floatBtn.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
                     } else {
-                        // Footer tidak terlihat -> Sembunyikan Tombol
                         floatBtn.classList.add('opacity-0', 'translate-y-20', 'pointer-events-none');
                     }
                 });
-            }, { threshold: 0.1 }); // Trigger saat 10% footer terlihat
+            }, { threshold: 0.1 }); 
             
             observer.observe(footerTarget);
         } else {
-            // Fallback jika tidak ada <footer>: Muncul setelah scroll 500px
+            // Fallback: Muncul setelah scroll 500px jika tidak ada footer
             window.addEventListener('scroll', () => {
                 if(window.scrollY > 500) {
                      floatBtn.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
@@ -1939,7 +1938,7 @@
         setTimeout(() => {
             overlay.classList.add('hidden');
             secretVideo.pause();
-            resetState(); // Reset saat tutup
+            resetState(); 
         }, 300);
     }
 
@@ -1967,11 +1966,10 @@
         retroNotif.classList.remove('hidden');
         retroNotif.classList.add('flex', 'animate-popup');
         
-        // Auto scroll ke bawah agar notif terlihat di HP
         retroNotif.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
-    // Tutup jika klik area gelap di luar window
+    // Tutup jika klik area gelap
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) closeSecretOS();
     });
